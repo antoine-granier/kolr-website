@@ -12,6 +12,7 @@ import {
   Palette,
   Pipette,
   Image as ImageIcon,
+  CircleSlash2,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -70,6 +71,13 @@ export default function Navigation() {
       href: `/${locale}/tools/image-extract`,
       icon: <ImageIcon size={20} />,
       colorVar: "var(--kolr-green)",
+    },
+    {
+      name: "Contrast Checker",
+      description: "Check WCAG compliance",
+      href: `/${locale}/tools/contrast-checker`,
+      icon: <CircleSlash2 size={20} />,
+      colorVar: "var(--kolr-orange)",
     },
   ];
 

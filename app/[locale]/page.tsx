@@ -5,7 +5,13 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import Reveal from "@/components/Reveal";
 import PalettePreview from "@/components/PalettePreview";
-import { Palette, Pipette, ImageIcon, ArrowRight } from "lucide-react";
+import {
+  Palette,
+  Pipette,
+  ImageIcon,
+  ArrowRight,
+  CircleSlash2,
+} from "lucide-react";
 
 export default function HomePage() {
   const t = useTranslations("hero");
@@ -190,6 +196,26 @@ export default function HomePage() {
                   {tNav("toolImageDesc")}
                 </p>
                 <div className="flex items-center gap-2 text-kolr-green font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>Try it now</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={4}>
+              <Link
+                href={`/${locale}/tools/contrast-checker`}
+                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-orange transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-orange/10 text-kolr-orange flex items-center justify-center mb-6 group-hover:bg-kolr-orange group-hover:text-black transition-all duration-300">
+                  <CircleSlash2 size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  Contrast Checker
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  Check WCAG compliance
+                </p>
+                <div className="flex items-center gap-2 text-kolr-orange font-bold mt-6 group-hover:gap-3 transition-all duration-200">
                   <span>Try it now</span>
                   <ArrowRight size={18} />
                 </div>
