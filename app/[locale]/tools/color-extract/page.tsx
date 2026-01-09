@@ -171,7 +171,7 @@ export default function ColorExtractPage() {
                         key={m.id}
                         onClick={() => setMode(m.id as HarmonyMode)}
                         className={`
-                          flex items-center gap-3 p-4 rounded-2xl font-semibold
+                          flex items-center gap-3 p-4 rounded-2xl font-semibold w-min
                           transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]
                           ${
                             mode === m.id
