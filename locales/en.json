@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "download": "Download",
+    "about": "About",
+    "tools": "Tools",
+    "toolRandom": "Random Palette",
+    "toolRandomDesc": "Generate fresh inspiration",
+    "toolColor": "Color Extraction",
+    "toolColorDesc": "Create from base colors",
+    "toolImage": "Image to Palette",
+    "toolImageDesc": "Extract from any photo"
+  },
+  "hero": {
+    "tagline": "Create palettes from your photos",
+    "title": "Transform Your Photos Into Beautiful Color Palettes",
+    "description": "Kolr is the ultimate color palette generator. Extract harmonious color schemes from your photos, camera, or generate random palettes. Perfect for designers, artists, and color enthusiasts.",
+    "downloadNow": "Download Now",
+    "learnMore": "Learn More"
+  },
+  "features": {
+    "title": "Powerful Features",
+    "subtitle": "Everything you need to create stunning color palettes",
+    "photoExtraction": {
+      "title": "Photo Extraction",
+      "description": "Upload any photo and instantly extract a beautiful color palette with intelligent color analysis."
+    },
+    "cameraIntegration": {
+      "title": "Camera Integration",
+      "description": "Capture colors in real-time with your camera and generate palettes on the fly."
+    },
+    "randomGenerator": {
+      "title": "Random Generator",
+      "description": "Get inspired with randomly generated color palettes based on color theory."
+    },
+    "colorPicker": {
+      "title": "Color Picker",
+      "description": "Manually select and build your perfect palette with our intuitive color picker."
+    },
+    "harmonyModes": {
+      "title": "Harmony Modes",
+      "description": "Choose from Monochromatic, Analogous, Complementary, and Triadic color harmonies."
+    },
+    "gallery": {
+      "title": "Save & Organize",
+      "description": "Save your favorite palettes to your personal gallery for easy access anytime."
+    },
+    "export": {
+      "title": "Easy Export",
+      "description": "Export palettes with hex codes and RGB values, ready for your design projects."
+    },
+    "darkMode": {
+      "title": "Beautiful Dark UI",
+      "description": "Enjoy a sleek, modern dark interface that's easy on the eyes."
+    }
+  },
+  "download": {
+    "title": "Download Kolr",
+    "subtitle": "Available on iOS and Android",
+    "description": "Get Kolr on your device and start creating beautiful color palettes today. Free to download with optional premium features.",
+    "appStore": "Available on the App Store",
+    "playStore": "Available on Google Play",
+    "requirements": {
+      "title": "Requirements",
+      "ios": "iOS 13.0 or later",
+      "android": "Android 8.0 or later"
+    }
+  },
+  "about": {
+    "title": "About Kolr",
+    "description": "Kolr was created for designers, artists, and anyone who loves colors. Our mission is to make color palette creation simple, intuitive, and accessible to everyone.",
+    "story": "Born from a passion for design and color theory, Kolr combines advanced algorithms with an intuitive interface to help you discover the perfect color combinations for your projects.",
+    "contact": "Contact Support"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 9, 2026",
+    "intro": "At Kolr, we take your privacy seriously. This Privacy Policy explains how we collect, use, and protect your information.",
+    "dataCollection": {
+      "title": "Data Collection",
+      "content": "Kolr collects minimal data to provide you with the best experience. We only access your photos when you explicitly choose to use them for palette generation. Your photos are processed locally on your device and are never uploaded to our servers unless you choose to back up your gallery."
+    },
+    "dataUsage": {
+      "title": "How We Use Your Data",
+      "content": "Any data we collect is used solely to improve your experience with Kolr. We do not sell or share your personal information with third parties for marketing purposes."
+    },
+    "permissions": {
+      "title": "Permissions",
+      "camera": "Camera: Used to capture photos for palette generation",
+      "photos": "Photo Library: Used to access photos you select for palette creation",
+      "storage": "Storage: Used to save your palettes locally on your device"
+    },
+    "contact": "If you have any questions about our Privacy Policy, please contact us at privacy@kolr.app"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: January 9, 2026",
+    "intro": "By using Kolr, you agree to these Terms of Service. Please read them carefully.",
+    "license": {
+      "title": "License",
+      "content": "Kolr grants you a limited, non-exclusive, non-transferable license to use the app for personal and commercial purposes in accordance with these terms."
+    },
+    "usage": {
+      "title": "Acceptable Use",
+      "content": "You agree to use Kolr only for lawful purposes and in a way that does not infringe the rights of others or restrict their use and enjoyment of the app."
+    },
+    "ownership": {
+      "title": "Intellectual Property",
+      "content": "All intellectual property rights in Kolr, including but not limited to the app design, logo, and algorithms, remain the property of Kolr and its licensors."
+    },
+    "limitation": {
+      "title": "Limitation of Liability",
+      "content": "Kolr is provided 'as is' without any warranties. We are not liable for any damages arising from your use of the app."
+    },
+    "contact": "For questions about these Terms, contact us at legal@kolr.app"
+  },
+  "footer": {
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "about": "About",
+    "support": "Support",
+    "contact": "Contact",
+    "rights": "© 2026 Kolr. All rights reserved."
+  }
+}

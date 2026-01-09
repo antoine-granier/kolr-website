@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "download": "Télécharger",
+    "about": "À propos",
+    "tools": "Outils",
+    "toolRandom": "Palette Aléatoire",
+    "toolRandomDesc": "Inspiration unique au quotidien",
+    "toolColor": "Extraction Couleur",
+    "toolColorDesc": "Créez depuis vos couleurs",
+    "toolImage": "Image en Palette",
+    "toolImageDesc": "Extrayez depuis vos photos"
+  },
+  "hero": {
+    "tagline": "Créez des palettes à partir de vos photos",
+    "title": "Transformez Vos Photos en Magnifiques Palettes de Couleurs",
+    "description": "Kolr est le générateur de palette de couleurs ultime. Extrayez des schémas de couleurs harmonieux depuis vos photos, votre appareil photo, ou générez des palettes aléatoires. Parfait pour les designers, artistes et passionnés de couleurs.",
+    "downloadNow": "Télécharger Maintenant",
+    "learnMore": "En Savoir Plus"
+  },
+  "features": {
+    "title": "Fonctionnalités Puissantes",
+    "subtitle": "Tout ce dont vous avez besoin pour créer de superbes palettes de couleurs",
+    "photoExtraction": {
+      "title": "Extraction Photo",
+      "description": "Téléchargez n'importe quelle photo et extrayez instantanément une belle palette de couleurs grâce à une analyse intelligente."
+    },
+    "cameraIntegration": {
+      "title": "Intégration Caméra",
+      "description": "Capturez des couleurs en temps réel avec votre appareil photo et générez des palettes à la volée."
+    },
+    "randomGenerator": {
+      "title": "Générateur Aléatoire",
+      "description": "Inspirez-vous avec des palettes de couleurs générées aléatoirement basées sur la théorie des couleurs."
+    },
+    "colorPicker": {
+      "title": "Sélecteur de Couleur",
+      "description": "Sélectionnez et créez manuellement votre palette parfaite avec notre sélecteur de couleur intuitif."
+    },
+    "harmonyModes": {
+      "title": "Modes d'Harmonie",
+      "description": "Choisissez parmi les harmonies monochromatiques, analogues, complémentaires et triadiques."
+    },
+    "gallery": {
+      "title": "Sauvegarder & Organiser",
+      "description": "Enregistrez vos palettes favorites dans votre galerie personnelle pour un accès facile à tout moment."
+    },
+    "export": {
+      "title": "Export Facile",
+      "description": "Exportez les palettes avec codes hex et valeurs RGB, prêtes pour vos projets de design."
+    },
+    "darkMode": {
+      "title": "Interface Sombre Élégante",
+      "description": "Profitez d'une interface sombre moderne et élégante qui repose les yeux."
+    }
+  },
+  "download": {
+    "title": "Télécharger Kolr",
+    "subtitle": "Disponible sur iOS and Android",
+    "description": "Obtenez Kolr sur votre appareil et commencez à créer de belles palettes de couleurs dès aujourd'hui. Gratuit à télécharger avec des fonctionnalités premium optionnelles.",
+    "appStore": "Disponible sur l'App Store",
+    "playStore": "Disponible sur Google Play",
+    "requirements": {
+      "title": "Configuration Requise",
+      "ios": "iOS 13.0 ou version ultérieure",
+      "android": "Android 8.0 ou version ultérieure"
+    }
+  },
+  "about": {
+    "title": "À Propos de Kolr",
+    "description": "Kolr a été créé pour les designers, les artistes et tous ceux qui aiment les couleurs. Notre mission est de rendre la création de palettes de couleurs simple, intuitive et accessible à tous.",
+    "story": "Né d'une passion pour le design et la théorie des couleurs, Kolr combine des algorithmes avancés avec une interface intuitive pour vous aider à découvrir les combinaisons de couleurs parfaites pour vos projets.",
+    "contact": "Contacter le Support"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : 9 janvier 2026",
+    "intro": "Chez Kolr, nous prenons votre confidentialité au sérieux. Cette Politique de Confidentialité explique comment nous collectons, utilisons et protégeons vos informations.",
+    "dataCollection": {
+      "title": "Collecte de Données",
+      "content": "Kolr collecte un minimum de données pour vous offrir la meilleure expérience. Nous accédons uniquement à vos photos lorsque vous choisissez explicitement de les utiliser pour la génération de palettes. Vos photos sont traitées localement sur votre appareil et ne sont jamais téléchargées sur nos serveurs, sauf si vous choisissez de sauvegarder votre galerie."
+    },
+    "dataUsage": {
+      "title": "Utilisation de Vos Données",
+      "content": "Toutes les données que nous collectons sont utilisées uniquement pour améliorer votre expérience avec Kolr. Nous ne vendons ni ne partageons vos informations personnelles avec des tiers à des fins marketing."
+    },
+    "permissions": {
+      "title": "Autorisations",
+      "camera": "Appareil Photo : Utilisé pour capturer des photos pour la génération de palettes",
+      "photos": "Bibliothèque Photo : Utilisé pour accéder aux photos que vous sélectionnez",
+      "storage": "Stockage : Utilisé pour sauvegarder vos palettes localement sur votre appareil"
+    },
+    "contact": "Si vous avez des questions concernant notre Politique de Confidentialité, contactez-nous à privacy@kolr.app"
+  },
+  "terms": {
+    "title": "Conditions d'Utilisation",
+    "lastUpdated": "Dernière mise à jour : 9 janvier 2026",
+    "intro": "En utilisant Kolr, vous acceptez ces Conditions d'Utilisation. Veuillez les lire attentivement.",
+    "license": {
+      "title": "Licence",
+      "content": "Kolr vous accorde une licence limitée, non exclusive et non transférable pour utiliser l'application à des fins personnelles et commerciales conformément à ces conditions."
+    },
+    "usage": {
+      "title": "Utilisation Acceptable",
+      "content": "Vous vous engagez à utiliser Kolr uniquement à des fins légales et d'une manière qui ne porte pas atteinte aux droits d'autrui ou ne restreint pas leur utilisation et jouissance de l'application."
+    },
+    "ownership": {
+      "title": "Propriété Intellectuelle",
+      "content": "Tous les droits de propriété intellectuelle dans Kolr, y compris mais sans s'y limiter la conception de l'application, le logo et les algorithmes, restent la propriété de Kolr et de ses concédants de licence."
+    },
+    "limitation": {
+      "title": "Limitation de Responsabilité",
+      "content": "Kolr est fourni 'tel quel' sans aucune garantie. Nous ne sommes pas responsables des dommages résultant de votre utilisation de l'application."
+    },
+    "contact": "Pour toute question concernant ces Conditions, contactez-nous à legal@kolr.app"
+  },
+  "footer": {
+    "legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "about": "À Propos",
+    "support": "Support",
+    "contact": "Contact",
+    "rights": "© 2026 Kolr. Tous droits réservés."
+  }
+}
