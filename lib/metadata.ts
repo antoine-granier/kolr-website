@@ -17,7 +17,7 @@ export function generatePageMetadata({
   keywords = [],
   image = "/og-image.png",
 }: PageMetadataParams): Metadata {
-  const baseUrl = "https://kolr.app";
+  const baseUrl = "https://kolr-app.vercel.app";
   const fullUrl = `${baseUrl}/${locale}${path}`;
 
   const defaultKeywords = [

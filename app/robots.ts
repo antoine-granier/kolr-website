@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/private/"],
       },
     ],
-    sitemap: "https://kolr.app/sitemap.xml",
-    host: "https://kolr.app",
+    sitemap: "https://kolr-app.vercel.app/sitemap.xml",
+    host: "https://kolr-app.vercel.app",
   };
 }

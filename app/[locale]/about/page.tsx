@@ -43,7 +43,10 @@ export default function AboutPage() {
           {/* Bouton contact */}
           <Reveal animation="reveal-up" delay={3}>
             <div className="text-center">
-              <a href="mailto:support@kolr.app" className="btn-primary">
+              <a
+                href="mailto:antoine.granier@protonmail.com"
+                className="btn-primary"
+              >
                 {t("contact")}
               </a>
             </div>

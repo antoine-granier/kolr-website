@@ -30,7 +30,7 @@ export async function generateMetadata({
     "The ultimate color picker and palette generator for designers and developers";
 
   return {
-    metadataBase: new URL("https://kolr.app"),
+    metadataBase: new URL("https://kolr-app.vercel.app"),
     title: {
       default: title,
       template: "%s | Kolr",
@@ -70,7 +70,7 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: locale === "fr" ? "fr_FR" : "en_US",
-      url: `https://kolr.app/${locale}`,
+      url: `https://kolr-app.vercel.app/${locale}`,
       title,
       description,
       siteName: "Kolr",
@@ -102,10 +102,10 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `https://kolr.app/${locale}`,
+      canonical: `https://kolr-app.vercel.app/${locale}`,
       languages: {
-        en: "https://kolr.app/en",
-        fr: "https://kolr.app/fr",
+        en: "https://kolr-app.vercel.app/en",
+        fr: "https://kolr-app.vercel.app/fr",
       },
     },
     verification: {

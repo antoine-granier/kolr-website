@@ -5,7 +5,7 @@ export default function StructuredData({
   locale: string;
   type?: "website" | "software";
 }) {
-  const baseUrl = "https://kolr.app";
+  const baseUrl = "https://kolr-app.vercel.app";
 
   const websiteSchema = {
     "@context": "https://schema.org",

@@ -59,7 +59,7 @@ export default function Footer() {
                 {t("about")}
               </Link>
               <a
-                href="mailto:support@kolr.app"
+                href="mailto:antoine.granier@protonmail.com"
                 className="text-kolr-text-muted no-underline text-base transition-colors duration-200 hover:text-white"
               >
                 {t("contact")}
