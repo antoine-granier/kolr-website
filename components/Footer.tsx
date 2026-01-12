@@ -21,9 +21,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-kolr-text-muted text-base leading-relaxed">
-              Transform your photos into
-              <br />
-              beautiful color palettes.
+              {t("tagline")}
             </p>
           </div>
 

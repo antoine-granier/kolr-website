@@ -15,6 +15,7 @@ import Reveal from "@/components/Reveal";
 
 export default function ImageExtractPage() {
   const t = useTranslations("nav");
+  const tImage = useTranslations("toolImage");
   const locale = useLocale();
   const [image, setImage] = useState<string | null>(null);
   const [palette, setPalette] = useState<string[]>([]);
@@ -101,7 +102,7 @@ export default function ImageExtractPage() {
                 {t("toolImage")}
               </h1>
               <p className="text-kolr-text-muted text-lg mt-2">
-                Upload a photo to extract its unique color story
+                {tImage("description")}
               </p>
             </header>
           </Reveal>
@@ -147,9 +148,9 @@ export default function ImageExtractPage() {
                       <div className="absolute inset-0 rounded-full border-2 border-kolr-cyan animate-ping" />
                     </div>
                     <h3 className="text-xl font-bold text-white mb-2">
-                      Drop your image here
+                      {tImage("dropzone")}
                     </h3>
-                    <p className="text-base">or click to browse files</p>
+                    <p className="text-base">{tImage("orBrowse")}</p>
                   </div>
                 )}
                 <input
@@ -204,7 +205,7 @@ export default function ImageExtractPage() {
                   ) : (
                     <div className="flex-1 flex flex-col items-center justify-center text-kolr-text-muted text-center p-8">
                       <ImageIcon size={48} className="opacity-10 mb-4" />
-                      <p>Your extracted colors will appear here</p>
+                      <p>{tImage("placeholder")}</p>
                     </div>
                   )}
                 </div>
@@ -221,7 +222,7 @@ export default function ImageExtractPage() {
                       className={isExtracting ? "animate-spin" : ""}
                     />
                     <span>
-                      {isExtracting ? "Extracting..." : "Re-extract Colors"}
+                      {isExtracting ? tImage("extracting") : tImage("reextract")}
                     </span>
                   </button>
                 )}

@@ -73,8 +73,8 @@ export default function Navigation() {
       colorVar: "var(--kolr-green)",
     },
     {
-      name: "Contrast Checker",
-      description: "Check WCAG compliance",
+      name: t("toolContrast"),
+      description: t("toolContrastDesc"),
       href: `/${locale}/tools/contrast-checker`,
       icon: <CircleSlash2 size={20} />,
       colorVar: "var(--kolr-orange)",
@@ -365,10 +365,10 @@ export default function Navigation() {
                     size={22}
                     className="text-kolr-cyan transition-transform duration-300 group-hover:scale-110"
                   />
-                  <span>{locale === "en" ? "Français" : "English"}</span>
+                  <span>{locale === "en" ? t("languageFr") : t("languageEn")}</span>
                 </div>
                 <div className="text-[0.7rem] uppercase tracking-widest opacity-40 bg-white/10 px-2 py-1 rounded-lg">
-                  {locale === "en" ? "Switch" : "Changer"}
+                  {locale === "en" ? t("switchLanguage") : t("changeLanguage")}
                 </div>
               </button>
             </div>

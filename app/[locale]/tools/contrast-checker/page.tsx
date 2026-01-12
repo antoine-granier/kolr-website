@@ -15,6 +15,7 @@ import Reveal from "@/components/Reveal";
 
 export default function ContrastCheckerPage() {
   const t = useTranslations("nav");
+  const tContrast = useTranslations("toolContrast");
   const locale = useLocale();
   const [foreground, setForeground] = useState("#00F2FF");
   const [background, setBackground] = useState("#000000");
@@ -84,10 +85,10 @@ export default function ContrastCheckerPage() {
 
             <header className="mb-12 text-center">
               <h1 className="[font-size:_clamp(2.5rem,5vw,3.5rem)] font-black tracking-[-0.02em]">
-                Contrast Checker
+                {tContrast("title")}
               </h1>
               <p className="text-kolr-text-muted text-lg mt-2">
-                Check color contrast ratios for accessibility (WCAG)
+                {tContrast("description")}
               </p>
             </header>
           </Reveal>
@@ -99,7 +100,7 @@ export default function ContrastCheckerPage() {
                 {/* Foreground Color */}
                 <div className="flex flex-col gap-4">
                   <label className="block font-bold uppercase text-xs tracking-widest text-kolr-text-muted">
-                    Foreground (Text)
+                    {tContrast("foreground")}
                   </label>
                   <div className="flex items-center gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
                     <input
@@ -144,7 +145,7 @@ export default function ContrastCheckerPage() {
                 {/* Background Color */}
                 <div className="flex flex-col gap-4">
                   <label className="block font-bold uppercase text-xs tracking-widest text-kolr-text-muted">
-                    Background
+                    {tContrast("background")}
                   </label>
                   <div className="flex items-center gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
                     <input
@@ -192,7 +193,7 @@ export default function ContrastCheckerPage() {
                   className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white/10 hover:border-kolr-cyan"
                 >
                   <Eye size={20} />
-                  <span>Swap Colors</span>
+                  <span>{tContrast("swapColors")}</span>
                 </button>
               </div>
             </Reveal>
@@ -219,36 +220,36 @@ export default function ContrastCheckerPage() {
                     className="text-xl text-center"
                     style={{ color: foreground }}
                   >
-                    The quick brown fox jumps over the lazy dog
+                    {tContrast("sampleTextLarge")}
                   </p>
                   <p
                     className="text-sm text-center"
                     style={{ color: foreground }}
                   >
-                    Small text example for contrast testing
+                    {tContrast("sampleTextSmall")}
                   </p>
                 </div>
 
                 {/* Ratio */}
                 <div className="bg-white/[0.03] border border-white/[0.08] rounded-[2rem] p-8 backdrop-blur-xl text-center">
                   <p className="text-sm uppercase tracking-widest text-kolr-text-muted mb-2">
-                    Contrast Ratio
+                    {tContrast("contrastRatio")}
                   </p>
                   <p className="text-6xl font-black mb-2">{ratioFormatted}:1</p>
                   <p className="text-kolr-text-muted text-sm">
                     {ratio >= 7
-                      ? "Excellent contrast! ✨"
+                      ? tContrast("excellent")
                       : ratio >= 4.5
-                      ? "Good contrast"
+                      ? tContrast("good")
                       : ratio >= 3
-                      ? "Fair for large text"
-                      : "Poor contrast ⚠️"}
+                      ? tContrast("fair")
+                      : tContrast("poor")}
                   </p>
                 </div>
 
                 {/* WCAG Standards */}
                 <div className="bg-white/[0.03] border border-white/[0.08] rounded-[2rem] p-8 backdrop-blur-xl">
-                  <h3 className="text-xl font-bold mb-6">WCAG Compliance</h3>
+                  <h3 className="text-xl font-bold mb-6">{tContrast("wcagCompliance")}</h3>
 
                   <div className="space-y-4">
                     {/* AA Normal */}
@@ -260,9 +261,9 @@ export default function ContrastCheckerPage() {
                           <AlertCircle size={24} className="text-kolr-orange" />
                         )}
                         <div>
-                          <p className="font-bold">AA Normal Text</p>
+                          <p className="font-bold">{tContrast("aaNormal")}</p>
                           <p className="text-xs text-kolr-text-muted">
-                            Min 4.5:1
+                            {tContrast("min45")}
                           </p>
                         </div>
                       </div>
@@ -273,7 +274,7 @@ export default function ContrastCheckerPage() {
                             : "text-kolr-orange"
                         }`}
                       >
-                        {wcagAA.normalText ? "Pass" : "Fail"}
+                        {wcagAA.normalText ? tContrast("pass") : tContrast("fail")}
                       </span>
                     </div>
 
@@ -286,9 +287,9 @@ export default function ContrastCheckerPage() {
                           <AlertCircle size={24} className="text-kolr-orange" />
                         )}
                         <div>
-                          <p className="font-bold">AA Large Text</p>
+                          <p className="font-bold">{tContrast("aaLarge")}</p>
                           <p className="text-xs text-kolr-text-muted">
-                            Min 3:1
+                            {tContrast("min3")}
                           </p>
                         </div>
                       </div>
@@ -299,7 +300,7 @@ export default function ContrastCheckerPage() {
                             : "text-kolr-orange"
                         }`}
                       >
-                        {wcagAA.largeText ? "Pass" : "Fail"}
+                        {wcagAA.largeText ? tContrast("pass") : tContrast("fail")}
                       </span>
                     </div>
 
@@ -312,9 +313,9 @@ export default function ContrastCheckerPage() {
                           <AlertCircle size={24} className="text-kolr-orange" />
                         )}
                         <div>
-                          <p className="font-bold">AAA Normal Text</p>
+                          <p className="font-bold">{tContrast("aaaNormal")}</p>
                           <p className="text-xs text-kolr-text-muted">
-                            Min 7:1
+                            {tContrast("min7")}
                           </p>
                         </div>
                       </div>
@@ -325,7 +326,7 @@ export default function ContrastCheckerPage() {
                             : "text-kolr-orange"
                         }`}
                       >
-                        {wcagAAA.normalText ? "Pass" : "Fail"}
+                        {wcagAAA.normalText ? tContrast("pass") : tContrast("fail")}
                       </span>
                     </div>
 
@@ -338,9 +339,9 @@ export default function ContrastCheckerPage() {
                           <AlertCircle size={24} className="text-kolr-orange" />
                         )}
                         <div>
-                          <p className="font-bold">AAA Large Text</p>
+                          <p className="font-bold">{tContrast("aaaLarge")}</p>
                           <p className="text-xs text-kolr-text-muted">
-                            Min 4.5:1
+                            {tContrast("min45")}
                           </p>
                         </div>
                       </div>
@@ -351,7 +352,7 @@ export default function ContrastCheckerPage() {
                             : "text-kolr-orange"
                         }`}
                       >
-                        {wcagAAA.largeText ? "Pass" : "Fail"}
+                        {wcagAAA.largeText ? tContrast("pass") : tContrast("fail")}
                       </span>
                     </div>
                   </div>

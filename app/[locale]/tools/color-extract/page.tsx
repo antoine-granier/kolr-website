@@ -18,6 +18,7 @@ type HarmonyMode = "monochromatic" | "analogous" | "complementary" | "triadic";
 
 export default function ColorExtractPage() {
   const t = useTranslations("nav");
+  const tColor = useTranslations("toolColor");
   const locale = useLocale();
   const [baseColor, setBaseColor] = useState("#00F2FF");
   const [hexInput, setHexInput] = useState("#00F2FF");
@@ -98,7 +99,7 @@ export default function ColorExtractPage() {
                 {t("toolColor")}
               </h1>
               <p className="text-kolr-text-muted text-lg mt-2">
-                Start with a color and discover harmonies
+                {tColor("description")}
               </p>
             </header>
           </Reveal>
@@ -110,7 +111,7 @@ export default function ColorExtractPage() {
                 {/* Base Color */}
                 <div className="flex flex-col gap-4">
                   <label className="block font-bold uppercase text-xs tracking-widest text-kolr-text-muted">
-                    Base Color
+                    {tColor("baseColor")}
                   </label>
                   <div className="flex items-center gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
                     <input
@@ -142,29 +143,29 @@ export default function ColorExtractPage() {
                 {/* Harmony Modes */}
                 <div className="flex flex-col gap-4">
                   <label className="block font-bold uppercase text-xs tracking-widest text-kolr-text-muted">
-                    Harmony Mode
+                    {tColor("harmonyMode")}
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       {
                         id: "monochromatic",
                         icon: <Layers size={18} />,
-                        label: "Mono",
+                        label: tColor("monoMode"),
                       },
                       {
                         id: "analogous",
                         icon: <Layout size={18} />,
-                        label: "Analogous",
+                        label: tColor("analogousMode"),
                       },
                       {
                         id: "complementary",
                         icon: <Maximize size={18} />,
-                        label: "Comp",
+                        label: tColor("compMode"),
                       },
                       {
                         id: "triadic",
                         icon: <Grid size={18} />,
-                        label: "Triadic",
+                        label: tColor("triadicMode"),
                       },
                     ].map((m) => (
                       <button

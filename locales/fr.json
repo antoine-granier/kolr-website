@@ -10,11 +10,17 @@
     "toolColor": "Extraction Couleur",
     "toolColorDesc": "Créez depuis vos couleurs",
     "toolImage": "Image en Palette",
-    "toolImageDesc": "Extrayez depuis vos photos"
+    "toolImageDesc": "Extrayez depuis vos photos",
+    "toolContrast": "Vérificateur de Contraste",
+    "toolContrastDesc": "Vérifiez la conformité WCAG",
+    "languageFr": "Français",
+    "languageEn": "English",
+    "switchLanguage": "Switch",
+    "changeLanguage": "Changer"
   },
   "hero": {
     "tagline": "Créez des palettes à partir de vos photos",
-    "title": "Transformez Vos Photos en Magnifiques Palettes de Couleurs",
+    "title": "Transformez Vos Photos En",
     "description": "Kolr est le générateur de palette de couleurs ultime. Extrayez des schémas de couleurs harmonieux depuis vos photos, votre appareil photo, ou générez des palettes aléatoires. Parfait pour les designers, artistes et passionnés de couleurs.",
     "downloadNow": "Télécharger Maintenant",
     "learnMore": "En Savoir Plus"
@@ -122,6 +128,96 @@
     "about": "À Propos",
     "support": "Support",
     "contact": "Contact",
-    "rights": "© 2026 Kolr. Tous droits réservés."
+    "rights": "© 2026 Kolr. Tous droits réservés.",
+    "tagline": "Transformez vos photos en magnifiques palettes de couleurs."
+  },
+  "common": {
+    "tryNow": "Essayer maintenant",
+    "discoverFeatures": "Découvrir toutes les fonctionnalités",
+    "masterpieces": "Chefs-d'œuvre"
+  },
+  "homepage": {
+    "toolsTitle": "Essayez Nos Outils Gratuits",
+    "toolsDescription": "Explorez les palettes de couleurs, les harmonies et les outils d'extraction directement dans votre navigateur",
+    "ctaTitle": "Prêt à Commencer à Créer ?",
+    "ctaDescription": "Téléchargez Kolr aujourd'hui et transformez votre façon de travailler avec les couleurs. Disponible sur iOS et Android.",
+    "downloadIos": "Télécharger pour iOS",
+    "downloadAndroid": "Télécharger pour Android",
+    "viewAllDownloads": "Voir toutes les options de téléchargement"
+  },
+  "downloadPage": {
+    "whyDownload": "Pourquoi Télécharger Kolr ?",
+    "mobileTitle": "Design Mobile First",
+    "mobileDesc": "Optimisé pour l'extraction de couleurs en déplacement. Capturez l'inspiration où que vous soyez.",
+    "fastTitle": "Ultra Rapide",
+    "fastDesc": "Extraction de couleur et génération de palette instantanées. Pas d'attente, juste de la création.",
+    "privacyTitle": "Confidentialité d'Abord",
+    "privacyDesc": "Vos photos restent sur votre appareil. Tout le traitement se fait localement.",
+    "offlineTitle": "Fonctionne Hors Ligne",
+    "offlineDesc": "Créez et sauvegardez des palettes même sans connexion internet.",
+    "photoTagline": "Créez des palettes à partir de vos photos"
+  },
+  "toolRandom": {
+    "title": "Générateur de Palette Aléatoire",
+    "description": "Générez des palettes de couleurs fraîches pour une inspiration instantanée",
+    "pressKey": "Appuyez sur",
+    "spacebar": "Espace",
+    "toGenerate": "pour générer de nouvelles couleurs",
+    "generateButton": "Générer une Nouvelle Palette"
+  },
+  "toolColor": {
+    "title": "Explorateur d'Harmonie Colorée",
+    "description": "Commencez avec une couleur et découvrez les harmonies",
+    "baseColor": "Couleur de Base",
+    "harmonyMode": "Mode d'Harmonie",
+    "monoMode": "Mono",
+    "analogousMode": "Analogues",
+    "compMode": "Comp",
+    "triadicMode": "Triadique"
+  },
+  "toolImage": {
+    "title": "Extracteur de Couleurs d'Image",
+    "description": "Téléchargez une photo pour extraire son histoire colorée unique",
+    "dropzone": "Déposez votre image ici",
+    "orBrowse": "ou cliquez pour parcourir les fichiers",
+    "placeholder": "Vos couleurs extraites apparaîtront ici",
+    "reextract": "Ré-extraire les Couleurs",
+    "extracting": "Extraction en cours..."
+  },
+  "toolContrast": {
+    "title": "Vérificateur de Contraste",
+    "description": "Vérifiez les ratios de contraste des couleurs pour l'accessibilité (WCAG)",
+    "foreground": "Premier Plan (Texte)",
+    "background": "Arrière-plan",
+    "swapColors": "Inverser les Couleurs",
+    "contrastRatio": "Ratio de Contraste",
+    "excellent": "Excellent contraste ! ✨",
+    "good": "Bon contraste",
+    "fair": "Acceptable pour texte large",
+    "poor": "Mauvais contraste ⚠️",
+    "wcagCompliance": "Conformité WCAG",
+    "aaNormal": "AA Texte Normal",
+    "aaLarge": "AA Texte Large",
+    "aaaNormal": "AAA Texte Normal",
+    "aaaLarge": "AAA Texte Large",
+    "min45": "Min 4.5:1",
+    "min3": "Min 3:1",
+    "min7": "Min 7:1",
+    "pass": "Réussi",
+    "fail": "Échoué",
+    "sampleTextLarge": "Portez ce vieux whisky au juge blond qui fume",
+    "sampleTextSmall": "Exemple de petit texte pour tester le contraste"
+  },
+  "metadata": {
+    "defaultTitle": "Kolr - Créez des palettes à partir de vos photos",
+    "defaultDescription": "Le sélecteur de couleurs et générateur de palette ultime pour les designers et développeurs",
+    "homeTitle": "Kolr - Générateur de Palette de Couleurs | Créer depuis vos Photos",
+    "homeDescription": "Extrayez de magnifiques palettes de couleurs depuis vos photos instantanément. Outils gratuits : générateur aléatoire, extracteur de couleurs, vérificateur de contraste. Parfait pour designers.",
+    "featuresTitle": "Fonctionnalités - Outils de Couleur Professionnels pour Designers",
+    "featuresDescription": "Découvrez toutes les fonctionnalités Kolr : extraction photo, intégration caméra, palettes aléatoires, harmonies colorées, vérificateur de contraste WCAG. Tout pour le design de couleurs.",
+    "downloadTitle": "Télécharger Kolr - Application iOS & Android de Palette de Couleurs",
+    "downloadDescription": "Téléchargez Kolr gratuitement sur iOS et Android. Créez des palettes depuis vos photos, générez des couleurs aléatoires, vérifiez l'accessibilité. Fonctionne hors ligne.",
+    "aboutTitle": "À Propos de Kolr - L'Histoire de l'Application de Palette de Couleurs",
+    "aboutDescription": "Découvrez la mission de Kolr : rendre la création de palettes accessible à tous. Combinant théorie des couleurs et design intuitif pour artistes et designers."
   }
 }

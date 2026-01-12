@@ -10,11 +10,17 @@
     "toolColor": "Color Extraction",
     "toolColorDesc": "Create from base colors",
     "toolImage": "Image to Palette",
-    "toolImageDesc": "Extract from any photo"
+    "toolImageDesc": "Extract from any photo",
+    "toolContrast": "Contrast Checker",
+    "toolContrastDesc": "Check WCAG compliance",
+    "languageFr": "Français",
+    "languageEn": "English",
+    "switchLanguage": "Switch",
+    "changeLanguage": "Changer"
   },
   "hero": {
     "tagline": "Create palettes from your photos",
-    "title": "Transform Your Photos Into Beautiful Color Palettes",
+    "title": "Transform Your Photos Into",
     "description": "Kolr is the ultimate color palette generator. Extract harmonious color schemes from your photos, camera, or generate random palettes. Perfect for designers, artists, and color enthusiasts.",
     "downloadNow": "Download Now",
     "learnMore": "Learn More"
@@ -122,6 +128,96 @@
     "about": "About",
     "support": "Support",
     "contact": "Contact",
-    "rights": "© 2026 Kolr. All rights reserved."
+    "rights": "© 2026 Kolr. All rights reserved.",
+    "tagline": "Transform your photos into beautiful color palettes."
+  },
+  "common": {
+    "tryNow": "Try it now",
+    "discoverFeatures": "Discover all features",
+    "masterpieces": "Masterpieces"
+  },
+  "homepage": {
+    "toolsTitle": "Try Our Free Tools",
+    "toolsDescription": "Explore color palettes, harmonies, and extraction tools right in your browser",
+    "ctaTitle": "Ready to Start Creating?",
+    "ctaDescription": "Download Kolr today and transform the way you work with colors. Available on iOS and Android.",
+    "downloadIos": "Download for iOS",
+    "downloadAndroid": "Download for Android",
+    "viewAllDownloads": "View all download options"
+  },
+  "downloadPage": {
+    "whyDownload": "Why Download Kolr?",
+    "mobileTitle": "Mobile-First Design",
+    "mobileDesc": "Optimized for on-the-go color extraction. Capture inspiration wherever you are.",
+    "fastTitle": "Lightning Fast",
+    "fastDesc": "Instant color extraction and palette generation. No waiting, just creating.",
+    "privacyTitle": "Privacy First",
+    "privacyDesc": "Your photos stay on your device. All processing happens locally.",
+    "offlineTitle": "Works Offline",
+    "offlineDesc": "Create and save palettes even without internet connection.",
+    "photoTagline": "Create palettes from your photos"
+  },
+  "toolRandom": {
+    "title": "Random Palette Generator",
+    "description": "Generate fresh color palettes for instant inspiration",
+    "pressKey": "Press",
+    "spacebar": "Spacebar",
+    "toGenerate": "to generate new colors",
+    "generateButton": "Generate New Palette"
+  },
+  "toolColor": {
+    "title": "Color Harmony Explorer",
+    "description": "Start with a color and discover harmonies",
+    "baseColor": "Base Color",
+    "harmonyMode": "Harmony Mode",
+    "monoMode": "Mono",
+    "analogousMode": "Analogous",
+    "compMode": "Comp",
+    "triadicMode": "Triadic"
+  },
+  "toolImage": {
+    "title": "Image Color Extractor",
+    "description": "Upload a photo to extract its unique color story",
+    "dropzone": "Drop your image here",
+    "orBrowse": "or click to browse files",
+    "placeholder": "Your extracted colors will appear here",
+    "reextract": "Re-extract Colors",
+    "extracting": "Extracting..."
+  },
+  "toolContrast": {
+    "title": "Contrast Checker",
+    "description": "Check color contrast ratios for accessibility (WCAG)",
+    "foreground": "Foreground (Text)",
+    "background": "Background",
+    "swapColors": "Swap Colors",
+    "contrastRatio": "Contrast Ratio",
+    "excellent": "Excellent contrast! ✨",
+    "good": "Good contrast",
+    "fair": "Fair for large text",
+    "poor": "Poor contrast ⚠️",
+    "wcagCompliance": "WCAG Compliance",
+    "aaNormal": "AA Normal Text",
+    "aaLarge": "AA Large Text",
+    "aaaNormal": "AAA Normal Text",
+    "aaaLarge": "AAA Large Text",
+    "min45": "Min 4.5:1",
+    "min3": "Min 3:1",
+    "min7": "Min 7:1",
+    "pass": "Pass",
+    "fail": "Fail",
+    "sampleTextLarge": "The quick brown fox jumps over the lazy dog",
+    "sampleTextSmall": "Small text example for contrast testing"
+  },
+  "metadata": {
+    "defaultTitle": "Kolr - Create palettes from your photos",
+    "defaultDescription": "The ultimate color picker and palette generator for designers and developers",
+    "homeTitle": "Kolr - Color Palette Generator | Create Palettes from Photos",
+    "homeDescription": "Extract beautiful color palettes from your photos instantly. Free online color tools: random palette generator, image color extractor, contrast checker & more. Perfect for designers.",
+    "featuresTitle": "Features - Professional Color Tools for Designers",
+    "featuresDescription": "Discover all Kolr features: photo extraction, camera integration, random palettes, color harmonies, WCAG contrast checker. Everything you need for color design.",
+    "downloadTitle": "Download Kolr App - iOS & Android Color Palette Generator",
+    "downloadDescription": "Download Kolr for free on iOS and Android. Create color palettes from photos, generate random colors, and check accessibility on the go. Works offline.",
+    "aboutTitle": "About Kolr - The Story Behind the Color Palette App",
+    "aboutDescription": "Learn about Kolr's mission to make color palette creation accessible to everyone. Combining color theory with intuitive design for artists and designers."
   }
 }

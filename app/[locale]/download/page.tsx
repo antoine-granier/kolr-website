@@ -6,6 +6,7 @@ import { Smartphone, Zap, Shield, Globe } from "lucide-react";
 
 export default function DownloadPage() {
   const t = useTranslations("download");
+  const tPage = useTranslations("downloadPage");
 
   return (
     <>
@@ -107,7 +108,7 @@ export default function DownloadPage() {
             {/* Why Download Section */}
             <Reveal animation="reveal-up">
               <h2 className="text-3xl font-black mb-12 tracking-[-0.01em]">
-                Why Download Kolr?
+                {tPage("whyDownload")}
               </h2>
             </Reveal>
 
@@ -118,11 +119,10 @@ export default function DownloadPage() {
                     <Smartphone className="w-7 h-7" />
                   </div>
                   <h3 className="text-xl font-extrabold mb-3">
-                    Mobile-First Design
+                    {tPage("mobileTitle")}
                   </h3>
                   <p className="text-kolr-text-muted leading-relaxed">
-                    Optimized for on-the-go color extraction. Capture
-                    inspiration wherever you are.
+                    {tPage("mobileDesc")}
                   </p>
                 </div>
               </Reveal>
@@ -133,11 +133,10 @@ export default function DownloadPage() {
                     <Zap className="w-7 h-7" />
                   </div>
                   <h3 className="text-xl font-extrabold mb-3">
-                    Lightning Fast
+                    {tPage("fastTitle")}
                   </h3>
                   <p className="text-kolr-text-muted leading-relaxed">
-                    Instant color extraction and palette generation. No waiting,
-                    just creating.
+                    {tPage("fastDesc")}
                   </p>
                 </div>
               </Reveal>
@@ -147,10 +146,9 @@ export default function DownloadPage() {
                   <div className="w-14 h-14 rounded-xl bg-kolr-green/10 text-kolr-green flex items-center justify-center mb-6">
                     <Shield className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-extrabold mb-3">Privacy First</h3>
+                  <h3 className="text-xl font-extrabold mb-3">{tPage("privacyTitle")}</h3>
                   <p className="text-kolr-text-muted leading-relaxed">
-                    Your photos stay on your device. All processing happens
-                    locally.
+                    {tPage("privacyDesc")}
                   </p>
                 </div>
               </Reveal>
@@ -160,9 +158,9 @@ export default function DownloadPage() {
                   <div className="w-14 h-14 rounded-xl bg-kolr-orange/10 text-kolr-orange flex items-center justify-center mb-6">
                     <Globe className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-extrabold mb-3">Works Offline</h3>
+                  <h3 className="text-xl font-extrabold mb-3">{tPage("offlineTitle")}</h3>
                   <p className="text-kolr-text-muted leading-relaxed">
-                    Create and save palettes even without internet connection.
+                    {tPage("offlineDesc")}
                   </p>
                 </div>
               </Reveal>
@@ -178,7 +176,7 @@ export default function DownloadPage() {
                   />
                 </div>
                 <p className="text-kolr-text-muted text-2xl font-medium">
-                  Create palettes from your photos
+                  {tPage("photoTagline")}
                 </p>
               </div>
             </Reveal>

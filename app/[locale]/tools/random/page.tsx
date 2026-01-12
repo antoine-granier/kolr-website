@@ -28,6 +28,7 @@ type HarmonyType =
 
 export default function RandomToolPage() {
   const t = useTranslations("nav");
+  const tRandom = useTranslations("toolRandom");
   const locale = useLocale();
   const [colors, setColors] = useState<Color[]>(INITIAL_COLORS);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -62,12 +63,12 @@ export default function RandomToolPage() {
             hslToHex(
               baseHsl.h,
               Math.max(20, baseHsl.s - 30),
-              Math.min(85, baseHsl.l + 20)
+              Math.min(85, baseHsl.l + 20),
             ),
             hslToHex(
               baseHsl.h,
               Math.max(15, baseHsl.s - 50),
-              Math.min(92, baseHsl.l + 35)
+              Math.min(92, baseHsl.l + 35),
             ),
           ];
           break;
@@ -155,12 +156,12 @@ export default function RandomToolPage() {
             hslToHex(
               baseHue,
               Math.max(20, baseSat - 30),
-              Math.min(85, baseLum + 20)
+              Math.min(85, baseLum + 20),
             ),
             hslToHex(
               baseHue,
               Math.max(15, baseSat - 50),
-              Math.min(92, baseLum + 35)
+              Math.min(92, baseLum + 35),
             ),
           ];
           break;
@@ -213,7 +214,7 @@ export default function RandomToolPage() {
       }
 
       setColors(
-        newHexColors.map((hex) => ({ hex: hex.toUpperCase(), locked: false }))
+        newHexColors.map((hex) => ({ hex: hex.toUpperCase(), locked: false })),
       );
     }
   };
@@ -260,11 +261,11 @@ export default function RandomToolPage() {
                 {t("toolRandom")}
               </h1>
               <p className="text-kolr-text-muted text-lg flex items-center justify-center gap-2 flex-wrap">
-                Press{" "}
+                {tRandom("pressKey")}{" "}
                 <span className="bg-white/10 border border-white/20 rounded-md px-2 py-0.5 text-sm font-mono text-white">
-                  Spacebar
+                  {tRandom("spacebar")}
                 </span>{" "}
-                to generate new colors
+                {tRandom("toGenerate")}
               </p>
             </header>
           </Reveal>
@@ -344,7 +345,7 @@ export default function RandomToolPage() {
                   size={24}
                   className="transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-active:rotate-180"
                 />
-                <span>Generate New Palette</span>
+                <span>{tRandom("generateButton")}</span>
               </button>
             </div>
           </Reveal>
@@ -356,17 +357,17 @@ export default function RandomToolPage() {
 
 // Helpers
 function hexToHsl(hex: string) {
-  let r = parseInt(hex.slice(1, 3), 16) / 255;
-  let g = parseInt(hex.slice(3, 5), 16) / 255;
-  let b = parseInt(hex.slice(5, 7), 16) / 255;
-  let max = Math.max(r, g, b),
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const max = Math.max(r, g, b),
     min = Math.min(r, g, b);
   let h = 0,
-    s,
-    l = (max + min) / 2;
+    s;
+  const l = (max + min) / 2;
   if (max === min) h = s = 0;
   else {
-    let d = max - min;
+    const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
       case r:
