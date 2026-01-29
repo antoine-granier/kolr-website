@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useLocale } from "next-intl";
 import Reveal from "@/components/Reveal";
 import PalettePreview from "@/components/PalettePreview";
+import GoogleAdSense from "@/components/GoogleAdSense";
+import { isAdEnabled, getAdSlot } from "@/config/adsense";
 import {
   Palette,
   Pipette,
@@ -35,7 +37,9 @@ export default function HomePage() {
 
                 <h1 className="text-[clamp(3rem,8vw,4.5rem)] font-black mb-8 leading-[1.1] tracking-tighter">
                   {t("title")}{" "}
-                  <span className="gradient-text">{tCommon("masterpieces")}</span>
+                  <span className="gradient-text">
+                    {tCommon("masterpieces")}
+                  </span>
                 </h1>
 
                 <p className="text-xl text-kolr-text-muted mb-12 leading-relaxed max-w-[600px]">
@@ -131,7 +135,9 @@ export default function HomePage() {
         <div className="container">
           <Reveal animation="reveal-up">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-black mb-4">{tHomepage("toolsTitle")}</h2>
+              <h2 className="text-4xl font-black mb-4">
+                {tHomepage("toolsTitle")}
+              </h2>
               <p className="text-xl text-kolr-text-muted max-w-[700px] mx-auto">
                 {tHomepage("toolsDescription")}
               </p>
@@ -224,6 +230,20 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* AdSense Advertisement */}
+      {isAdEnabled("home") && (
+        <section className="section">
+          <div className="container max-w-[800px]">
+            <Reveal animation="reveal-up">
+              <GoogleAdSense
+                adSlot={getAdSlot("home", "betweenSections") || ""}
+                adFormat="auto"
+              />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* CTA Download Section */}
       <section className="section bg-gradient-to-br from-kolr-surface to-black">

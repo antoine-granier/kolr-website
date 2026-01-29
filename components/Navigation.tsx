@@ -48,6 +48,7 @@ export default function Navigation() {
   const navigation = [
     { name: t("home"), href: `/${locale}` },
     { name: t("features"), href: `/${locale}/features` },
+    { name: t("blog"), href: `/${locale}/blog` },
   ];
 
   const tools = [
@@ -146,10 +147,10 @@ export default function Navigation() {
 
               {toolsOpen && (
                 <div
-                  className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 
+                  className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2
                   bg-[#111111]/95 backdrop-blur-2xl backdrop-saturate-180
                   border border-white/10
-                  rounded-3xl p-3 min-w-[280px] flex flex-col gap-2 
+                  rounded-3xl p-3 min-w-[280px] flex flex-col gap-2
                   shadow-[0_20px_50px_rgba(0,0,0,0.6)]
                   z-2200"
                 >
@@ -305,8 +306,8 @@ export default function Navigation() {
                           tool.colorVar === "var(--kolr-cyan)"
                             ? "bg-kolr-cyan/8 text-kolr-cyan group-hover:bg-kolr-cyan group-hover:text-black"
                             : tool.colorVar === "var(--kolr-purple)"
-                            ? "bg-kolr-purple/8 text-kolr-purple group-hover:bg-kolr-purple group-hover:text-black"
-                            : "bg-kolr-green/8 text-kolr-green group-hover:bg-kolr-green group-hover:text-black"
+                              ? "bg-kolr-purple/8 text-kolr-purple group-hover:bg-kolr-purple group-hover:text-black"
+                              : "bg-kolr-green/8 text-kolr-green group-hover:bg-kolr-green group-hover:text-black"
                         }`}
                       >
                         {tool.icon}
@@ -317,8 +318,8 @@ export default function Navigation() {
                             tool.colorVar === "var(--kolr-cyan)"
                               ? "group-hover:text-kolr-cyan"
                               : tool.colorVar === "var(--kolr-purple)"
-                              ? "group-hover:text-kolr-purple"
-                              : "group-hover:text-kolr-green"
+                                ? "group-hover:text-kolr-purple"
+                                : "group-hover:text-kolr-green"
                           }`}
                         >
                           {tool.name}
@@ -365,7 +366,9 @@ export default function Navigation() {
                     size={22}
                     className="text-kolr-cyan transition-transform duration-300 group-hover:scale-110"
                   />
-                  <span>{locale === "en" ? t("languageFr") : t("languageEn")}</span>
+                  <span>
+                    {locale === "en" ? t("languageFr") : t("languageEn")}
+                  </span>
                 </div>
                 <div className="text-[0.7rem] uppercase tracking-widest opacity-40 bg-white/10 px-2 py-1 rounded-lg">
                   {locale === "en" ? t("switchLanguage") : t("changeLanguage")}

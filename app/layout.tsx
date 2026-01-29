@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Kolr - Create palettes from your photos",
@@ -11,5 +12,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      {/* Google AdSense Script */}
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1962397436964429"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
+      {children}
+    </>
+  );
 }
