@@ -26,9 +26,11 @@ export default function GoogleAdSense({
 
     try {
       // Push ad to the adsbygoogle array
-      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {},
-      );
+      interface WindowWithAds extends Window {
+        adsbygoogle?: Array<Record<string, unknown>>;
+      }
+      const windowWithAds = window as WindowWithAds;
+      (windowWithAds.adsbygoogle = windowWithAds.adsbygoogle || []).push({});
     } catch (error) {
       console.error("AdSense error:", error);
     }

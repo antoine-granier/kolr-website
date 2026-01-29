@@ -21,9 +21,11 @@ export default function Reveal({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && !("IntersectionObserver" in window)) {
-      setIsVisible(true);
-      return;
+    // Check if IntersectionObserver is available
+    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+      // Use setTimeout to avoid synchronous setState
+      const timer = setTimeout(() => setIsVisible(true), 0);
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(
@@ -36,16 +38,17 @@ export default function Reveal({
       {
         threshold: 0,
         rootMargin: "0px 0px -100px 0px",
-      }
+      },
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

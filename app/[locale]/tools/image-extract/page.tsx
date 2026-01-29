@@ -35,14 +35,9 @@ export default function ImageExtractPage() {
     }
   };
 
-  useEffect(() => {
-    if (image) {
-      extractPalette();
-    }
-  }, [image]);
-
   const extractPalette = () => {
     if (!image) return;
+
     setIsExtracting(true);
 
     const img = new Image();
@@ -50,9 +45,15 @@ export default function ImageExtractPage() {
     img.src = image;
     img.onload = () => {
       const canvas = canvasRef.current;
-      if (!canvas) return;
+      if (!canvas) {
+        setIsExtracting(false);
+        return;
+      }
       const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+      if (!ctx) {
+        setIsExtracting(false);
+        return;
+      }
 
       canvas.width = img.width;
       canvas.height = img.height;
@@ -75,7 +76,19 @@ export default function ImageExtractPage() {
       setPalette(colors);
       setIsExtracting(false);
     };
+
+    img.onerror = () => {
+      setIsExtracting(false);
+    };
   };
+
+  useEffect(() => {
+    if (image) {
+      // Use setTimeout to avoid calling setState synchronously in effect
+      const timer = setTimeout(() => extractPalette(), 0);
+      return () => clearTimeout(timer);
+    }
+  }, [image]);
 
   const copyToClipboard = (hex: string, index: number) => {
     navigator.clipboard.writeText(hex);
@@ -112,7 +125,7 @@ export default function ImageExtractPage() {
             <Reveal animation="reveal-up" delay={1}>
               <div
                 className={`
-                  h-[500px] lg:h-[500px] max-lg:h-[350px] rounded-[2.5rem] 
+                  h-[500px] lg:h-[500px] max-lg:h-[350px] rounded-[2.5rem]
                   flex items-center justify-center cursor-pointer overflow-hidden relative
                   transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]
                   ${
@@ -222,7 +235,9 @@ export default function ImageExtractPage() {
                       className={isExtracting ? "animate-spin" : ""}
                     />
                     <span>
-                      {isExtracting ? tImage("extracting") : tImage("reextract")}
+                      {isExtracting
+                        ? tImage("extracting")
+                        : tImage("reextract")}
                     </span>
                   </button>
                 )}

@@ -63,6 +63,7 @@ export function getAdSlot(
   slot: string,
 ): string | null {
   if (!isAdEnabled(page)) return null;
-  const pageConfig = adsConfig.pages[page] as any;
-  return pageConfig?.adSlots?.[slot] ?? null;
+  const pageConfig = adsConfig.pages[page] as Record<string, unknown>;
+  const adSlots = pageConfig?.adSlots as Record<string, string> | undefined;
+  return adSlots?.[slot] ?? null;
 }
