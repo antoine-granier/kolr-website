@@ -3,15 +3,16 @@ import { getTranslations } from "next-intl/server";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }>;
 }) {
+  const { locale, slug } = await params;
   const t = await getTranslations({
-    locale: params.locale,
+    locale,
     namespace: "blog",
   });
 
-  const articleTitle = t(`articles.${params.slug}.title`);
-  const articleExcerpt = t(`articles.${params.slug}.excerpt`);
+  const articleTitle = t(`articles.${slug}.title`);
+  const articleExcerpt = t(`articles.${slug}.excerpt`);
 
   return {
     title: `${articleTitle} | Kolr Blog`,
@@ -20,7 +21,7 @@ export async function generateMetadata({
       title: `${articleTitle} | Kolr Blog`,
       description: articleExcerpt,
       type: "article",
-      locale: params.locale,
+      locale,
       siteName: "Kolr",
     },
     twitter: {
@@ -29,10 +30,10 @@ export async function generateMetadata({
       description: articleExcerpt,
     },
     alternates: {
-      canonical: `https://kolr.app/${params.locale}/blog/${params.slug}`,
+      canonical: `https://kolr.app/${locale}/blog/${slug}`,
       languages: {
-        en: `https://kolr.app/en/blog/${params.slug}`,
-        fr: `https://kolr.app/fr/blog/${params.slug}`,
+        en: `https://kolr.app/en/blog/${slug}`,
+        fr: `https://kolr.app/fr/blog/${slug}`,
       },
     },
   };

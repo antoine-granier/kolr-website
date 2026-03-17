@@ -7,7 +7,42 @@ import GoogleAdSense from "@/components/GoogleAdSense";
 import { isAdEnabled, getAdSlot } from "@/config/adsense";
 
 // Blog articles data with gradient colors
-const blogArticles = [
+export const blogArticles = [
+  {
+    slug: "color-trends-2026",
+    category: "Design",
+    readTime: "6 min read",
+    gradient: "from-violet-500/30 via-fuchsia-500/30 to-pink-500/30",
+    icon: "🔮",
+  },
+  {
+    slug: "building-brand-color-systems",
+    category: "Design",
+    readTime: "9 min read",
+    gradient: "from-blue-500/30 via-cyan-500/30 to-teal-500/30",
+    icon: "🏗️",
+  },
+  {
+    slug: "digital-color-spaces-explained",
+    category: "Technical",
+    readTime: "8 min read",
+    gradient: "from-indigo-500/30 via-blue-500/30 to-sky-500/30",
+    icon: "🌐",
+  },
+  {
+    slug: "color-in-ui-design",
+    category: "Design",
+    readTime: "7 min read",
+    gradient: "from-emerald-500/30 via-green-500/30 to-lime-500/30",
+    icon: "📱",
+  },
+  {
+    slug: "gradient-design-techniques",
+    category: "Tutorial",
+    readTime: "6 min read",
+    gradient: "from-rose-500/30 via-orange-500/30 to-yellow-500/30",
+    icon: "🌈",
+  },
   {
     slug: "understanding-color-theory-basics",
     category: "Color Theory",
@@ -30,6 +65,20 @@ const blogArticles = [
     icon: "🧠",
   },
   {
+    slug: "color-accessibility-beyond-contrast",
+    category: "Accessibility",
+    readTime: "8 min read",
+    gradient: "from-teal-500/30 via-cyan-500/30 to-blue-500/30",
+    icon: "🔍",
+  },
+  {
+    slug: "monochromatic-design-guide",
+    category: "Design",
+    readTime: "5 min read",
+    gradient: "from-slate-500/30 via-gray-500/30 to-zinc-500/30",
+    icon: "⚫",
+  },
+  {
     slug: "mastering-color-harmonies",
     category: "Color Theory",
     readTime: "7 min read",
@@ -37,11 +86,67 @@ const blogArticles = [
     icon: "🎭",
   },
   {
+    slug: "color-for-data-visualization",
+    category: "Technical",
+    readTime: "7 min read",
+    gradient: "from-sky-500/30 via-indigo-500/30 to-violet-500/30",
+    icon: "📊",
+  },
+  {
+    slug: "seasonal-color-palettes",
+    category: "Tutorial",
+    readTime: "5 min read",
+    gradient: "from-amber-500/30 via-orange-500/30 to-red-500/30",
+    icon: "🍂",
+  },
+  {
     slug: "extracting-colors-from-photos",
     category: "Tutorial",
     readTime: "5 min read",
     gradient: "from-cyan-500/30 via-blue-500/30 to-indigo-500/30",
     icon: "📸",
+  },
+  {
+    slug: "dark-mode-color-strategies",
+    category: "Technical",
+    readTime: "8 min read",
+    gradient: "from-gray-700/30 via-slate-600/30 to-zinc-500/30",
+    icon: "🌙",
+  },
+  {
+    slug: "color-naming-conventions",
+    category: "Technical",
+    readTime: "6 min read",
+    gradient: "from-pink-500/30 via-rose-500/30 to-red-500/30",
+    icon: "🏷️",
+  },
+  {
+    slug: "photography-color-grading",
+    category: "Tutorial",
+    readTime: "7 min read",
+    gradient: "from-yellow-500/30 via-amber-500/30 to-orange-500/30",
+    icon: "🎬",
+  },
+  {
+    slug: "minimalist-color-palettes",
+    category: "Design",
+    readTime: "5 min read",
+    gradient: "from-stone-500/30 via-neutral-400/30 to-zinc-300/30",
+    icon: "✨",
+  },
+  {
+    slug: "color-contrast-for-readability",
+    category: "Accessibility",
+    readTime: "6 min read",
+    gradient: "from-lime-500/30 via-green-500/30 to-emerald-500/30",
+    icon: "👁️",
+  },
+  {
+    slug: "from-inspiration-to-palette",
+    category: "Tutorial",
+    readTime: "9 min read",
+    gradient: "from-fuchsia-500/30 via-purple-500/30 to-indigo-500/30",
+    icon: "💡",
   },
 ];
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
 export default function AboutPage() {
@@ -23,9 +24,11 @@ export default function AboutPage() {
           <Reveal animation="reveal-up" delay={1}>
             <div className="bg-kolr-surface border border-kolr-border rounded-3xl p-12 mb-12">
               <div className="flex justify-center items-center gap-8 mb-8">
-                <img
+                <Image
                   src="/logo-dark.png"
                   alt="Kolr Logo"
+                  width={128}
+                  height={128}
                   className="h-32 w-auto"
                 />
               </div>

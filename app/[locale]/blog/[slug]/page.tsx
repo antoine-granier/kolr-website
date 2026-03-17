@@ -3,33 +3,11 @@
 import { useTranslations, useLocale } from "next-intl";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { ArrowLeft, Clock, Tag } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import GoogleAdSense from "@/components/GoogleAdSense";
 import { isAdEnabled, getAdSlot } from "@/config/adsense";
-
-// Article metadata with gradients
-const articleMeta: Record<string, { gradient: string; icon: string }> = {
-  "understanding-color-theory-basics": {
-    gradient: "from-red-500/30 via-yellow-500/30 to-blue-500/30",
-    icon: "🎨",
-  },
-  "creating-accessible-color-palettes": {
-    gradient: "from-green-500/30 via-emerald-500/30 to-teal-500/30",
-    icon: "♿",
-  },
-  "color-psychology-in-design": {
-    gradient: "from-purple-500/30 via-pink-500/30 to-rose-500/30",
-    icon: "🧠",
-  },
-  "mastering-color-harmonies": {
-    gradient: "from-orange-500/30 via-amber-500/30 to-yellow-500/30",
-    icon: "🎭",
-  },
-  "extracting-colors-from-photos": {
-    gradient: "from-cyan-500/30 via-blue-500/30 to-indigo-500/30",
-    icon: "📸",
-  },
-};
+import { blogArticles } from "../page";
 
 export default function BlogArticlePage() {
   const params = useParams();
@@ -37,70 +15,76 @@ export default function BlogArticlePage() {
   const locale = useLocale();
   const t = useTranslations("blog");
 
-  const meta = articleMeta[slug] || {
-    gradient: "from-kolr-primary/20 to-kolr-accent/20",
+  const meta = blogArticles.find((a) => a.slug === slug) || {
+    slug,
+    category: "Article",
+    readTime: "",
+    gradient: "from-kolr-cyan/20 to-kolr-purple/20",
     icon: "📝",
   };
 
   return (
-    <article className="section">
-      <div className="container max-w-[800px]">
-        {/* Back Link */}
-        <Reveal animation="reveal-up">
-          <Link
-            href={`/${locale}/blog`}
-            className="inline-flex items-center gap-2 text-kolr-primary hover:underline mb-8"
-          >
-            ← {t("backToBlog")}
-          </Link>
-        </Reveal>
+    <div className="bg-kolr-bg text-white">
+      <main className="min-h-[calc(100vh-80px)] pt-8 pb-16">
+        <div className="container max-w-[800px]">
+          {/* Back Link */}
+          <Reveal animation="reveal-up">
+            <Link
+              href={`/${locale}/blog`}
+              className="flex items-center gap-2 text-kolr-text-muted no-underline font-semibold mb-8 transition-colors duration-200 hover:text-kolr-cyan w-fit"
+            >
+              <ArrowLeft size={18} />
+              <span>{t("backToBlog")}</span>
+            </Link>
+          </Reveal>
 
-        {/* Article Header */}
-        <Reveal animation="reveal-up" delay={1}>
-          <div className="mb-8">
-            <div className="flex items-center gap-3 mb-4 text-sm text-kolr-text">
-              <span className="text-kolr-primary font-semibold">
-                {t(`articles.${slug}.category`)}
-              </span>
-              <span>•</span>
-              <span>{t(`articles.${slug}.readTime`)}</span>
-              <span>•</span>
-              <span>{t(`articles.${slug}.date`)}</span>
+          {/* Article Header */}
+          <Reveal animation="reveal-up" delay={1}>
+            <header className="mb-10">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-kolr-cyan/10 text-kolr-cyan text-sm font-bold">
+                  <Tag size={12} />
+                  {t(`articles.${slug}.category`)}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-sm text-kolr-text-muted">
+                  <Clock size={12} />
+                  {t(`articles.${slug}.readTime`)}
+                </span>
+                <span className="text-sm text-kolr-text-muted">
+                  {t(`articles.${slug}.date`)}
+                </span>
+              </div>
+              <h1 className="[font-size:_clamp(2rem,5vw,3rem)] font-black tracking-[-0.02em] leading-tight mb-6">
+                {t(`articles.${slug}.title`)}
+              </h1>
+              <p className="text-xl text-kolr-text-muted leading-relaxed">
+                {t(`articles.${slug}.excerpt`)}
+              </p>
+            </header>
+          </Reveal>
+
+          {/* Hero Image */}
+          <Reveal animation="reveal-scale" delay={2}>
+            <div
+              className={`h-[350px] md:h-[420px] bg-gradient-to-br ${meta.gradient} rounded-[2rem] mb-14 relative overflow-hidden flex items-center justify-center`}
+            >
+              <div className="absolute inset-0 bg-kolr-bg/30" />
+              <div className="relative text-9xl opacity-70">{meta.icon}</div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              {t(`articles.${slug}.title`)}
-            </h1>
-            <p className="text-xl text-kolr-text leading-8">
-              {t(`articles.${slug}.excerpt`)}
-            </p>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        {/* Featured Image Placeholder */}
-        <Reveal animation="reveal-up" delay={2}>
-          <div
-            className={`h-[400px] bg-gradient-to-br ${meta.gradient} rounded-3xl mb-12 relative overflow-hidden flex items-center justify-center`}
-          >
-            <div className="absolute inset-0 bg-kolr-bg/40" />
-            <div className="relative text-9xl opacity-70">{meta.icon}</div>
-          </div>
-        </Reveal>
-
-        {/* Article Content */}
-        <Reveal animation="reveal-up" delay={3}>
-          <div className="prose prose-lg prose-invert max-w-none">
+          {/* Article Content */}
+          <Reveal animation="reveal-up" delay={3}>
             <div
               dangerouslySetInnerHTML={{
                 __html: t.raw(`articles.${slug}.content`),
               }}
-              className="text-kolr-text leading-8 space-y-6"
+              className="article-content"
             />
-          </div>
-        </Reveal>
+          </Reveal>
 
-        {/* AdSense Advertisement - In Article */}
-        {isAdEnabled("blogArticle") && (
-          <Reveal animation="reveal-up" delay={3}>
+          {/* AdSense Advertisement - In Article */}
+          {isAdEnabled("blogArticle") && (
             <div className="my-12">
               <GoogleAdSense
                 adSlot={getAdSlot("blogArticle", "inArticle") || ""}
@@ -108,25 +92,30 @@ export default function BlogArticlePage() {
                 adLayout="in-article"
               />
             </div>
-          </Reveal>
-        )}
+          )}
 
-        {/* CTA Section */}
-        <Reveal animation="reveal-up" delay={4}>
-          <div className="mt-16 bg-kolr-surface border border-kolr-border rounded-3xl p-8 text-center">
-            <h2 className="text-2xl font-bold mb-4">{t("cta.title")}</h2>
-            <p className="text-kolr-text mb-6">{t("cta.description")}</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link href={`/${locale}/download`} className="btn-primary">
-                {t("cta.downloadButton")}
-              </Link>
-              <Link href={`/${locale}/tools/random`} className="btn-secondary">
-                {t("cta.tryToolsButton")}
-              </Link>
+          {/* CTA Section */}
+          <Reveal animation="reveal-up" delay={4}>
+            <div className="mt-16 bg-white/[0.03] border border-white/[0.08] rounded-[2rem] p-10 md:p-12 text-center backdrop-blur-xl">
+              <h2 className="text-2xl font-black mb-4">{t("cta.title")}</h2>
+              <p className="text-kolr-text-muted mb-8 max-w-[500px] mx-auto">
+                {t("cta.description")}
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href={`/${locale}/download`} className="btn-primary">
+                  {t("cta.downloadButton")}
+                </Link>
+                <Link
+                  href={`/${locale}/tools/random`}
+                  className="btn-secondary"
+                >
+                  {t("cta.tryToolsButton")}
+                </Link>
+              </div>
             </div>
-          </div>
-        </Reveal>
-      </div>
-    </article>
+          </Reveal>
+        </div>
+      </main>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { RefreshCw, Copy, Check, Lock, Unlock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
@@ -33,7 +33,7 @@ export default function RandomToolPage() {
   const [colors, setColors] = useState<Color[]>(INITIAL_COLORS);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
-  const generateRandomColors = () => {
+  const generateRandomColors = useCallback(() => {
     const lockedColors = colors.filter((c) => c.locked);
 
     // Si des couleurs sont lockées, générer autour de la première couleur lockée
@@ -217,7 +217,7 @@ export default function RandomToolPage() {
         newHexColors.map((hex) => ({ hex: hex.toUpperCase(), locked: false })),
       );
     }
-  };
+  }, [colors]);
 
   const toggleLock = (index: number) => {
     const newColors = [...colors];
@@ -241,7 +241,7 @@ export default function RandomToolPage() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [colors]);
+  }, [generateRandomColors]);
 
   return (
     <div className="bg-kolr-bg text-white">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { Smartphone, Zap, Shield, Globe } from "lucide-react";
 
@@ -169,9 +170,11 @@ export default function DownloadPage() {
             <Reveal animation="reveal-up" delay={5}>
               <div className="bg-kolr-surface border border-kolr-border rounded-[2rem] px-8 py-16 mb-20 shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
                 <div className="flex justify-center items-center mb-10">
-                  <img
+                  <Image
                     src="/logo-dark.png"
                     alt="Kolr Logo"
+                    width={140}
+                    height={140}
                     className="h-[140px] w-auto"
                   />
                 </div>

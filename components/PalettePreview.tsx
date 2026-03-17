@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { RefreshCw, Copy, Check } from "lucide-react";
 
 const INITIAL_COLORS = [
@@ -18,7 +19,8 @@ type HarmonyType =
   | "triadic"
   | "tetradic";
 
-export default function PalettePreview() {
+export default function PalettePreview({ }: { locale?: string }) {
+  const t = useTranslations("hero");
   const [colors, setColors] = useState(INITIAL_COLORS);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
@@ -163,7 +165,7 @@ export default function PalettePreview() {
           size={20}
           className="transition-transform duration-600 group-active:rotate-180"
         />
-        <span>Randomize Palette</span>
+        <span>{t("randomize")}</span>
       </button>
 
       <style jsx>{`

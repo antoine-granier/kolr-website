@@ -13,6 +13,11 @@ import {
   ImageIcon,
   ArrowRight,
   CircleSlash2,
+  Blend,
+  Eye,
+  Globe,
+  Share2,
+  Moon,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -28,25 +33,25 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="section min-h-[90vh] flex items-center pt-16">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <Reveal animation="reveal-up">
               <div className="text-left">
-                <p className="text-xl text-kolr-cyan font-bold mb-4 uppercase tracking-[0.1em]">
+                <p className="text-lg text-kolr-cyan font-bold mb-4 uppercase tracking-[0.1em]">
                   {t("tagline")}
                 </p>
 
-                <h1 className="text-[clamp(3rem,8vw,4.5rem)] font-black mb-8 leading-[1.1] tracking-tighter">
-                  {t("title")}{" "}
+                <h1 className="text-[clamp(2.5rem,6vw,3.5rem)] font-black mb-6 leading-[1.15] tracking-tight">
+                  {t("title")}
                   <span className="gradient-text">
                     {tCommon("masterpieces")}
                   </span>
                 </h1>
 
-                <p className="text-xl text-kolr-text-muted mb-12 leading-relaxed max-w-[600px]">
+                <p className="text-lg text-kolr-text-muted mb-10 leading-relaxed max-w-[540px]">
                   {t("description")}
                 </p>
 
-                <div className="flex gap-6 flex-wrap">
+                <div className="flex gap-5 flex-wrap">
                   <Link href={`/${locale}/download`} className="btn-primary">
                     {t("downloadNow")}
                   </Link>
@@ -57,9 +62,9 @@ export default function HomePage() {
               </div>
             </Reveal>
 
-            <Reveal animation="reveal-scale" delay={2}>
+            <Reveal animation="reveal-scale" delay={1}>
               <div className="flex justify-center items-center">
-                <PalettePreview />
+                <PalettePreview locale={locale} />
               </div>
             </Reveal>
           </div>
@@ -144,7 +149,7 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Reveal animation="reveal-up" delay={1}>
               <Link
                 href={`/${locale}/tools/random`}
@@ -181,7 +186,7 @@ export default function HomePage() {
                   {tNav("toolColorDesc")}
                 </p>
                 <div className="flex items-center gap-2 text-kolr-purple font-bold mt-6 group-hover:gap-3 transition-all duration-200">
-                  <span>Try it now</span>
+                  <span>{tCommon("tryNow")}</span>
                   <ArrowRight size={18} />
                 </div>
               </Link>
@@ -202,7 +207,7 @@ export default function HomePage() {
                   {tNav("toolImageDesc")}
                 </p>
                 <div className="flex items-center gap-2 text-kolr-green font-bold mt-6 group-hover:gap-3 transition-all duration-200">
-                  <span>Try it now</span>
+                  <span>{tCommon("tryNow")}</span>
                   <ArrowRight size={18} />
                 </div>
               </Link>
@@ -222,6 +227,106 @@ export default function HomePage() {
                   {tNav("toolContrastDesc")}
                 </p>
                 <div className="flex items-center gap-2 text-kolr-orange font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={1}>
+              <Link
+                href={`/${locale}/tools/gradient`}
+                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-red transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-red/10 text-kolr-red flex items-center justify-center mb-6 group-hover:bg-kolr-red group-hover:text-black transition-all duration-300">
+                  <Blend size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolGradient")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolGradientDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-red font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={2}>
+              <Link
+                href={`/${locale}/tools/colorblind`}
+                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-green transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-green/10 text-kolr-green flex items-center justify-center mb-6 group-hover:bg-kolr-green group-hover:text-black transition-all duration-300">
+                  <Eye size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolColorblind")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolColorblindDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-green font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={3}>
+              <Link
+                href={`/${locale}/tools/url-extract`}
+                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-purple/10 text-kolr-purple flex items-center justify-center mb-6 group-hover:bg-kolr-purple group-hover:text-black transition-all duration-300">
+                  <Globe size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolUrl")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolUrlDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-purple font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={4}>
+              <Link
+                href={`/${locale}/share`}
+                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-orange transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-orange/10 text-kolr-orange flex items-center justify-center mb-6 group-hover:bg-kolr-orange group-hover:text-black transition-all duration-300">
+                  <Share2 size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolShare")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolShareDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-orange font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={1}>
+              <Link
+                href={`/${locale}/tools/dark-theme`}
+                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-purple/10 text-kolr-purple flex items-center justify-center mb-6 group-hover:bg-kolr-purple group-hover:text-black transition-all duration-300">
+                  <Moon size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolDarkTheme")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolDarkThemeDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-purple font-bold mt-6 group-hover:gap-3 transition-all duration-200">
                   <span>{tCommon("tryNow")}</span>
                   <ArrowRight size={18} />
                 </div>

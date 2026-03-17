@@ -2,6 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import {
@@ -13,6 +14,11 @@ import {
   Pipette,
   Image as ImageIcon,
   CircleSlash2,
+  Blend,
+  Eye,
+  Globe,
+  Share2,
+  Moon,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -47,8 +53,10 @@ export default function Navigation() {
 
   const navigation = [
     { name: t("home"), href: `/${locale}` },
+    { name: t("gallery"), href: `/${locale}/gallery` },
     { name: t("features"), href: `/${locale}/features` },
     { name: t("blog"), href: `/${locale}/blog` },
+    { name: t("integrations"), href: `/${locale}/integrations` },
   ];
 
   const tools = [
@@ -80,6 +88,41 @@ export default function Navigation() {
       icon: <CircleSlash2 size={20} />,
       colorVar: "var(--kolr-orange)",
     },
+    {
+      name: t("toolGradient"),
+      description: t("toolGradientDesc"),
+      href: `/${locale}/tools/gradient`,
+      icon: <Blend size={20} />,
+      colorVar: "var(--kolr-red)",
+    },
+    {
+      name: t("toolColorblind"),
+      description: t("toolColorblindDesc"),
+      href: `/${locale}/tools/colorblind`,
+      icon: <Eye size={20} />,
+      colorVar: "var(--kolr-cyan)",
+    },
+    {
+      name: t("toolUrl"),
+      description: t("toolUrlDesc"),
+      href: `/${locale}/tools/url-extract`,
+      icon: <Globe size={20} />,
+      colorVar: "var(--kolr-purple)",
+    },
+    {
+      name: t("toolDarkTheme"),
+      description: t("toolDarkThemeDesc"),
+      href: `/${locale}/tools/dark-theme`,
+      icon: <Moon size={20} />,
+      colorVar: "var(--kolr-orange)",
+    },
+    {
+      name: t("toolShare"),
+      description: t("toolShareDesc"),
+      href: `/${locale}/share`,
+      icon: <Share2 size={20} />,
+      colorVar: "var(--kolr-green)",
+    },
   ];
 
   const switchLocale = () => {
@@ -90,21 +133,25 @@ export default function Navigation() {
   };
 
   return (
+    <>
+    <div className="h-[84px]" />
     <nav
-      className={`sticky top-0 z-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isScrolled
-          ? "glass-nav shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-          : "glass-nav"
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        mobileMenuOpen
+          ? "z-1100 bg-black"
+          : isScrolled
+            ? "z-100 glass-nav shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+            : "z-100 glass-nav"
       }`}
     >
-      <div className="container py-1.5">
+      <div className="container py-1.5 relative z-1200">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link
             href={`/${locale}`}
             className="flex items-center no-underline transition-transform duration-300 ease-out relative z-1001 hover:scale-[1.02]"
           >
-            <img src="/logo-dark.png" alt="Kolr Logo" className="h-20 w-auto" />
+            <Image src="/logo-dark.png" alt="Kolr Logo" width={80} height={80} className="h-20 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -150,7 +197,7 @@ export default function Navigation() {
                   className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2
                   bg-[#111111]/95 backdrop-blur-2xl backdrop-saturate-180
                   border border-white/10
-                  rounded-3xl p-3 min-w-[280px] flex flex-col gap-2
+                  rounded-3xl p-3 min-w-[560px] grid grid-cols-2 gap-2
                   shadow-[0_20px_50px_rgba(0,0,0,0.6)]
                   z-2200"
                 >
@@ -238,21 +285,23 @@ export default function Navigation() {
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
+      </div>
+    </nav>
 
-        {/* Mobile Menu Overlay */}
-        <div
-          className={`fixed inset-0 w-full h-screen bg-black/95 backdrop-blur-[25px] backdrop-saturate-200 z-1000 flex flex-col justify-center items-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          }`}
-        >
-          <div className="w-full max-w-[400px] p-8 flex flex-col gap-12">
-            <div className="flex flex-col gap-6">
+    {/* Mobile Menu Overlay - outside nav to avoid stacking issues */}
+    <div
+      className={`lg:hidden fixed inset-0 bg-black z-1050 overflow-y-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+      }`}
+    >
+          <div className="w-full max-w-[400px] mx-auto px-8 pt-24 pb-12 flex flex-col gap-10">
+            <div className="flex flex-col gap-5">
               {navigation.map((item, index) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-[2rem] font-extrabold no-underline tracking-tighter transition-all duration-400 ease-out ${
+                  className={`text-[1.75rem] font-extrabold no-underline tracking-tighter transition-all duration-400 ease-out ${
                     mobileMenuOpen
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-5"
@@ -275,13 +324,13 @@ export default function Navigation() {
               >
                 <button
                   onClick={() => setMobileToolsOpen(!mobileToolsOpen)}
-                  className={`text-[2rem] font-extrabold no-underline tracking-tighter transition-colors duration-300 bg-transparent border-0 p-0 cursor-pointer flex items-center gap-3 text-left ${
+                  className={`text-[1.75rem] font-extrabold no-underline tracking-tighter transition-colors duration-300 bg-transparent border-0 p-0 cursor-pointer flex items-center gap-3 text-left ${
                     mobileToolsOpen ? "text-kolr-cyan" : "text-white"
                   }`}
                 >
                   {t("tools")}
                   <ChevronDown
-                    size={24}
+                    size={22}
                     className={`transition-transform duration-300 opacity-50 ${
                       mobileToolsOpen ? "rotate-180" : ""
                     }`}
@@ -289,9 +338,9 @@ export default function Navigation() {
                 </button>
 
                 <div
-                  className={`flex flex-col gap-5 pl-6 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  className={`flex flex-col gap-3 pl-2 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                     mobileToolsOpen
-                      ? "max-h-[500px] opacity-100 mt-2"
+                      ? "max-h-[800px] opacity-100 mt-4"
                       : "max-h-0 opacity-0 mt-0"
                   }`}
                 >
@@ -299,32 +348,25 @@ export default function Navigation() {
                     <Link
                       key={tool.name}
                       href={tool.href}
-                      className="flex items-center gap-4 p-[0.85rem_1rem] text-white no-underline rounded-[1.1rem] transition-all duration-300 ease-out hover:bg-white/6 hover:-translate-y-0.5 hover:shadow-lg group"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-4 p-3 text-white no-underline rounded-xl transition-all duration-300 ease-out hover:bg-white/6 group"
                     >
                       <div
-                        className={`w-[42px] h-[42px] rounded-xl flex items-center justify-center transition-all duration-300 ease-out group-hover:scale-110 group-hover:rotate-[5deg] shrink-0 ${
-                          tool.colorVar === "var(--kolr-cyan)"
-                            ? "bg-kolr-cyan/8 text-kolr-cyan group-hover:bg-kolr-cyan group-hover:text-black"
-                            : tool.colorVar === "var(--kolr-purple)"
-                              ? "bg-kolr-purple/8 text-kolr-purple group-hover:bg-kolr-purple group-hover:text-black"
-                              : "bg-kolr-green/8 text-kolr-green group-hover:bg-kolr-green group-hover:text-black"
-                        }`}
+                        className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
+                        style={{
+                          backgroundColor: `color-mix(in srgb, ${tool.colorVar} 15%, transparent)`,
+                          color: tool.colorVar,
+                        }}
                       >
                         {tool.icon}
                       </div>
                       <div className="flex flex-col gap-0.5">
                         <span
-                          className={`font-bold text-[0.95rem] text-white transition-colors duration-300 ${
-                            tool.colorVar === "var(--kolr-cyan)"
-                              ? "group-hover:text-kolr-cyan"
-                              : tool.colorVar === "var(--kolr-purple)"
-                                ? "group-hover:text-kolr-purple"
-                                : "group-hover:text-kolr-green"
-                          }`}
+                          className="font-bold text-sm text-white"
                         >
                           {tool.name}
                         </span>
-                        <span className="text-[0.75rem] text-kolr-text-muted font-medium">
+                        <span className="text-xs text-kolr-text-muted">
                           {tool.description}
                         </span>
                       </div>
@@ -336,7 +378,7 @@ export default function Navigation() {
               <Link
                 href={`/${locale}/download`}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-[2rem] font-extrabold no-underline tracking-tighter transition-all duration-400 ease-out delay-400 ${
+                className={`text-[1.75rem] font-extrabold no-underline tracking-tighter transition-all duration-400 ease-out delay-400 ${
                   mobileMenuOpen
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-5"
@@ -377,7 +419,7 @@ export default function Navigation() {
             </div>
           </div>
         </div>
-      </div>
-    </nav>
+    </>
   );
 }
+
