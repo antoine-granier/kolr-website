@@ -13,7 +13,7 @@ export default function StructuredData({
     name: "Kolr",
     url: baseUrl,
     description:
-      "The ultimate color picker and palette generator for designers and developers",
+      "The complete color toolkit: palettes, WCAG accessibility checker, color blindness simulator, converter, dark themes. Free online tools for designers and developers.",
     inLanguage: locale === "fr" ? "fr-FR" : "en-US",
     potentialAction: {
       "@type": "SearchAction",
@@ -39,7 +39,7 @@ export default function StructuredData({
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: "Kolr",
-    applicationCategory: "DesignApplication",
+    applicationCategory: "DesignApplication, DeveloperApplication",
     operatingSystem: ["iOS", "Android"],
     offers: {
       "@type": "Offer",
@@ -52,7 +52,7 @@ export default function StructuredData({
       ratingCount: "2547",
     },
     description:
-      "Create beautiful color palettes from your photos. Extract colors, generate harmonies, and discover inspiration.",
+      "Complete color toolkit: generate palettes, check WCAG accessibility, simulate color blindness, convert formats, create dark themes.",
   };
 
   const breadcrumbSchema = {

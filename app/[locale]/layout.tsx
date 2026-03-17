@@ -8,6 +8,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import BuyMeACoffee from "@/components/BuyMeACoffee";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,10 +25,10 @@ export async function generateMetadata({
   const messages = await getMessages();
   const t = messages.metadata || {};
 
-  const title = t.defaultTitle || "Kolr - Create palettes from your photos";
+  const title = t.defaultTitle || "Kolr - Color Tools & Accessibility for Designers and Developers";
   const description =
     t.defaultDescription ||
-    "The ultimate color picker and palette generator for designers and developers";
+    "The complete color toolkit: palettes, WCAG accessibility, color blindness simulator, converter, dark themes. Free and online.";
 
   return {
     metadataBase: new URL("https://kolr-app.vercel.app"),
@@ -37,22 +38,24 @@ export async function generateMetadata({
     },
     description,
     keywords: [
-      "color palette",
-      "color picker",
-      "palette generator",
-      "color extraction",
+      "color tools",
+      "color palette generator",
+      "WCAG contrast checker",
+      "color accessibility",
+      "color blindness simulator",
+      "color converter",
+      "hex to rgb",
+      "dark theme generator",
+      "gradient generator",
       "design tools",
       "color harmony",
-      "color scheme",
-      "photo to palette",
-      "color theory",
-      "designer tools",
-      "color analysis",
-      "hex colors",
-      "RGB colors",
-      "color combinations",
-      "WCAG contrast",
-      "accessibility",
+      "palette comparison",
+      "web accessibility tools",
+      "color picker online",
+      "free color tools",
+      "CSS colors",
+      "Tailwind colors",
+      "Figma color palette",
     ],
     authors: [{ name: "Kolr" }],
     creator: "Kolr",
@@ -67,6 +70,7 @@ export async function generateMetadata({
       apple: "/favicon.png",
     },
     manifest: "/manifest.json",
+    themeColor: "#000000",
     openGraph: {
       type: "website",
       locale: locale === "fr" ? "fr_FR" : "en_US",
@@ -79,7 +83,7 @@ export async function generateMetadata({
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Kolr - Create palettes from your photos",
+          alt: "Kolr - Color Tools & Accessibility",
         },
       ],
     },
@@ -140,6 +144,7 @@ export default async function LocaleLayout({
           <Navigation />
           {children}
           <ScrollToTop />
+          <BuyMeACoffee />
           <Footer />
         </NextIntlClientProvider>
       </body>

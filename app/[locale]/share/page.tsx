@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { Share2, Copy, Check, Link, Plus, X, ArrowLeft } from "lucide-react";
 import NextLink from "next/link";
 import Reveal from "@/components/Reveal";
+import ColorPicker from "@/components/ColorPicker";
 import PaletteExport from "@/components/PaletteExport";
 import PaletteHistory from "@/components/PaletteHistory";
 import { addToHistory } from "@/components/PaletteHistory";
@@ -181,6 +182,19 @@ function SharePageContent() {
                 <div className="mt-6">
                   <PaletteExport colors={displayColors} />
                 </div>
+
+                {/* Made with Kolr badge */}
+                <div className="mt-6 flex justify-center">
+                  <a
+                    href="https://kolr-app.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.08] text-kolr-text-muted text-xs font-bold no-underline hover:border-kolr-cyan hover:text-white transition-all duration-200"
+                  >
+                    <span className="w-4 h-4 rounded bg-gradient-to-br from-kolr-cyan to-kolr-purple" />
+                    Made with Kolr
+                  </a>
+                </div>
               </div>
             </Reveal>
           )}
@@ -233,28 +247,24 @@ function SharePageContent() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6">
                   {editColors.map((color, i) => (
                     <div key={i} className="relative group">
-                      <div
-                        className="h-20 rounded-xl border-2 border-white/10 cursor-pointer transition-all duration-200 hover:border-kolr-cyan relative overflow-hidden"
-                        style={{ backgroundColor: color }}
-                      >
-                        <input
-                          type="color"
-                          value={color}
-                          onChange={(e) => updateColor(i, e.target.value)}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        />
-                        {editColors.length > 2 && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              removeColor(i);
-                            }}
-                            className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-                          >
-                            <X size={12} />
-                          </button>
-                        )}
-                      </div>
+                      <ColorPicker value={color} onChange={(c) => updateColor(i, c)}>
+                        <div
+                          className="h-20 rounded-xl border-2 border-white/10 transition-all duration-200 hover:border-kolr-cyan relative overflow-hidden"
+                          style={{ backgroundColor: color }}
+                        >
+                          {editColors.length > 2 && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                removeColor(i);
+                              }}
+                              className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                            >
+                              <X size={12} />
+                            </button>
+                          )}
+                        </div>
+                      </ColorPicker>
                       <input
                         type="text"
                         value={color.toUpperCase()}

@@ -235,6 +235,35 @@ html {
   }
 }
 
+/* Copy & Hover Animations */
+@keyframes copyPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.copy-pulse {
+  animation: copyPulse 0.3s ease-out;
+}
+
+@keyframes ripple {
+  0% { box-shadow: 0 0 0 0 currentColor; opacity: 0.4; }
+  100% { box-shadow: 0 0 0 15px currentColor; opacity: 0; }
+}
+
+.copy-ripple {
+  animation: ripple 0.6s ease-out;
+}
+
+.swatch-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.swatch-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
 /* Article Content Styling */
 .article-content {
   color: #aaaaaa;

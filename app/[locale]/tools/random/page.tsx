@@ -231,9 +231,12 @@ export default function RandomToolPage() {
     setTimeout(() => setCopiedIndex(null), 2000);
   };
 
-  // Spacebar to generate
+  // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
       if (e.code === "Space") {
         e.preventDefault();
         generateRandomColors();
@@ -346,6 +349,9 @@ export default function RandomToolPage() {
                   className="transition-transform duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] group-active:rotate-180"
                 />
                 <span>{tRandom("generateButton")}</span>
+                <kbd className="ml-2 px-2 py-0.5 rounded bg-black/20 text-xs font-mono opacity-60">
+                  Space
+                </kbd>
               </button>
             </div>
           </Reveal>

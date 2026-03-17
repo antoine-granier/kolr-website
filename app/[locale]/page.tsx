@@ -18,6 +18,9 @@ import {
   Globe,
   Share2,
   Moon,
+  Repeat,
+  Columns2,
+  MonitorCheck,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -52,7 +55,7 @@ export default function HomePage() {
                 </p>
 
                 <div className="flex gap-5 flex-wrap">
-                  <Link href={`/${locale}/download`} className="btn-primary">
+                  <Link href={`/${locale}/tools/random`} className="btn-primary">
                     {t("downloadNow")}
                   </Link>
                   <Link href={`/${locale}/features`} className="btn-secondary">
@@ -149,11 +152,11 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Reveal animation="reveal-up" delay={1}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 [&>div]:h-auto">
+            <Reveal animation="reveal-up" delay={1} className="h-full">
               <Link
                 href={`/${locale}/tools/random`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-cyan transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-cyan transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-cyan/10 text-kolr-cyan flex items-center justify-center mb-6 group-hover:bg-kolr-cyan group-hover:text-black transition-all duration-300">
                   <Palette size={32} />
@@ -171,10 +174,10 @@ export default function HomePage() {
               </Link>
             </Reveal>
 
-            <Reveal animation="reveal-up" delay={2}>
+            <Reveal animation="reveal-up" delay={2} className="h-full">
               <Link
                 href={`/${locale}/tools/color-extract`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-purple/10 text-kolr-purple flex items-center justify-center mb-6 group-hover:bg-kolr-purple group-hover:text-black transition-all duration-300">
                   <Pipette size={32} />
@@ -192,10 +195,10 @@ export default function HomePage() {
               </Link>
             </Reveal>
 
-            <Reveal animation="reveal-up" delay={3}>
+            <Reveal animation="reveal-up" delay={3} className="h-full">
               <Link
                 href={`/${locale}/tools/image-extract`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-green transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-green transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-green/10 text-kolr-green flex items-center justify-center mb-6 group-hover:bg-kolr-green group-hover:text-black transition-all duration-300">
                   <ImageIcon size={32} />
@@ -212,10 +215,10 @@ export default function HomePage() {
                 </div>
               </Link>
             </Reveal>
-            <Reveal animation="reveal-up" delay={4}>
+            <Reveal animation="reveal-up" delay={4} className="h-full">
               <Link
                 href={`/${locale}/tools/contrast-checker`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-orange transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-orange transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-orange/10 text-kolr-orange flex items-center justify-center mb-6 group-hover:bg-kolr-orange group-hover:text-black transition-all duration-300">
                   <CircleSlash2 size={32} />
@@ -232,10 +235,10 @@ export default function HomePage() {
                 </div>
               </Link>
             </Reveal>
-            <Reveal animation="reveal-up" delay={1}>
+            <Reveal animation="reveal-up" delay={1} className="h-full">
               <Link
                 href={`/${locale}/tools/gradient`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-red transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-red transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-red/10 text-kolr-red flex items-center justify-center mb-6 group-hover:bg-kolr-red group-hover:text-black transition-all duration-300">
                   <Blend size={32} />
@@ -252,10 +255,10 @@ export default function HomePage() {
                 </div>
               </Link>
             </Reveal>
-            <Reveal animation="reveal-up" delay={2}>
+            <Reveal animation="reveal-up" delay={2} className="h-full">
               <Link
                 href={`/${locale}/tools/colorblind`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-green transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-green transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-green/10 text-kolr-green flex items-center justify-center mb-6 group-hover:bg-kolr-green group-hover:text-black transition-all duration-300">
                   <Eye size={32} />
@@ -272,10 +275,10 @@ export default function HomePage() {
                 </div>
               </Link>
             </Reveal>
-            <Reveal animation="reveal-up" delay={3}>
+            <Reveal animation="reveal-up" delay={3} className="h-full">
               <Link
                 href={`/${locale}/tools/url-extract`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-purple/10 text-kolr-purple flex items-center justify-center mb-6 group-hover:bg-kolr-purple group-hover:text-black transition-all duration-300">
                   <Globe size={32} />
@@ -292,10 +295,10 @@ export default function HomePage() {
                 </div>
               </Link>
             </Reveal>
-            <Reveal animation="reveal-up" delay={4}>
+            <Reveal animation="reveal-up" delay={4} className="h-full">
               <Link
                 href={`/${locale}/share`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-orange transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-orange transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-orange/10 text-kolr-orange flex items-center justify-center mb-6 group-hover:bg-kolr-orange group-hover:text-black transition-all duration-300">
                   <Share2 size={32} />
@@ -312,10 +315,70 @@ export default function HomePage() {
                 </div>
               </Link>
             </Reveal>
-            <Reveal animation="reveal-up" delay={1}>
+            <Reveal animation="reveal-up" delay={1} className="h-full">
+              <Link
+                href={`/${locale}/tools/color-converter`}
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-cyan transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-cyan/10 text-kolr-cyan flex items-center justify-center mb-6 group-hover:bg-kolr-cyan group-hover:text-black transition-all duration-300">
+                  <Repeat size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolConverter")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolConverterDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-cyan font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={2} className="h-full">
+              <Link
+                href={`/${locale}/tools/palette-compare`}
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-red transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-red/10 text-kolr-red flex items-center justify-center mb-6 group-hover:bg-kolr-red group-hover:text-black transition-all duration-300">
+                  <Columns2 size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolCompare")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolCompareDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-red font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={3} className="h-full">
+              <Link
+                href={`/${locale}/tools/colorblind-url`}
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-green transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-green/10 text-kolr-green flex items-center justify-center mb-6 group-hover:bg-kolr-green group-hover:text-black transition-all duration-300">
+                  <MonitorCheck size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolColorblindUrl")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolColorblindUrlDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-green font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={4} className="h-full">
               <Link
                 href={`/${locale}/tools/dark-theme`}
-                className="group block bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
               >
                 <div className="w-16 h-16 rounded-2xl bg-kolr-purple/10 text-kolr-purple flex items-center justify-center mb-6 group-hover:bg-kolr-purple group-hover:text-black transition-all duration-300">
                   <Moon size={32} />

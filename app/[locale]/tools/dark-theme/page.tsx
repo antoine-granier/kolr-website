@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ColorPicker from "@/components/ColorPicker";
 
 function hexToHsl(hex: string): { h: number; s: number; l: number } {
   hex = hex.replace("#", "");
@@ -117,24 +118,54 @@ export default function DarkThemePage() {
 
   const theme = generateTheme();
 
-  const cssVars = `--bg: ${theme.bg};
---surface: ${theme.surface};
---surface-hover: ${theme.surfaceHover};
+  const cssVars = `--background: ${theme.bg};
+--foreground: ${theme.text};
+--muted: ${theme.surface};
+--muted-foreground: ${theme.textMuted};
+--card: ${theme.surface};
+--card-foreground: ${theme.text};
+--popover: ${theme.surfaceHover};
+--popover-foreground: ${theme.text};
 --border: ${theme.border};
---text: ${theme.text};
---text-muted: ${theme.textMuted};
+--input: ${theme.border};
 --primary: ${theme.primary};
---primary-muted: ${theme.primaryMuted};`;
+--primary-foreground: #000000;
+--secondary: ${theme.surfaceHover};
+--secondary-foreground: ${theme.text};
+--accent: ${theme.primaryMuted};
+--accent-foreground: #000000;
+--ring: ${theme.primary};`;
 
   const tailwindConfig = `colors: {
-  bg: "${theme.bg}",
-  surface: "${theme.surface}",
-  "surface-hover": "${theme.surfaceHover}",
+  background: "${theme.bg}",
+  foreground: "${theme.text}",
+  muted: {
+    DEFAULT: "${theme.surface}",
+    foreground: "${theme.textMuted}",
+  },
+  card: {
+    DEFAULT: "${theme.surface}",
+    foreground: "${theme.text}",
+  },
+  popover: {
+    DEFAULT: "${theme.surfaceHover}",
+    foreground: "${theme.text}",
+  },
   border: "${theme.border}",
-  text: "${theme.text}",
-  "text-muted": "${theme.textMuted}",
-  primary: "${theme.primary}",
-  "primary-muted": "${theme.primaryMuted}",
+  input: "${theme.border}",
+  primary: {
+    DEFAULT: "${theme.primary}",
+    foreground: "#000000",
+  },
+  secondary: {
+    DEFAULT: "${theme.surfaceHover}",
+    foreground: "${theme.text}",
+  },
+  accent: {
+    DEFAULT: "${theme.primaryMuted}",
+    foreground: "#000000",
+  },
+  ring: "${theme.primary}",
 }`;
 
   const copyCode = (code: string, key: string) => {
@@ -195,13 +226,7 @@ export default function DarkThemePage() {
                     {t("accentColor")}
                   </label>
                   <div className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10">
-                    <input
-                      type="color"
-                      value={accent}
-                      onChange={(e) => setAccent(e.target.value)}
-                      className="min-w-[48px] min-h-[48px] rounded-xl cursor-pointer border-0 bg-transparent"
-                      style={{ WebkitAppearance: "none" }}
-                    />
+                    <ColorPicker value={accent} onChange={setAccent} size="md" />
                     <input
                       type="text"
                       value={accent.toUpperCase()}

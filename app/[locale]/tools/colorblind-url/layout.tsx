@@ -9,29 +9,30 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  const t = messages.toolRandom || {};
+  const t = messages.toolColorblindUrl || {};
 
-  const title = t.title || "Random Palette Generator";
+  const title = t.title || "Colorblind Website Checker";
   const description =
-    t.description || "Generate fresh color palettes for instant inspiration";
+    t.description || "See how your website looks for colorblind users";
 
   return generatePageMetadata({
     title,
     description,
-    path: "/tools/random",
+    path: "/tools/colorblind-url",
     locale,
     keywords: [
-      "random palette generator",
-      "random colors",
-      "color inspiration",
-      "palette ideas",
-      "random color scheme",
-      "color generator",
+      "colorblind checker",
+      "website accessibility",
+      "color blindness simulator",
+      "protanopia",
+      "deuteranopia",
+      "tritanopia",
+      "web accessibility",
     ],
   });
 }
 
-export default async function RandomToolLayout({
+export default async function ColorblindUrlLayout({
   children,
   params,
 }: {
@@ -42,9 +43,9 @@ export default async function RandomToolLayout({
   return (
     <>
       <ToolJsonLd
-        name="Random Palette Generator"
-        description="Generate fresh color palettes for instant inspiration"
-        path="/tools/random"
+        name="Colorblind Website Checker"
+        description="See how your website looks for colorblind users"
+        path="/tools/colorblind-url"
         locale={locale}
       />
       {children}

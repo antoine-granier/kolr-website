@@ -1,5 +1,6 @@
 import { getMessages } from "next-intl/server";
 import { generatePageMetadata } from "@/lib/metadata";
+import ToolJsonLd from "@/components/ToolJsonLd";
 
 export async function generateMetadata({
   params,
@@ -32,10 +33,13 @@ export async function generateMetadata({
   });
 }
 
-export default function ContrastCheckerToolLayout({
+export default async function ContrastCheckerToolLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  return children;
+  const { locale } = await params;
+  return (<><ToolJsonLd name="Contrast Checker" description="Check color contrast ratios for WCAG accessibility" path="/tools/contrast-checker" locale={locale} />{children}</>);
 }

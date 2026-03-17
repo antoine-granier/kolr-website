@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ColorPicker from "@/components/ColorPicker";
 
 type HarmonyMode = "monochromatic" | "analogous" | "complementary" | "triadic";
 
@@ -114,18 +115,7 @@ export default function ColorExtractPage() {
                     {tColor("baseColor")}
                   </label>
                   <div className="flex items-center gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
-                    <input
-                      type="color"
-                      value={baseColor}
-                      onChange={(e) => {
-                        setBaseColor(e.target.value);
-                        setHexInput(e.target.value.toUpperCase());
-                      }}
-                      className="min-w-[60px] min-h-[60px] rounded-xl cursor-pointer border-0 bg-transparent"
-                      style={{
-                        WebkitAppearance: "none",
-                      }}
-                    />
+                    <ColorPicker value={baseColor} onChange={(c) => { setBaseColor(c); setHexInput(c.toUpperCase()); }} size="lg" />
                     <input
                       type="text"
                       value={hexInput}

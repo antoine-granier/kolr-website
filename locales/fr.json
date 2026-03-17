@@ -25,6 +25,12 @@
     "faq": "FAQ",
     "toolShare": "Partager une Palette",
     "toolShareDesc": "Partagez vos palettes via un lien",
+    "toolColorblindUrl": "Daltonisme Web",
+    "toolColorblindUrlDesc": "Testez votre site en mode daltonien",
+    "toolConverter": "Convertisseur",
+    "toolConverterDesc": "HEX, RGB, HSL, OKLCH, CMYK",
+    "toolCompare": "Comparaison",
+    "toolCompareDesc": "Comparer deux palettes côte à côte",
     "toolDarkTheme": "Thème Sombre",
     "toolDarkThemeDesc": "Générez de beaux thèmes sombres",
     "languageFr": "Français",
@@ -33,11 +39,11 @@
     "changeLanguage": "Changer"
   },
   "hero": {
-    "tagline": "Créez des palettes à partir de vos photos",
-    "title": "Transformez Vos Photos En ",
+    "tagline": "Couleurs, accessibilité, design",
+    "title": "Maîtrisez Vos Couleurs, Créez Des ",
     "randomize": "Générer une palette",
-    "description": "Kolr est le générateur de palette de couleurs ultime. Extrayez des schémas de couleurs harmonieux depuis vos photos, votre appareil photo, ou générez des palettes aléatoires. Parfait pour les designers, artistes et passionnés de couleurs.",
-    "downloadNow": "Télécharger Maintenant",
+    "description": "Kolr est la boîte à outils couleur complète. Générez des palettes, vérifiez l'accessibilité WCAG, simulez le daltonisme, convertissez entre formats et créez des thèmes sombres. Pour les designers, développeurs et créatifs.",
+    "downloadNow": "Découvrir les Outils",
     "learnMore": "En Savoir Plus"
   },
   "features": {
@@ -220,7 +226,10 @@
     "toolContrast": "Vérificateur de Contraste",
     "toolGradient": "Générateur de Dégradés",
     "toolColorblind": "Simulateur Daltonisme",
+    "toolColorblindUrl": "Daltonisme Web",
+    "toolConverter": "Convertisseur",
     "toolDarkTheme": "Thème Sombre",
+    "toolCompare": "Comparaison",
     "toolShare": "Partager une Palette",
     "newsletterDesc": "Recevez nos conseils couleur et nouvelles fonctionnalités.",
     "newsletterPlaceholder": "Votre email",
@@ -230,7 +239,7 @@
   "common": {
     "tryNow": "Essayer maintenant",
     "discoverFeatures": "Découvrir toutes les fonctionnalités",
-    "masterpieces": "Palettes Uniques"
+    "masterpieces": "Interfaces Accessibles"
   },
   "homepage": {
     "toolsTitle": "Essayez Nos Outils Gratuits",
@@ -305,8 +314,8 @@
     "sampleTextSmall": "Exemple de petit texte pour tester le contraste"
   },
   "metadata": {
-    "defaultTitle": "Kolr - Créez des palettes à partir de vos photos",
-    "defaultDescription": "Le sélecteur de couleurs et générateur de palette ultime pour les designers et développeurs",
+    "defaultTitle": "Kolr - Outils couleur et accessibilité pour designers et développeurs",
+    "defaultDescription": "La boîte à outils couleur complète : palettes, accessibilité WCAG, simulateur daltonisme, convertisseur, thèmes sombres. Gratuit et en ligne.",
     "homeTitle": "Kolr - Générateur de Palette de Couleurs | Créer depuis vos Photos",
     "homeDescription": "Extrayez de magnifiques palettes de couleurs depuis vos photos instantanément. Outils gratuits : générateur aléatoire, extracteur de couleurs, vérificateur de contraste. Parfait pour designers.",
     "featuresTitle": "Fonctionnalités - Outils de Couleur Professionnels pour Designers",
@@ -513,9 +522,9 @@
     "originalPalette": "Votre Palette",
     "simulation": "Simulation",
     "protanopia": "Protanopie",
-    "protanopiaDesc": "Cécité au rouge (1% des hommes)",
+    "protanopiaDesc": "Cécité au rouge (1% de la population)",
     "deuteranopia": "Deutéranopie",
-    "deuteranopiaDesc": "Cécité au vert (6% des hommes)",
+    "deuteranopiaDesc": "Cécité au vert (6% de la population)",
     "tritanopia": "Tritanopie",
     "tritanopiaDesc": "Cécité au bleu (rare)",
     "achromatopsia": "Achromatopsie",
@@ -617,6 +626,65 @@
     "copy": "Copier",
     "copied": "Copié !",
     "download": "Télécharger"
+  },
+  "toolColorblindUrl": {
+    "title": "Simulateur Daltonisme Web",
+    "description": "Visualisez comment votre site web apparaît aux personnes daltoniennes",
+    "placeholder": "https://example.com",
+    "load": "Charger",
+    "note": "Certains sites bloquent l'affichage en iframe. Si le site ne s'affiche pas, essayez un autre URL.",
+    "loadError": "Impossible de charger ce site. Il bloque probablement l'affichage en iframe.",
+    "normal": "Normal",
+    "protanopia": "Protanopie",
+    "deuteranopia": "Deutéranopie",
+    "tritanopia": "Tritanopie",
+    "achromatopsia": "Achromatopsie",
+    "normalDesc": "Vision normale — aucun filtre appliqué",
+    "protanopiaDesc": "Difficulté à percevoir le rouge (~1% des hommes)",
+    "deuteranopiaDesc": "Difficulté à percevoir le vert (~6% des hommes)",
+    "tritanopiaDesc": "Difficulté à percevoir le bleu (très rare)",
+    "achromatopsiaDesc": "Vision en niveaux de gris uniquement (très rare)",
+    "openOriginal": "Ouvrir le site",
+    "howTitle": "Comment ça marche",
+    "step1Title": "Entrez l'URL",
+    "step1Desc": "Collez l'adresse du site que vous souhaitez tester.",
+    "step2Title": "Choisissez un type",
+    "step2Desc": "Sélectionnez le type de daltonisme à simuler.",
+    "step3Title": "Analysez le résultat",
+    "step3Desc": "Vérifiez si votre contenu reste lisible et accessible."
+  },
+  "toolCompare": {
+    "title": "Comparaison de Palettes",
+    "description": "Comparez deux palettes de couleurs côte à côte",
+    "paletteA": "Palette A",
+    "paletteB": "Palette B",
+    "randomize": "Aléatoire",
+    "compare": "Comparaison",
+    "harmony": "Harmonie",
+    "shared": "En commun"
+  },
+  "toolColorConverter": {
+    "title": "Convertisseur de Couleur",
+    "description": "Convertissez instantanément entre HEX, RGB, HSL, OKLCH et CMYK",
+    "pasteAny": "Entrez une couleur"
+  },
+  "colorPage": {
+    "conversions": "Conversions",
+    "properties": "Propriétés",
+    "hue": "Teinte",
+    "saturation": "Saturation",
+    "lightness": "Luminosité",
+    "brightness": "Brillance",
+    "temperature": "Température",
+    "warm": "Chaud",
+    "cool": "Froid",
+    "relatedPalettes": "Palettes associées",
+    "complementary": "Complémentaire",
+    "analogous": "Analogue",
+    "triadic": "Triadique",
+    "monochromatic": "Monochromatique",
+    "shades": "Nuances sombres",
+    "tints": "Nuances claires"
   },
   "history": {
     "title": "Historique des Palettes",

@@ -474,9 +474,10 @@ export default function GalleryPage() {
                 {/* Color bars */}
                 <div className="flex h-20">
                   {palette.colors.map((color, i) => (
-                    <div
+                    <Link
                       key={i}
-                      className="flex-1 flex items-center justify-center"
+                      href={`/${locale}/color/${color.replace("#", "")}`}
+                      className="flex-1 flex items-center justify-center no-underline transition-all duration-200 hover:flex-[1.5]"
                       style={{ backgroundColor: color }}
                     >
                       <span
@@ -485,7 +486,7 @@ export default function GalleryPage() {
                       >
                         {color}
                       </span>
-                    </div>
+                    </Link>
                   ))}
                 </div>
 

@@ -25,6 +25,12 @@
     "faq": "FAQ",
     "toolShare": "Share Palette",
     "toolShareDesc": "Share palettes via link",
+    "toolColorblindUrl": "Colorblind Web",
+    "toolColorblindUrlDesc": "Test your site in colorblind mode",
+    "toolConverter": "Converter",
+    "toolConverterDesc": "HEX, RGB, HSL, OKLCH, CMYK",
+    "toolCompare": "Compare",
+    "toolCompareDesc": "Compare two palettes side by side",
     "toolDarkTheme": "Dark Theme",
     "toolDarkThemeDesc": "Generate beautiful dark themes",
     "languageFr": "Français",
@@ -33,11 +39,11 @@
     "changeLanguage": "Changer"
   },
   "hero": {
-    "tagline": "Create palettes from your photos",
-    "title": "Transform Your Photos Into ",
+    "tagline": "Colors, accessibility, design",
+    "title": "Master Your Colors, Build ",
     "randomize": "Randomize Palette",
-    "description": "Kolr is the ultimate color palette generator. Extract harmonious color schemes from your photos, camera, or generate random palettes. Perfect for designers, artists, and color enthusiasts.",
-    "downloadNow": "Download Now",
+    "description": "Kolr is the complete color toolkit. Generate palettes, check WCAG accessibility, simulate color blindness, convert between formats and create dark themes. For designers, developers and creatives.",
+    "downloadNow": "Discover the Tools",
     "learnMore": "Learn More"
   },
   "features": {
@@ -220,7 +226,10 @@
     "toolContrast": "Contrast Checker",
     "toolGradient": "Gradient Generator",
     "toolColorblind": "Colorblind Simulator",
+    "toolColorblindUrl": "Colorblind Web",
+    "toolConverter": "Converter",
     "toolDarkTheme": "Dark Theme",
+    "toolCompare": "Compare",
     "toolShare": "Share Palette",
     "newsletterDesc": "Get color tips and new features in your inbox.",
     "newsletterPlaceholder": "Your email",
@@ -230,7 +239,7 @@
   "common": {
     "tryNow": "Try it now",
     "discoverFeatures": "Discover all features",
-    "masterpieces": "Masterpieces"
+    "masterpieces": "Accessible Interfaces"
   },
   "homepage": {
     "toolsTitle": "Try Our Free Tools",
@@ -305,8 +314,8 @@
     "sampleTextSmall": "Small text example for contrast testing"
   },
   "metadata": {
-    "defaultTitle": "Kolr - Create palettes from your photos",
-    "defaultDescription": "The ultimate color picker and palette generator for designers and developers",
+    "defaultTitle": "Kolr - Color Tools & Accessibility for Designers and Developers",
+    "defaultDescription": "The complete color toolkit: palettes, WCAG accessibility, color blindness simulator, converter, dark themes. Free and online.",
     "homeTitle": "Kolr - Color Palette Generator | Create Palettes from Photos",
     "homeDescription": "Extract beautiful color palettes from your photos instantly. Free online color tools: random palette generator, image color extractor, contrast checker & more. Perfect for designers.",
     "featuresTitle": "Features - Professional Color Tools for Designers",
@@ -513,9 +522,9 @@
     "originalPalette": "Your Palette",
     "simulation": "Simulation",
     "protanopia": "Protanopia",
-    "protanopiaDesc": "Red-blind (1% of males)",
+    "protanopiaDesc": "Red-blind (1% of population)",
     "deuteranopia": "Deuteranopia",
-    "deuteranopiaDesc": "Green-blind (6% of males)",
+    "deuteranopiaDesc": "Green-blind (6% of population)",
     "tritanopia": "Tritanopia",
     "tritanopiaDesc": "Blue-blind (rare)",
     "achromatopsia": "Achromatopsia",
@@ -617,6 +626,65 @@
     "copy": "Copy",
     "copied": "Copied!",
     "download": "Download"
+  },
+  "toolColorblindUrl": {
+    "title": "Colorblind Website Checker",
+    "description": "See how your website looks for colorblind users",
+    "placeholder": "https://example.com",
+    "load": "Load",
+    "note": "Some sites block iframe display. If the site doesn't load, try a different URL.",
+    "loadError": "Could not load this site. It likely blocks iframe display.",
+    "normal": "Normal",
+    "protanopia": "Protanopia",
+    "deuteranopia": "Deuteranopia",
+    "tritanopia": "Tritanopia",
+    "achromatopsia": "Achromatopsia",
+    "normalDesc": "Normal vision — no filter applied",
+    "protanopiaDesc": "Difficulty perceiving red (~1% of males)",
+    "deuteranopiaDesc": "Difficulty perceiving green (~6% of males)",
+    "tritanopiaDesc": "Difficulty perceiving blue (very rare)",
+    "achromatopsiaDesc": "Grayscale vision only (very rare)",
+    "openOriginal": "Open site",
+    "howTitle": "How it works",
+    "step1Title": "Enter the URL",
+    "step1Desc": "Paste the address of the website you want to test.",
+    "step2Title": "Choose a type",
+    "step2Desc": "Select the type of color blindness to simulate.",
+    "step3Title": "Analyze the result",
+    "step3Desc": "Check if your content remains readable and accessible."
+  },
+  "toolCompare": {
+    "title": "Compare Palettes",
+    "description": "Compare two color palettes side by side",
+    "paletteA": "Palette A",
+    "paletteB": "Palette B",
+    "randomize": "Randomize",
+    "compare": "Comparison",
+    "harmony": "Harmony",
+    "shared": "Shared"
+  },
+  "toolColorConverter": {
+    "title": "Color Converter",
+    "description": "Instantly convert between HEX, RGB, HSL, OKLCH and CMYK",
+    "pasteAny": "Enter a color"
+  },
+  "colorPage": {
+    "conversions": "Conversions",
+    "properties": "Properties",
+    "hue": "Hue",
+    "saturation": "Saturation",
+    "lightness": "Lightness",
+    "brightness": "Brightness",
+    "temperature": "Temperature",
+    "warm": "Warm",
+    "cool": "Cool",
+    "relatedPalettes": "Related Palettes",
+    "complementary": "Complementary",
+    "analogous": "Analogous",
+    "triadic": "Triadic",
+    "monochromatic": "Monochromatic",
+    "shades": "Shades",
+    "tints": "Tints"
   },
   "history": {
     "title": "Palette History",

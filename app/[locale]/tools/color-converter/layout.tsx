@@ -9,30 +9,29 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  const t = messages.toolColor || {};
+  const t = messages.toolColorConverter || {};
 
-  const title = t.title || "Color Harmony Explorer";
+  const title = t.title || "Color Converter";
   const description =
-    t.description || "Start with a color and discover harmonies";
+    t.description || "Convert colors between HEX, RGB, HSL, OKLCH, CMYK";
 
   return generatePageMetadata({
     title,
     description,
-    path: "/tools/color-extract",
+    path: "/tools/color-converter",
     locale,
     keywords: [
-      "color harmony",
-      "color wheel",
-      "complementary colors",
-      "analogous colors",
-      "triadic colors",
-      "monochromatic palette",
-      "color theory",
+      "color converter",
+      "hex to rgb",
+      "rgb to hsl",
+      "oklch converter",
+      "cmyk converter",
+      "color format",
     ],
   });
 }
 
-export default async function ColorExtractToolLayout({
+export default async function ColorConverterLayout({
   children,
   params,
 }: {
@@ -40,5 +39,5 @@ export default async function ColorExtractToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return (<><ToolJsonLd name="Color Harmony Generator" description="Generate harmonious color palettes" path="/tools/color-extract" locale={locale} />{children}</>);
+  return (<><ToolJsonLd name="Color Converter" description="Convert colors between HEX, RGB, HSL, OKLCH, CMYK" path="/tools/color-converter" locale={locale} />{children}</>);
 }

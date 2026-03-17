@@ -19,6 +19,9 @@ import {
   Globe,
   Share2,
   Moon,
+  Repeat,
+  Columns2,
+  MonitorCheck,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -103,6 +106,20 @@ export default function Navigation() {
       colorVar: "var(--kolr-cyan)",
     },
     {
+      name: t("toolColorblindUrl"),
+      description: t("toolColorblindUrlDesc"),
+      href: `/${locale}/tools/colorblind-url`,
+      icon: <MonitorCheck size={20} />,
+      colorVar: "var(--kolr-green)",
+    },
+    {
+      name: t("toolConverter"),
+      description: t("toolConverterDesc"),
+      href: `/${locale}/tools/color-converter`,
+      icon: <Repeat size={20} />,
+      colorVar: "var(--kolr-green)",
+    },
+    {
       name: t("toolUrl"),
       description: t("toolUrlDesc"),
       href: `/${locale}/tools/url-extract`,
@@ -121,7 +138,14 @@ export default function Navigation() {
       description: t("toolShareDesc"),
       href: `/${locale}/share`,
       icon: <Share2 size={20} />,
-      colorVar: "var(--kolr-green)",
+      colorVar: "var(--kolr-cyan)",
+    },
+    {
+      name: t("toolCompare"),
+      description: t("toolCompareDesc"),
+      href: `/${locale}/tools/palette-compare`,
+      icon: <Columns2 size={20} />,
+      colorVar: "var(--kolr-red)",
     },
   ];
 

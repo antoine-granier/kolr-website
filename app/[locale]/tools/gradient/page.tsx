@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Copy, Check, RefreshCw, Plus, Minus, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ColorPicker from "@/components/ColorPicker";
 
 type GradientType = "linear" | "radial" | "conic";
 
@@ -26,7 +27,7 @@ export default function GradientPage() {
       case "radial":
         return `radial-gradient(circle, ${colorStops})`;
       case "conic":
-        return `conic-gradient(from ${angle}deg, ${colorStops})`;
+        return `conic-gradient(from ${angle}deg, ${colorStops}, ${colors[0]})`;
     }
   }, [colors, gradientType, angle]);
 
@@ -49,7 +50,7 @@ export default function GradientPage() {
     if (gradientType === "radial") {
       return `bg-[radial-gradient(circle,${colors.join(",")})]`;
     }
-    return `bg-[conic-gradient(from_${angle}deg,${colors.join(",")})]`;
+    return `bg-[conic-gradient(from_${angle}deg,${colors.join(",")},${colors[0]})]`;
   }, [colors, gradientType, angle]);
 
   const cssCode = `background: ${generateGradientCSS()};`;
@@ -189,13 +190,7 @@ export default function GradientPage() {
                         key={index}
                         className="flex items-center gap-4 bg-white/5 p-4 rounded-xl border border-white/10"
                       >
-                        <input
-                          type="color"
-                          value={color}
-                          onChange={(e) => updateColor(index, e.target.value)}
-                          className="min-w-[48px] min-h-[48px] rounded-xl cursor-pointer border-0 bg-transparent"
-                          style={{ WebkitAppearance: "none" }}
-                        />
+                        <ColorPicker value={color} onChange={(c) => updateColor(index, c)} size="md" />
                         <input
                           type="text"
                           value={color.toUpperCase()}

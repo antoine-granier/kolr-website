@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ColorPicker from "@/components/ColorPicker";
 
 export default function ContrastCheckerPage() {
   const t = useTranslations("nav");
@@ -103,15 +104,7 @@ export default function ContrastCheckerPage() {
                     {tContrast("foreground")}
                   </label>
                   <div className="flex items-center gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
-                    <input
-                      type="color"
-                      value={foreground}
-                      onChange={(e) =>
-                        setForeground(e.target.value.toUpperCase())
-                      }
-                      className="min-w-[60px] min-h-[60px] rounded-xl cursor-pointer border-0 bg-transparent"
-                      style={{ WebkitAppearance: "none" }}
-                    />
+                    <ColorPicker value={foreground} onChange={setForeground} size="lg" />
                     <input
                       type="text"
                       value={foreground}
@@ -148,15 +141,7 @@ export default function ContrastCheckerPage() {
                     {tContrast("background")}
                   </label>
                   <div className="flex items-center gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
-                    <input
-                      type="color"
-                      value={background}
-                      onChange={(e) =>
-                        setBackground(e.target.value.toUpperCase())
-                      }
-                      className="min-w-[60px] min-h-[60px] rounded-xl cursor-pointer border-0 bg-transparent"
-                      style={{ WebkitAppearance: "none" }}
-                    />
+                    <ColorPicker value={background} onChange={setBackground} size="lg" />
                     <input
                       type="text"
                       value={background}

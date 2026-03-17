@@ -1,5 +1,6 @@
 import { getMessages } from "next-intl/server";
 import { generatePageMetadata } from "@/lib/metadata";
+import ToolJsonLd from "@/components/ToolJsonLd";
 
 export async function generateMetadata({
   params,
@@ -30,10 +31,13 @@ export async function generateMetadata({
   });
 }
 
-export default function ImageExtractToolLayout({
+export default async function ImageExtractToolLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  return children;
+  const { locale } = await params;
+  return (<><ToolJsonLd name="Image Color Extractor" description="Extract color palettes from any image" path="/tools/image-extract" locale={locale} />{children}</>);
 }

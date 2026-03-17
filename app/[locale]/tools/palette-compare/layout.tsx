@@ -9,30 +9,27 @@ export async function generateMetadata({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  const t = messages.toolColor || {};
+  const t = messages.toolCompare || {};
 
-  const title = t.title || "Color Harmony Explorer";
+  const title = t.title || "Compare Palettes";
   const description =
-    t.description || "Start with a color and discover harmonies";
+    t.description || "Compare two color palettes side by side";
 
   return generatePageMetadata({
     title,
     description,
-    path: "/tools/color-extract",
+    path: "/tools/palette-compare",
     locale,
     keywords: [
-      "color harmony",
-      "color wheel",
-      "complementary colors",
-      "analogous colors",
-      "triadic colors",
-      "monochromatic palette",
-      "color theory",
+      "compare palettes",
+      "color comparison",
+      "palette diff",
+      "side by side colors",
     ],
   });
 }
 
-export default async function ColorExtractToolLayout({
+export default async function PaletteCompareLayout({
   children,
   params,
 }: {
@@ -40,5 +37,5 @@ export default async function ColorExtractToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return (<><ToolJsonLd name="Color Harmony Generator" description="Generate harmonious color palettes" path="/tools/color-extract" locale={locale} />{children}</>);
+  return (<><ToolJsonLd name="Compare Palettes" description="Compare two color palettes side by side" path="/tools/palette-compare" locale={locale} />{children}</>);
 }

@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Eye, RotateCcw, Check, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ColorPicker from "@/components/ColorPicker";
 
 // Color blindness simulation matrices
 function hexToRgb(hex: string): [number, number, number] {
@@ -158,24 +159,19 @@ export default function ColorblindPage() {
               </div>
               <div className="flex rounded-[2rem] overflow-hidden border-4 border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                 {colors.map((color, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 h-24 md:h-32 flex flex-col items-center justify-center gap-2 cursor-pointer group relative"
-                    style={{ backgroundColor: color }}
-                  >
-                    <input
-                      type="color"
-                      value={color}
-                      onChange={(e) => updateColor(i, e.target.value)}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    />
-                    <span
-                      className="text-xs md:text-sm font-bold font-mono opacity-80 group-hover:opacity-100 transition-opacity pointer-events-none"
-                      style={{ color: getContrastColor(color) }}
+                  <ColorPicker key={i} value={color} onChange={(c) => updateColor(i, c)}>
+                    <div
+                      className="flex-1 h-24 md:h-32 flex flex-col items-center justify-center gap-2 group"
+                      style={{ backgroundColor: color }}
                     >
-                      {color.toUpperCase()}
-                    </span>
-                  </div>
+                      <span
+                        className="text-xs md:text-sm font-bold font-mono opacity-80 group-hover:opacity-100 transition-opacity"
+                        style={{ color: getContrastColor(color) }}
+                      >
+                        {color.toUpperCase()}
+                      </span>
+                    </div>
+                  </ColorPicker>
                 ))}
               </div>
               <p className="text-xs text-kolr-text-muted mt-2 text-center">
