@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+:root {
+  --bg: #000000;
+  --surface: #111111;
+  --surface-hover: #1a1a1a;
+  --border: #222222;
+  --text: #ffffff;
+  --text-muted: #888888;
+  --cyan: #00f2ff;
+  --purple: #bf5af2;
+  --green: #2effb0;
+  --orange: #ff9f68;
+  --red: #ff4d4d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; font-size: 12px; overflow-x: hidden; }
+
+/* Header */
+.header { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.header-logo { width: 32px; height: 32px; flex-shrink: 0; }
+.header span { font-size: 14px; font-weight: 800; letter-spacing: -0.3px; }
+.header small { color: var(--text-muted); font-size: 10px; margin-left: auto; }
+
+/* Tabs */
+.tabs { display: flex; border-bottom: 1px solid var(--border); }
+.tab-btn { flex: 1; padding: 9px 0; background: none; border: none; border-bottom: 2px solid transparent; color: var(--text-muted); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s; }
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+
+/* Content */
+.tab-content { display: none; padding: 14px; overflow-y: auto; max-height: 440px; }
+.tab-content.active { display: block; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 8px 14px; border: none; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.btn-primary { background: var(--cyan); color: #000; width: 100%; }
+.btn-primary:hover { opacity: 0.9; }
+.btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--cyan); }
+.btn-small { padding: 6px 10px; font-size: 10px; }
+.btn-row { display: flex; gap: 6px; margin-top: 10px; }
+.btn-row .btn { flex: 1; }
+
+/* Textarea */
+textarea { width: 100%; min-height: 80px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-family: monospace; font-size: 11px; padding: 10px; resize: vertical; outline: none; }
+textarea:focus { border-color: var(--cyan); }
+textarea::placeholder { color: var(--text-muted); }
+
+/* Input */
+input[type="text"] { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 11px; padding: 8px 10px; outline: none; margin-bottom: 8px; }
+input[type="text"]:focus { border-color: var(--cyan); }
+input[type="text"]::placeholder { color: var(--text-muted); }
+
+/* Color grid */
+.color-grid { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0; }
+.swatch { width: 32px; height: 32px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.15s; position: relative; }
+.swatch:hover { border-color: rgba(255,255,255,0.3); transform: scale(1.08); }
+.swatch.selected { border-color: var(--cyan); box-shadow: 0 0 0 2px var(--cyan); }
+
+/* Section label */
+.section-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 12px 0 6px; }
+
+/* Code preview */
+.code-preview { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-family: monospace; font-size: 10px; color: var(--text-muted); max-height: 160px; overflow: auto; white-space: pre; margin: 8px 0; }
+
+/* Format tabs */
+.format-tabs { display: flex; gap: 4px; margin: 8px 0; flex-wrap: wrap; }
+.format-btn { padding: 5px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text-muted); font-size: 10px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+.format-btn:hover { color: var(--text); }
+.format-btn.active { background: var(--cyan); color: #000; border-color: var(--cyan); }
+
+/* Empty state */
+.empty { text-align: center; padding: 24px; color: var(--text-muted); font-size: 11px; }
+
+/* Toast */
+.toast { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%) translateY(50px); background: var(--green); color: #000; padding: 7px 14px; border-radius: 8px; font-size: 11px; font-weight: 700; opacity: 0; transition: all 0.3s; z-index: 100; pointer-events: none; }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* Style list item */
+.style-item { display: flex; align-items: center; gap: 8px; padding: 6px 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 4px; }
+.style-item .swatch { width: 22px; height: 22px; border-radius: 4px; flex-shrink: 0; cursor: default; }
+.style-name { font-size: 11px; color: var(--text-muted); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.style-hex { font-size: 10px; font-family: monospace; color: var(--text); font-weight: 600; }
+
+/* Gallery */
+.gallery-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px; margin-bottom: 8px; cursor: pointer; transition: all 0.15s; }
+.gallery-card:hover { border-color: var(--cyan); }
+.gallery-card-name { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+.gallery-card-colors { display: flex; gap: 0; height: 28px; border-radius: 6px; overflow: hidden; }
+.gallery-card-colors div { flex: 1; }
+.gallery-card-actions { display: flex; gap: 4px; margin-top: 8px; }
+
+/* Scrollbar */
+.tab-content::-webkit-scrollbar { width: 4px; }
+.tab-content::-webkit-scrollbar-track { background: transparent; }
+.tab-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <svg class="header-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#1a1a1a"/><path d="M37 30h9v18l12-18h11L55 48l16 24H58L48 55l-3 5v12H37V30z" fill="#fff"/><circle cx="24" cy="86" r="4.5" fill="#f87171"/><circle cx="37" cy="86" r="4.5" fill="#2dd4bf"/><circle cx="50" cy="86" r="4.5" fill="#38bdf8"/><circle cx="63" cy="86" r="4.5" fill="#fb923c"/><circle cx="76" cy="86" r="4.5" fill="#86efac"/></svg>
+  <span>Kolr</span>
+  <small>Color Palette Tools</small>
+  <a href="https://kolr-app.vercel.app" target="_blank" style="margin-left:auto;font-size:10px;color:var(--cyan);text-decoration:none;opacity:0.8;">Open Website →</a>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" data-tab="import">Import</button>
+  <button class="tab-btn" data-tab="extract">Extract</button>
+  <button class="tab-btn" data-tab="apply">Apply</button>
+  <button class="tab-btn" data-tab="export">Export</button>
+  <button class="tab-btn" data-tab="gallery">Gallery</button>
+</div>
+
+<!-- Import Tab -->
+<div class="tab-content active" id="tab-import">
+  <input type="text" id="palette-name" placeholder="Palette name (optional)" value="Kolr Palette">
+  <textarea id="import-input" placeholder="Paste hex codes, JSON, or Figma tokens...&#10;&#10;Examples:&#10;#ff0000, #00ff00, #0000ff&#10;or one hex per line"></textarea>
+  <div class="color-grid" id="import-preview"></div>
+  <div class="btn-row" id="import-actions" style="display:none;">
+    <button class="btn btn-primary btn-small" id="btn-create-styles">Create Styles</button>
+    <button class="btn btn-secondary btn-small" id="btn-create-vars">Create Variables</button>
+  </div>
+</div>
+
+<!-- Extract Tab -->
+<div class="tab-content" id="tab-extract">
+  <button class="btn btn-primary" id="btn-extract">Extract from Selection</button>
+  <div class="color-grid" id="extract-colors"></div>
+  <div id="extract-actions" style="display:none;">
+    <div class="btn-row">
+      <button class="btn btn-primary btn-small" id="btn-extract-styles">Create Styles</button>
+      <button class="btn btn-secondary btn-small" id="btn-extract-vars">Create Variables</button>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary btn-small" id="btn-extract-copy">Copy All HEX</button>
+    </div>
+  </div>
+  <div class="empty" id="extract-empty">Select elements in Figma, then click "Extract from Selection"</div>
+</div>
+
+<!-- Apply Tab -->
+<div class="tab-content" id="tab-apply">
+  <p style="color:var(--text-muted);margin-bottom:10px;font-size:11px;">Click a color to apply it as fill to the selected elements.</p>
+  <div class="color-grid" id="apply-colors"></div>
+  <div class="empty" id="apply-empty">Import or extract colors first to use them here.</div>
+</div>
+
+<!-- Export Tab -->
+<div class="tab-content" id="tab-export">
+  <button class="btn btn-primary" id="btn-load-styles">Load Figma Styles</button>
+  <div id="export-styles-list" style="margin-top:10px;"></div>
+  <div id="export-section" style="display:none;">
+    <div class="section-label">Format</div>
+    <div class="format-tabs" id="format-tabs"></div>
+    <div class="code-preview" id="code-preview"></div>
+    <button class="btn btn-primary btn-small" id="btn-copy-export">Copy to Clipboard</button>
+  </div>
+</div>
+
+<!-- Gallery Tab -->
+<div class="tab-content" id="tab-gallery">
+  <input type="text" id="gallery-search" placeholder="Search palettes...">
+  <div id="gallery-list"></div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+/**
+ * Kolr Color Utilities (from chrome-extension/lib/colors.js)
+ */
+const KolrColors = (() => {
+  function hexToRgb(hex) {
+    hex = hex.replace("#", "");
+    if (hex.length === 3) hex = hex.split("").map(c => c + c).join("");
+    return [parseInt(hex.substring(0, 2), 16), parseInt(hex.substring(2, 4), 16), parseInt(hex.substring(4, 6), 16)];
+  }
+  function rgbToHex(r, g, b) { return `#${[r, g, b].map(c => c.toString(16).padStart(2, "0")).join("")}`; }
+  function getContrastColor(hex) {
+    const [r, g, b] = hexToRgb(hex);
+    return (r * 299 + g * 587 + b * 114) / 1000 >= 128 ? "#000000" : "#ffffff";
+  }
+  return { hexToRgb, rgbToHex, getContrastColor };
+})();
+
+/**
+ * Kolr Export (from chrome-extension/lib/export.js)
+ */
+const KolrExport = (() => {
+  function generate(colors, format) {
+    switch (format) {
+      case "css": return `:root {\n${colors.map((c, i) => `  --color-${i + 1}: ${c};`).join("\n")}\n}`;
+      case "tailwind": return `// tailwind.config.js\ncolors: {\n  palette: {\n${colors.map((c, i) => `    '${i + 1}': '${c}',`).join("\n")}\n  }\n}`;
+      case "scss": return colors.map((c, i) => `$color-${i + 1}: ${c};`).join("\n");
+      case "json": return JSON.stringify({ palette: colors.reduce((acc, c, i) => ({ ...acc, [`color${i + 1}`]: c }), {}) }, null, 2);
+      case "figma": return JSON.stringify({ "kolr-palette": Object.fromEntries(colors.map((c, i) => { const [r, g, b] = KolrColors.hexToRgb(c); return [`color-${i + 1}`, { "$type": "color", "$value": `rgba(${r}, ${g}, ${b}, 1)`, "$description": `Palette color ${i + 1}` }]; })) }, null, 2);
+      default: return colors.join("\n");
+    }
+  }
+  const formats = [
+    { id: "css", label: "CSS" },
+    { id: "tailwind", label: "Tailwind" },
+    { id: "scss", label: "SCSS" },
+    { id: "json", label: "JSON" },
+    { id: "figma", label: "Figma Tokens" },
+  ];
+  return { generate, formats };
+})();
+
+// ── Helpers ──
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1500);
+}
+
+function send(msg) {
+  parent.postMessage({ pluginMessage: msg }, "*");
+}
+
+function copyText(text) {
+  const el = document.createElement("textarea");
+  el.value = text;
+  el.style.cssText = "position:fixed;opacity:0;";
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  el.remove();
+  showToast("Copied!");
+}
+
+function createSwatch(hex, onClick) {
+  const d = document.createElement("div");
+  d.className = "swatch";
+  d.style.backgroundColor = hex;
+  d.title = hex.toUpperCase();
+  if (onClick) d.addEventListener("click", () => onClick(hex));
+  return d;
+}
+
+// ── Tab switching ──
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+  });
+});
+
+// ── Shared palette state ──
+let currentPalette = [];
+
+function updateApplyTab() {
+  const grid = document.getElementById("apply-colors");
+  const empty = document.getElementById("apply-empty");
+  grid.innerHTML = "";
+  if (currentPalette.length === 0) {
+    empty.style.display = "block";
+    return;
+  }
+  empty.style.display = "none";
+  currentPalette.forEach(hex => {
+    grid.appendChild(createSwatch(hex, (h) => {
+      send({ type: "apply-color", hex: h });
+    }));
+  });
+}
+
+// ── IMPORT TAB ──
+
+const importInput = document.getElementById("import-input");
+const importPreview = document.getElementById("import-preview");
+const importActions = document.getElementById("import-actions");
+
+function parseImport(text) {
+  text = text.trim();
+  if (!text) return [];
+  // Try JSON
+  try {
+    const json = JSON.parse(text);
+    if (json["kolr-palette"]) {
+      return Object.values(json["kolr-palette"]).map(token => {
+        const m = token["$value"]?.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        return m ? KolrColors.rgbToHex(+m[1], +m[2], +m[3]) : null;
+      }).filter(Boolean);
+    }
+    if (json.palette) return Object.values(json.palette).filter(v => typeof v === "string");
+  } catch {}
+  // Try hex codes
+  const hexes = text.match(/#?[0-9a-fA-F]{6}\b/g);
+  if (hexes) return [...new Set(hexes.map(h => h.startsWith("#") ? h.toLowerCase() : `#${h.toLowerCase()}`))];
+  // Try 3-char hex
+  const short = text.match(/#[0-9a-fA-F]{3}\b/g);
+  if (short) return [...new Set(short.map(h => `#${h[1]}${h[1]}${h[2]}${h[2]}${h[3]}${h[3]}`))];
+  return [];
+}
+
+importInput.addEventListener("input", () => {
+  const colors = parseImport(importInput.value);
+  importPreview.innerHTML = "";
+  if (colors.length > 0) {
+    colors.forEach(hex => importPreview.appendChild(createSwatch(hex)));
+    importActions.style.display = "flex";
+    currentPalette = colors;
+    updateApplyTab();
+  } else {
+    importActions.style.display = "none";
+  }
+});
+
+document.getElementById("btn-create-styles").addEventListener("click", () => {
+  const colors = parseImport(importInput.value);
+  if (colors.length === 0) return;
+  send({ type: "create-styles", name: document.getElementById("palette-name").value, colors });
+});
+
+document.getElementById("btn-create-vars").addEventListener("click", () => {
+  const colors = parseImport(importInput.value);
+  if (colors.length === 0) return;
+  send({ type: "create-variables", name: document.getElementById("palette-name").value, colors });
+});
+
+// ── EXTRACT TAB ──
+
+let extractedColors = [];
+
+document.getElementById("btn-extract").addEventListener("click", () => {
+  send({ type: "extract-colors" });
+});
+
+function renderExtracted(colors) {
+  extractedColors = colors;
+  const grid = document.getElementById("extract-colors");
+  const actions = document.getElementById("extract-actions");
+  const empty = document.getElementById("extract-empty");
+  grid.innerHTML = "";
+  if (colors.length === 0) {
+    actions.style.display = "none";
+    empty.style.display = "block";
+    empty.textContent = "No colors found in selection.";
+    return;
+  }
+  empty.style.display = "none";
+  actions.style.display = "block";
+  colors.forEach(hex => grid.appendChild(createSwatch(hex, (h) => {
+    copyText(h.toUpperCase());
+  })));
+  currentPalette = colors;
+  updateApplyTab();
+}
+
+document.getElementById("btn-extract-styles").addEventListener("click", () => {
+  if (extractedColors.length === 0) return;
+  send({ type: "create-styles", name: "Extracted Palette", colors: extractedColors });
+});
+
+document.getElementById("btn-extract-vars").addEventListener("click", () => {
+  if (extractedColors.length === 0) return;
+  send({ type: "create-variables", name: "Extracted Palette", colors: extractedColors });
+});
+
+document.getElementById("btn-extract-copy").addEventListener("click", () => {
+  if (extractedColors.length === 0) return;
+  copyText(extractedColors.map(c => c.toUpperCase()).join(", "));
+});
+
+// ── EXPORT TAB ──
+
+let exportColors = [];
+let activeFormat = "css";
+
+document.getElementById("btn-load-styles").addEventListener("click", () => {
+  send({ type: "get-local-styles" });
+});
+
+function renderExportStyles(styles) {
+  exportColors = styles.map(s => s.hex);
+  const list = document.getElementById("export-styles-list");
+  const section = document.getElementById("export-section");
+  list.innerHTML = "";
+  if (styles.length === 0) {
+    list.innerHTML = '<div class="empty">No paint styles found in this file.</div>';
+    section.style.display = "none";
+    return;
+  }
+  styles.forEach(s => {
+    const item = document.createElement("div");
+    item.className = "style-item";
+    item.innerHTML = `<div class="swatch" style="background:${s.hex}"></div><span class="style-name">${s.name}</span><span class="style-hex">${s.hex.toUpperCase()}</span>`;
+    list.appendChild(item);
+  });
+  section.style.display = "block";
+  renderFormatTabs();
+  updateCodePreview();
+}
+
+function renderFormatTabs() {
+  const container = document.getElementById("format-tabs");
+  container.innerHTML = "";
+  KolrExport.formats.forEach(fmt => {
+    const btn = document.createElement("button");
+    btn.className = `format-btn ${fmt.id === activeFormat ? "active" : ""}`;
+    btn.textContent = fmt.label;
+    btn.addEventListener("click", () => {
+      activeFormat = fmt.id;
+      container.querySelectorAll(".format-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      updateCodePreview();
+    });
+    container.appendChild(btn);
+  });
+}
+
+function updateCodePreview() {
+  document.getElementById("code-preview").textContent = KolrExport.generate(exportColors, activeFormat);
+}
+
+document.getElementById("btn-copy-export").addEventListener("click", () => {
+  const code = KolrExport.generate(exportColors, activeFormat);
+  copyText(code);
+});
+
+// ── Messages from Figma sandbox ──
+
+// ── GALLERY TAB ──
+
+const GALLERY_PALETTES = [
+  { name: "Sunset Vibes", colors: ["#ff6b6b", "#ffa06b", "#ffd93d", "#6bcb77", "#4d96ff"] },
+  { name: "Ocean Breeze", colors: ["#0f3460", "#16537e", "#1a8caa", "#53d8e0", "#a7ecee"] },
+  { name: "Pastel Dream", colors: ["#fbc4ab", "#f4978e", "#f08080", "#d4a5a5", "#b8b8d1"] },
+  { name: "Forest", colors: ["#1b4332", "#2d6a4f", "#40916c", "#52b788", "#74c69d"] },
+  { name: "Neon Nights", colors: ["#ff006e", "#8338ec", "#3a86ff", "#00f5d4", "#fee440"] },
+  { name: "Earthy Tones", colors: ["#6b4226", "#a0522d", "#cd853f", "#deb887", "#f5deb3"] },
+  { name: "Berry Smoothie", colors: ["#4a0e4e", "#812f89", "#c74bc5", "#e88de3", "#f5c6f0"] },
+  { name: "Minimal Dark", colors: ["#000000", "#111111", "#222222", "#333333", "#ffffff"] },
+  { name: "Coral Reef", colors: ["#ff7f50", "#ff6347", "#ee5a24", "#f19066", "#ff9f68"] },
+  { name: "Arctic", colors: ["#e3f2fd", "#bbdefb", "#90caf9", "#64b5f6", "#42a5f5"] },
+  { name: "Candy Pop", colors: ["#ff77a9", "#ff9a76", "#ffc93c", "#66de93", "#56bbf1"] },
+  { name: "Midnight", colors: ["#0d1b2a", "#1b263b", "#415a77", "#778da9", "#e0e1dd"] },
+  { name: "Retro 70s", colors: ["#d94f04", "#f4a261", "#e9c46a", "#2a9d8f", "#264653"] },
+  { name: "Lavender Fields", colors: ["#e6e6fa", "#d8bfd8", "#dda0dd", "#da70d6", "#ba55d3"] },
+  { name: "Kolr Brand", colors: ["#00f2ff", "#bf5af2", "#2effb0", "#ff9f68", "#ff4d4d"] },
+  { name: "Material Blue", colors: ["#e3f2fd", "#2196f3", "#1976d2", "#0d47a1", "#002171"] },
+  { name: "Warm Gradient", colors: ["#ff9a9e", "#fad0c4", "#ffecd2", "#fcb69f", "#ff9a76"] },
+  { name: "Cyberpunk", colors: ["#0d0221", "#0f084b", "#26065d", "#a12568", "#e6156f"] },
+  { name: "Spring Garden", colors: ["#f9ed69", "#f08a5d", "#b83b5e", "#6a2c70", "#08d9d6"] },
+  { name: "Grayscale Pro", colors: ["#111111", "#444444", "#888888", "#bbbbbb", "#f0f0f0"] },
+];
+
+function renderGallery(filter = "") {
+  const list = document.getElementById("gallery-list");
+  list.innerHTML = "";
+  const filtered = filter
+    ? GALLERY_PALETTES.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()))
+    : GALLERY_PALETTES;
+
+  filtered.forEach(palette => {
+    const card = document.createElement("div");
+    card.className = "gallery-card";
+
+    const name = document.createElement("div");
+    name.className = "gallery-card-name";
+    name.textContent = palette.name;
+    card.appendChild(name);
+
+    const colors = document.createElement("div");
+    colors.className = "gallery-card-colors";
+    palette.colors.forEach(hex => {
+      const c = document.createElement("div");
+      c.style.backgroundColor = hex;
+      colors.appendChild(c);
+    });
+    card.appendChild(colors);
+
+    const actions = document.createElement("div");
+    actions.className = "gallery-card-actions";
+
+    const useBtn = document.createElement("button");
+    useBtn.className = "btn btn-primary btn-small";
+    useBtn.textContent = "Use Palette";
+    useBtn.style.flex = "1";
+    useBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentPalette = [...palette.colors];
+      updateApplyTab();
+      // Switch to Apply tab
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+      document.querySelector('[data-tab="apply"]').classList.add("active");
+      document.getElementById("tab-apply").classList.add("active");
+      showToast(`Loaded "${palette.name}"`);
+    });
+
+    const stylesBtn = document.createElement("button");
+    stylesBtn.className = "btn btn-secondary btn-small";
+    stylesBtn.textContent = "Create Styles";
+    stylesBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      send({ type: "create-styles", name: palette.name, colors: palette.colors });
+    });
+
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "btn btn-secondary btn-small";
+    copyBtn.textContent = "Copy";
+    copyBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      copyText(palette.colors.join(", "));
+    });
+
+    actions.appendChild(useBtn);
+    actions.appendChild(stylesBtn);
+    actions.appendChild(copyBtn);
+    card.appendChild(actions);
+    list.appendChild(card);
+  });
+}
+
+document.getElementById("gallery-search").addEventListener("input", (e) => {
+  renderGallery(e.target.value);
+});
+
+renderGallery();
+
+// ── Messages from Figma sandbox ──
+
+window.onmessage = (event) => {
+  const msg = event.data.pluginMessage;
+  if (!msg) return;
+  switch (msg.type) {
+    case "extracted-colors":
+      renderExtracted(msg.colors);
+      break;
+    case "local-styles":
+      renderExportStyles(msg.colors);
+      break;
+  }
+};
+</script>
+</body>
+</html>

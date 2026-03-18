@@ -52,6 +52,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/dark-theme",
     "/tools/color-converter",
     "/tools/palette-compare",
+    "/tools/colorblind-url",
+    "/tools/tailwind-colors",
+    "/tools/svg-color-editor",
   ];
 
   const entries: MetadataRoute.Sitemap = [];

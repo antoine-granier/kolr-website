@@ -441,6 +441,58 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Integrations Section */}
+      <section className="section">
+        <div className="container max-w-[900px]">
+          <Reveal animation="reveal-up">
+            <div className="bg-gradient-to-br from-kolr-purple/10 via-kolr-cyan/5 to-kolr-green/10 border border-white/[0.08] rounded-[2rem] p-10 md:p-14">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl md:text-4xl font-black mb-3 tracking-tight">{tHomepage("integrationsTitle")}</h2>
+                <p className="text-kolr-text-muted max-w-[500px] mx-auto">{tHomepage("integrationsDesc")}</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5">
+                <div className="flex items-center gap-4 bg-black/30 backdrop-blur-sm border border-white/[0.06] rounded-xl p-5">
+                  <div className="w-11 h-11 rounded-xl bg-kolr-purple/10 flex items-center justify-center shrink-0">
+                    <svg width="22" height="22" viewBox="0 0 38 57" fill="none" aria-label="Figma" role="img">
+                      <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                      <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                      <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                      <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                      <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold mb-0.5">Figma Plugin</h3>
+                    <p className="text-xs text-kolr-text-muted">Styles, variables, gallery & export</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 bg-black/30 backdrop-blur-sm border border-white/[0.06] rounded-xl p-5">
+                  <div className="w-11 h-11 rounded-xl bg-kolr-cyan/10 flex items-center justify-center shrink-0">
+                    <img src="/chrome-logo.svg" alt="Chrome logo" width={22} height={22} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold mb-0.5">Chrome Extension</h3>
+                    <p className="text-xs text-kolr-text-muted">Color picker, extraction & palettes</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center mt-8">
+                <Link
+                  href={`/${locale}/integrations`}
+                  className="inline-flex items-center gap-2 text-kolr-cyan font-bold text-sm hover:underline no-underline"
+                >
+                  {tHomepage("integrationsButton")}
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* AdSense Advertisement */}
       {isAdEnabled("home") && (
         <section className="section">

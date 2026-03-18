@@ -27,13 +27,6 @@ export default function IntegrationsPage() {
     t("figmaFeature4"),
   ];
 
-  const sketchFeatures = [
-    t("sketchFeature1"),
-    t("sketchFeature2"),
-    t("sketchFeature3"),
-    t("sketchFeature4"),
-  ];
-
   const chromeFeatures = [
     t("chromeFeature1"),
     t("chromeFeature2"),
@@ -45,41 +38,32 @@ export default function IntegrationsPage() {
       icon: <Palette size={24} />,
       title: t("step1Title"),
       desc: t("step1Desc"),
-      color: "kolr-cyan",
+      bg: "bg-kolr-cyan/10",
+      text: "text-kolr-cyan",
     },
     {
       icon: <Download size={24} />,
       title: t("step2Title"),
       desc: t("step2Desc"),
-      color: "kolr-purple",
+      bg: "bg-kolr-purple/10",
+      text: "text-kolr-purple",
     },
     {
       icon: <Layers size={24} />,
       title: t("step3Title"),
       desc: t("step3Desc"),
-      color: "kolr-green",
+      bg: "bg-kolr-green/10",
+      text: "text-kolr-green",
     },
   ];
 
   const formats = [
-    { icon: <Code size={18} />, name: t("featureCss"), color: "kolr-cyan" },
-    {
-      icon: <FileJson size={18} />,
-      name: t("featureJson"),
-      color: "kolr-purple",
-    },
-    { icon: <Copy size={18} />, name: t("featureHex"), color: "kolr-green" },
-    {
-      icon: <FileCode size={18} />,
-      name: t("featureSvg"),
-      color: "kolr-orange",
-    },
-    { icon: <Zap size={18} />, name: t("featureTailwind"), color: "kolr-cyan" },
-    {
-      icon: <FileCode size={18} />,
-      name: t("featureScss"),
-      color: "kolr-purple",
-    },
+    { icon: <Code size={18} />, name: t("featureCss"), bg: "bg-kolr-cyan/10", text: "text-kolr-cyan" },
+    { icon: <FileJson size={18} />, name: t("featureJson"), bg: "bg-kolr-purple/10", text: "text-kolr-purple" },
+    { icon: <Copy size={18} />, name: t("featureHex"), bg: "bg-kolr-green/10", text: "text-kolr-green" },
+    { icon: <FileCode size={18} />, name: t("featureSvg"), bg: "bg-kolr-orange/10", text: "text-kolr-orange" },
+    { icon: <Zap size={18} />, name: t("featureTailwind"), bg: "bg-kolr-cyan/10", text: "text-kolr-cyan" },
+    { icon: <FileCode size={18} />, name: t("featureScss"), bg: "bg-kolr-purple/10", text: "text-kolr-purple" },
   ];
 
   return (
@@ -91,7 +75,7 @@ export default function IntegrationsPage() {
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-kolr-surface border border-kolr-border rounded-full mb-6">
               <Layers size={16} className="text-kolr-purple" />
               <span className="text-sm font-bold text-kolr-text-muted">
-                Figma · Sketch · Chrome
+                Figma · Chrome
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -104,13 +88,13 @@ export default function IntegrationsPage() {
         </Reveal>
 
         {/* Integration Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
           <Reveal animation="reveal-up" delay={1}>
             <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-6 h-full hover:border-kolr-purple/50 transition-all duration-300">
               {/* Figma Logo */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-kolr-purple/10 flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 38 57" fill="none">
+                  <svg width="24" height="24" viewBox="0 0 38 57" fill="none" aria-label="Figma" role="img">
                     <path
                       d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z"
                       fill="#1ABCFE"
@@ -160,60 +144,11 @@ export default function IntegrationsPage() {
           </Reveal>
 
           <Reveal animation="reveal-up" delay={2}>
-            <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-6 h-full hover:border-kolr-orange/50 transition-all duration-300">
-              {/* Sketch Logo */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-kolr-orange/10 flex items-center justify-center">
-                  <svg width="24" height="22" viewBox="0 0 24 22" fill="none">
-                    <path
-                      d="M5.25 0.5L12 0L18.75 0.5L24 8L12 22L0 8L5.25 0.5Z"
-                      fill="#FDB300"
-                    />
-                    <path d="M5.0625 8L12 22L0 8H5.0625Z" fill="#EA6C00" />
-                    <path d="M18.9375 8L12 22L24 8H18.9375Z" fill="#EA6C00" />
-                    <path
-                      d="M5.0625 8H18.9375L12 22L5.0625 8Z"
-                      fill="#FDAD00"
-                    />
-                    <path d="M12 0L5.25 0.5L5.0625 8L12 0Z" fill="#FDD231" />
-                    <path d="M12 0L18.75 0.5L18.9375 8L12 0Z" fill="#FDD231" />
-                    <path d="M24 8L18.75 0.5L18.9375 8H24Z" fill="#FDAD00" />
-                    <path d="M0 8L5.25 0.5L5.0625 8H0Z" fill="#FDAD00" />
-                    <path d="M12 0L5.0625 8H18.9375L12 0Z" fill="#FEEEB7" />
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold">{t("sketchTitle")}</h2>
-                  <span className="text-xs font-bold text-kolr-orange bg-kolr-orange/10 px-2 py-0.5 rounded-full">
-                    {t("comingSoon")}
-                  </span>
-                </div>
-              </div>
-              <p className="text-sm text-kolr-text-muted leading-relaxed mb-5">
-                {t("sketchDesc")}
-              </p>
-              <div className="flex flex-col gap-2.5">
-                {sketchFeatures.map((feature, i) => (
-                  <div key={i} className="flex items-center gap-2.5">
-                    <CheckCircle2
-                      size={14}
-                      className="text-kolr-orange shrink-0"
-                    />
-                    <span className="text-sm text-kolr-text-muted">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal animation="reveal-up" delay={3}>
             <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-6 h-full hover:border-kolr-cyan/50 transition-all duration-300">
               {/* Chrome Logo */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-kolr-cyan/10 flex items-center justify-center">
-                  <img src="/chrome-logo.svg" alt="Chrome" width={24} height={24} />
+                  <img src="/chrome-logo.svg" alt="Chrome logo" width={24} height={24} />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold">{t("chromeTitle")}</h2>
@@ -255,7 +190,7 @@ export default function IntegrationsPage() {
             <div key={i} className="contents">
               <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-8 text-center relative flex flex-col items-center min-h-[250px]">
                 <div
-                  className={`w-14 h-14 rounded-2xl bg-${step.color}/10 text-${step.color} flex items-center justify-center mb-5`}
+                  className={`w-14 h-14 rounded-2xl ${step.bg} ${step.text} flex items-center justify-center mb-5`}
                 >
                   {step.icon}
                 </div>
@@ -292,7 +227,7 @@ export default function IntegrationsPage() {
                 className="bg-kolr-surface border border-kolr-border rounded-xl p-4 flex items-center gap-3 hover:border-white/20 transition-all duration-200"
               >
                 <div
-                  className={`w-9 h-9 rounded-lg bg-${fmt.color}/10 text-${fmt.color} flex items-center justify-center shrink-0`}
+                  className={`w-9 h-9 rounded-lg ${fmt.bg} ${fmt.text} flex items-center justify-center shrink-0`}
                 >
                   {fmt.icon}
                 </div>

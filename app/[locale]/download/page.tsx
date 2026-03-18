@@ -40,7 +40,8 @@ export default function DownloadPage() {
               {/* iOS */}
               <Reveal animation="reveal-scale" delay={3} width="fit-content">
                 <a
-                  href="#"
+                  href="https://apps.apple.com/uy/app/kolr-color-palette-generator/id6757849651"
+                  target="_blank"
                   className="btn-primary flex items-center justify-center gap-4 text-xl px-12 py-6"
                 >
                   <svg
@@ -77,6 +78,7 @@ export default function DownloadPage() {
               <Reveal animation="reveal-scale" delay={4} width="fit-content">
                 <a
                   href="#"
+                  onClick={(e) => e.preventDefault()}
                   className="btn-primary flex items-center justify-center gap-4 text-xl px-12 py-6"
                 >
                   <svg

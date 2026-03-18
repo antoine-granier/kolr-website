@@ -1,0 +1,12 @@
+{
+  "name": "Kolr - Color Palette Tools",
+  "id": "1616110016110414309",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "networkAccess": { "allowedDomains": ["https://kolr-app.vercel.app"] },
+  "documentAccess": "dynamic-page"
+}

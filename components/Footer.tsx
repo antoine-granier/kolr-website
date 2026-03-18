@@ -19,6 +19,9 @@ export default function Footer() {
     { href: "/tools/color-converter", key: "toolConverter" },
     { href: "/tools/dark-theme", key: "toolDarkTheme" },
     { href: "/tools/palette-compare", key: "toolCompare" },
+    { href: "/tools/tailwind-colors", key: "toolTailwindColors" },
+    { href: "/tools/url-extract", key: "toolUrl" },
+    { href: "/tools/svg-color-editor", key: "toolSvgColor" },
     { href: "/share", key: "toolShare" },
   ];
 
