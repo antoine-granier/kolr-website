@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   Languages,
   Menu,
@@ -22,6 +22,8 @@ import {
   Repeat,
   Columns2,
   MonitorCheck,
+  Paintbrush,
+  FileCode,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -34,6 +36,21 @@ export default function Navigation() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [hoveredToolIndex, setHoveredToolIndex] = useState<number | null>(null);
+  const toolsCloseTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const openTools = useCallback(() => {
+    if (toolsCloseTimeout.current) {
+      clearTimeout(toolsCloseTimeout.current);
+      toolsCloseTimeout.current = null;
+    }
+    setToolsOpen(true);
+  }, []);
+
+  const closeTools = useCallback(() => {
+    toolsCloseTimeout.current = setTimeout(() => {
+      setToolsOpen(false);
+    }, 150);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -147,6 +164,20 @@ export default function Navigation() {
       icon: <Columns2 size={20} />,
       colorVar: "var(--kolr-red)",
     },
+    {
+      name: t("toolTailwindColors"),
+      description: t("toolTailwindColorsDesc"),
+      href: `/${locale}/tools/tailwind-colors`,
+      icon: <Paintbrush size={20} />,
+      colorVar: "var(--kolr-cyan)",
+    },
+    {
+      name: t("toolSvgColor"),
+      description: t("toolSvgColorDesc"),
+      href: `/${locale}/tools/svg-color-editor`,
+      icon: <FileCode size={20} />,
+      colorVar: "var(--kolr-orange)",
+    },
   ];
 
   const switchLocale = () => {
@@ -197,8 +228,8 @@ export default function Navigation() {
             {/* Tools Dropdown */}
             <div
               className="relative group"
-              onMouseEnter={() => setToolsOpen(true)}
-              onMouseLeave={() => setToolsOpen(false)}
+              onMouseEnter={openTools}
+              onMouseLeave={closeTools}
             >
               <button
                 className={`flex items-center gap-1.5 py-2 no-underline transition-colors duration-200 font-semibold text-[0.95rem] tracking-tight ${
