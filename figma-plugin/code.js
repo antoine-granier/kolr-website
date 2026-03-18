@@ -172,8 +172,8 @@ function createVariables(name, colors) {
 
 // ── Get local paint styles ──
 
-function getLocalStyles() {
-  const styles = figma.getLocalPaintStyles();
+async function getLocalStyles() {
+  const styles = await figma.getLocalPaintStylesAsync();
   const colors = styles
     .filter(s => s.paints.length >= 1 && s.paints[0].type === "SOLID")
     .map(s => ({
