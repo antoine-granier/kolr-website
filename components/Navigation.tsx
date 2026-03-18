@@ -218,12 +218,13 @@ export default function Navigation() {
 
               {toolsOpen && (
                 <div
-                  className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2
+                  className="absolute top-[calc(100%+12px)] right-0
                   bg-[#111111]/95 backdrop-blur-2xl backdrop-saturate-180
                   border border-white/10
                   rounded-3xl p-3 min-w-[560px] grid grid-cols-2 gap-2
                   shadow-[0_20px_50px_rgba(0,0,0,0.6)]
-                  z-2200"
+                  z-2200
+                  max-h-[calc(100vh-100px)] overflow-y-auto"
                 >
                   {/* Invisible bridge */}
                   <div className="absolute -top-4 left-0 w-full h-4" />
@@ -364,7 +365,7 @@ export default function Navigation() {
                 <div
                   className={`flex flex-col gap-3 pl-2 overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                     mobileToolsOpen
-                      ? "max-h-[800px] opacity-100 mt-4"
+                      ? "max-h-[2000px] opacity-100 mt-4"
                       : "max-h-0 opacity-0 mt-0"
                   }`}
                 >
