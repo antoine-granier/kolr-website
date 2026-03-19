@@ -123,7 +123,7 @@ export default function RoadmapPage() {
 
           <div className="flex flex-col gap-0">
             {months.map((month, i) => (
-              <Reveal key={i} animation="reveal-up" delay={i + 1}>
+              <Reveal key={i} animation="reveal-up" delay={Math.min(i + 1, 5) as 0 | 1 | 2 | 3 | 4 | 5}>
                 <div className="relative flex gap-5">
                   {/* Timeline dot */}
                   <div className="relative z-10 shrink-0 flex flex-col items-center">
