@@ -36,6 +36,20 @@ export default function AccessibilityWidget() {
     } catch {}
   }, []);
 
+  function applyStyleTag(id: string, css: string) {
+    let tag = document.getElementById(id) as HTMLStyleElement | null;
+    if (!css) {
+      tag?.remove();
+      return;
+    }
+    if (!tag) {
+      tag = document.createElement("style");
+      tag.id = id;
+      document.head.appendChild(tag);
+    }
+    tag.textContent = css;
+  }
+
   // Apply styles directly via JS (avoids Tailwind CSS purging)
   useEffect(() => {
     const html = document.documentElement;
@@ -81,20 +95,6 @@ export default function AccessibilityWidget() {
 
     localStorage.setItem("kolr-a11y", JSON.stringify(settings));
   }, [settings]);
-
-  function applyStyleTag(id: string, css: string) {
-    let tag = document.getElementById(id) as HTMLStyleElement | null;
-    if (!css) {
-      tag?.remove();
-      return;
-    }
-    if (!tag) {
-      tag = document.createElement("style");
-      tag.id = id;
-      document.head.appendChild(tag);
-    }
-    tag.textContent = css;
-  }
 
   const update = useCallback((key: keyof A11ySettings, value: unknown) => {
     setSettings(prev => ({ ...prev, [key]: value }));
