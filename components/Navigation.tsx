@@ -25,6 +25,7 @@ import {
   Paintbrush,
   FileCode,
   Square,
+  Layers,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -211,6 +212,13 @@ export default function Navigation() {
       href: `/${locale}/tools/shadow-generator`,
       icon: <Square size={20} />,
       colorVar: "var(--kolr-purple)",
+    },
+    {
+      name: t("toolGlass"),
+      description: t("toolGlassDesc"),
+      href: `/${locale}/tools/glass-generator`,
+      icon: <Layers size={20} />,
+      colorVar: "var(--kolr-cyan)",
     },
   ];
 

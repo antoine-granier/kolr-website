@@ -23,6 +23,7 @@ export default function Footer() {
     { href: "/tools/url-extract", key: "toolUrl" },
     { href: "/tools/svg-color-editor", key: "toolSvgColor" },
     { href: "/tools/shadow-generator", key: "toolShadow" },
+    { href: "/tools/glass-generator", key: "toolGlass" },
     { href: "/share", key: "toolShare" },
   ];
 
