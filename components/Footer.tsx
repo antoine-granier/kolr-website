@@ -99,9 +99,18 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="h-px bg-white/[0.06] mb-5" />
-        <p className="text-kolr-text-muted text-xs text-center">
-          {t("rights")}
-        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-kolr-text-muted text-xs">
+            {t("rights")}
+          </p>
+          <Link
+            href={`/${locale}/accessibility`}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-kolr-cyan/20 bg-kolr-cyan/5 text-kolr-cyan text-xs font-bold no-underline hover:bg-kolr-cyan/10 transition-colors"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7" r="1" fill="currentColor"/><path d="M7 11h10"/><path d="m10 22 2-8 2 8"/></svg>
+            WCAG AA
+          </Link>
+        </div>
       </div>
     </footer>
   );
