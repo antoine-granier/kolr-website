@@ -244,9 +244,9 @@ function SharePageContent() {
                 <p className="text-sm text-kolr-text-muted mb-4">
                   {t("paletteColors")}
                 </p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mb-6 auto-rows-auto">
                   {editColors.map((color, i) => (
-                    <div key={i} className="relative group">
+                    <div key={i} className="relative group flex flex-col">
                       <ColorPicker value={color} onChange={(c) => updateColor(i, c)}>
                         <div
                           className="h-20 rounded-xl border-2 border-white/10 transition-all duration-200 hover:border-kolr-cyan relative overflow-hidden"
@@ -258,6 +258,7 @@ function SharePageContent() {
                                 e.stopPropagation();
                                 removeColor(i);
                               }}
+                              aria-label="Remove color"
                               className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/60 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10"
                             >
                               <X size={12} />

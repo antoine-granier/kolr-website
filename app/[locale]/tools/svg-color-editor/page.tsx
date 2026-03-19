@@ -61,9 +61,27 @@ export default function SvgColorEditorPage() {
     const hasReplacements = Object.keys(replacements).some(
       (k) => replacements[k] !== k,
     );
-    const result = hasReplacements
+    let result = hasReplacements
       ? applyReplacements(svgString, replacements)
       : svgString;
+    // Force SVG to fill container: ensure viewBox exists, override width/height
+    result = result.replace(/<svg([^>]*)>/i, (match, attrs) => {
+      // If no viewBox, create one from width/height before removing them
+      if (!/viewBox/i.test(attrs)) {
+        const wMatch = attrs.match(/width=["']([^"']+)["']/i);
+        const hMatch = attrs.match(/height=["']([^"']+)["']/i);
+        if (wMatch && hMatch) {
+          const w = parseFloat(wMatch[1]);
+          const h = parseFloat(hMatch[1]);
+          if (w && h) {
+            attrs += ` viewBox="0 0 ${w} ${h}"`;
+          }
+        }
+      }
+      // Remove existing width/height attributes
+      let cleaned = attrs.replace(/\s*(width|height)=["'][^"']*["']/gi, "");
+      return `<svg${cleaned} style="width:100%;height:auto;display:block;">`;
+    });
     return sanitizeSvg(result);
   }, [svgString, replacements]);
 
@@ -221,9 +239,9 @@ export default function SvgColorEditorPage() {
                       {t("uploadNew")}
                     </button>
                   </div>
-                  <div className="bg-white/[0.03] border border-white/[0.08] rounded-[2rem] p-8 backdrop-blur-xl flex items-center justify-center min-h-[400px]">
+                  <div className="bg-white/[0.03] border border-white/[0.08] rounded-[2rem] p-6 backdrop-blur-xl flex items-center justify-center min-h-[300px]">
                     <div
-                      className="w-full max-h-[500px] [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-h-[500px]"
+                      className="w-full [&>svg]:w-full [&>svg]:h-auto [&>svg]:block"
                       dangerouslySetInnerHTML={{ __html: modifiedSvg }}
                     />
                   </div>
