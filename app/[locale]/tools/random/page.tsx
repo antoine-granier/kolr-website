@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import { RefreshCw, Copy, Check, Lock, Unlock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ToolContent from "@/components/ToolContent";
 
 interface Color {
   hex: string;
@@ -359,6 +360,12 @@ export default function RandomToolPage() {
           </Reveal>
         </div>
       </main>
+
+      <ToolContent
+        aboutContent={tRandom.raw("aboutContent")}
+        howToContent={tRandom.raw("howToContent")}
+        faqJson={tRandom.raw("faq")}
+      />
     </div>
   );
 }

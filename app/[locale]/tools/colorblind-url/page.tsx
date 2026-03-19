@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { ArrowLeft, Globe, Search, Loader2, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ToolContent from "@/components/ToolContent";
 
 type SimType = "normal" | "protanopia" | "deuteranopia" | "tritanopia" | "achromatopsia";
 
@@ -209,6 +210,12 @@ export default function ColorblindUrlPage() {
           )}
         </div>
       </main>
+
+      <ToolContent
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faqJson={t.raw("faq")}
+      />
     </div>
   );
 }

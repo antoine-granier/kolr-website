@@ -6,6 +6,7 @@ import { ArrowLeft, Copy, Check } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
+import ToolContent from "@/components/ToolContent";
 
 function hexToRgb(hex: string): [number, number, number] {
   hex = hex.replace("#", "");
@@ -253,6 +254,12 @@ export default function ColorConverterPage() {
           </Reveal>
         </div>
       </main>
+
+      <ToolContent
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faqJson={t.raw("faq")}
+      />
     </div>
   );
 }

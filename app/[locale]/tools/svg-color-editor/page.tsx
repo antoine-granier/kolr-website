@@ -13,6 +13,7 @@ import {
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
+import ToolContent from "@/components/ToolContent";
 import {
   extractColors,
   applyReplacements,
@@ -311,6 +312,12 @@ export default function SvgColorEditorPage() {
           )}
         </div>
       </main>
+
+      <ToolContent
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faqJson={t.raw("faq")}
+      />
     </div>
   );
 }

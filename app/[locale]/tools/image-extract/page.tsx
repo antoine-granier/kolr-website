@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ToolContent from "@/components/ToolContent";
 
 export default function ImageExtractPage() {
   const t = useTranslations("nav");
@@ -250,6 +251,12 @@ export default function ImageExtractPage() {
       </main>
 
       <canvas ref={canvasRef} className="hidden" />
+
+      <ToolContent
+        aboutContent={tImage.raw("aboutContent")}
+        howToContent={tImage.raw("howToContent")}
+        faqJson={tImage.raw("faq")}
+      />
     </div>
   );
 }

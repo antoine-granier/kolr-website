@@ -6,6 +6,7 @@ import { Copy, Check, RefreshCw, Plus, Minus, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
+import ToolContent from "@/components/ToolContent";
 
 type GradientType = "linear" | "radial" | "conic";
 
@@ -285,6 +286,12 @@ export default function GradientPage() {
           </div>
         </div>
       </main>
+
+      <ToolContent
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faqJson={t.raw("faq")}
+      />
     </div>
   );
 }

@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import PaletteExport from "@/components/PaletteExport";
+import ToolContent from "@/components/ToolContent";
 import { addToHistory } from "@/components/PaletteHistory";
 
 function getContrastColor(hex: string): string {
@@ -371,6 +372,12 @@ export default function UrlExtractPage() {
           </div>
         </div>
       </main>
+
+      <ToolContent
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faqJson={t.raw("faq")}
+      />
     </div>
   );
 }
