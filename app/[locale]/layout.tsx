@@ -18,6 +18,10 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+export function generateViewport() {
+  return { themeColor: "#000000" };
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -72,7 +76,6 @@ export async function generateMetadata({
       apple: "/favicon.png",
     },
     manifest: "/manifest.json",
-    themeColor: "#000000",
     openGraph: {
       type: "website",
       locale: locale === "fr" ? "fr_FR" : "en_US",
