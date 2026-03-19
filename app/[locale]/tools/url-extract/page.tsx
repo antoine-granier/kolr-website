@@ -162,6 +162,9 @@ export default function UrlExtractPage() {
                     onChange={(e) => setUrl(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder={t("placeholder")}
+                    aria-label="Website URL"
+                    aria-invalid={!!error}
+                    aria-describedby={error ? "url-error" : undefined}
                     className="flex-1 font-mono text-lg font-extrabold bg-transparent border-0 outline-none placeholder:text-kolr-text-muted/50"
                     disabled={loading}
                   />
@@ -246,7 +249,7 @@ export default function UrlExtractPage() {
 
             {/* Error */}
             {error && (
-              <div className="flex items-center gap-3 bg-kolr-red/10 border border-kolr-red/20 rounded-xl px-5 py-4 mb-8">
+              <div id="url-error" role="alert" className="flex items-center gap-3 bg-kolr-red/10 border border-kolr-red/20 rounded-xl px-5 py-4 mb-8">
                 <AlertCircle size={18} className="text-kolr-red shrink-0" />
                 <p className="text-sm text-kolr-red">{error}</p>
               </div>

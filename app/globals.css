@@ -47,6 +47,7 @@ html {
 }
 
 .gradient-text {
+  color: var(--kolr-cyan);
   background: linear-gradient(135deg, var(--kolr-cyan), var(--kolr-purple));
   -webkit-background-clip: text;
   background-clip: text;
@@ -88,6 +89,10 @@ html {
   display: flex;
   text-decoration: none;
   font-size: 1.1rem;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary:hover {
@@ -104,9 +109,13 @@ html {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: inline-block;
+  display: inline-flex;
   text-decoration: none;
   font-size: 1.1rem;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-secondary:hover {
@@ -359,6 +368,13 @@ html {
   color: #ffffff !important;
   font-style: italic !important;
   font-size: 1.15rem !important;
+}
+
+/* Abbreviations */
+abbr[title] {
+  text-decoration: none;
+  border-bottom: none;
+  cursor: help;
 }
 
 /* ═══ ACCESSIBILITY ═══ */

@@ -94,6 +94,9 @@ export default function ColorblindUrlPage() {
                     onChange={(e) => setUrl(e.target.value)}
                     onKeyDown={handleKeyDown}
                     placeholder={t("placeholder")}
+                    aria-label="Website URL"
+                    aria-invalid={!!error}
+                    aria-describedby={error ? "url-error" : undefined}
                     className="flex-1 font-mono text-sm bg-transparent border-0 outline-none placeholder:text-kolr-text-muted/50"
                   />
                 </div>
@@ -108,7 +111,7 @@ export default function ColorblindUrlPage() {
               </div>
 
               {error && (
-                <p className="text-sm text-kolr-red mt-3">{error}</p>
+                <p id="url-error" role="alert" className="text-sm text-kolr-red mt-3">{error}</p>
               )}
 
               <p className="text-xs text-kolr-text-muted mt-3">

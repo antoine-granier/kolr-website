@@ -64,7 +64,7 @@ export default function Footer() {
                 <Link
                   key={key}
                   href={`/${locale}${href}`}
-                  className="text-white/70 no-underline text-sm transition-colors duration-200 hover:text-white whitespace-nowrap"
+                  className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white whitespace-nowrap"
                 >
                   {t(key)}
                 </Link>
@@ -82,14 +82,14 @@ export default function Footer() {
                 <Link
                   key={href}
                   href={`/${locale}${href}`}
-                  className="text-white/70 no-underline text-sm transition-colors duration-200 hover:text-white"
+                  className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white"
                 >
                   {label || t(key!)}
                 </Link>
               ))}
               <a
                 href="mailto:antoine.granier@protonmail.com"
-                className="text-white/70 no-underline text-sm transition-colors duration-200 hover:text-white"
+                className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white"
               >
                 {t("contact")}
               </a>
@@ -108,7 +108,7 @@ export default function Footer() {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-kolr-cyan/20 bg-kolr-cyan/5 text-kolr-cyan text-xs font-bold no-underline hover:bg-kolr-cyan/10 transition-colors"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7" r="1" fill="currentColor"/><path d="M7 11h10"/><path d="m10 22 2-8 2 8"/></svg>
-            WCAG AA
+            <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> AA
           </Link>
         </div>
       </div>

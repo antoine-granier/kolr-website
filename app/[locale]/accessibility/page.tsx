@@ -96,7 +96,7 @@ export default function AccessibilityPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-kolr-surface border border-kolr-border rounded-full mb-6">
               <Accessibility size={16} className="text-kolr-cyan" />
-              <span className="text-sm font-bold text-kolr-text-muted">WCAG AA</span>
+              <span className="text-sm font-bold text-kolr-text-muted"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <abbr title="Level AA Conformance">AA</abbr></span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{t("title")}</h1>
             <p className="text-lg text-kolr-text-muted max-w-[550px] mx-auto">{t("subtitle")}</p>
