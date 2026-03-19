@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Accessibility, X, Type, Sun, Zap, Eye, MousePointer, Focus } from "lucide-react";
 
 interface A11ySettings {
@@ -23,14 +23,20 @@ const DEFAULT_SETTINGS: A11ySettings = {
 
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
-  const [settings, setSettings] = useState<A11ySettings>(() => {
-    if (typeof window === "undefined") return DEFAULT_SETTINGS;
+  const [settings, setSettings] = useState<A11ySettings>(DEFAULT_SETTINGS);
+  const initialized = useRef(false);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
     try {
       const saved = localStorage.getItem("kolr-a11y");
-      if (saved) return { ...DEFAULT_SETTINGS, ...JSON.parse(saved) };
+      if (saved) {
+        setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(saved) });
+      }
     } catch {}
-    return DEFAULT_SETTINGS;
-  });
+  }, []);
 
   function applyStyleTag(id: string, css: string) {
     let tag = document.getElementById(id) as HTMLStyleElement | null;
