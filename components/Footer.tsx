@@ -22,6 +22,7 @@ export default function Footer() {
     { href: "/tools/tailwind-colors", key: "toolTailwindColors" },
     { href: "/tools/url-extract", key: "toolUrl" },
     { href: "/tools/svg-color-editor", key: "toolSvgColor" },
+    { href: "/tools/shadow-generator", key: "toolShadow" },
     { href: "/share", key: "toolShare" },
   ];
 

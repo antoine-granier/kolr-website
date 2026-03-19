@@ -79,7 +79,7 @@ export default function SvgColorEditorPage() {
         }
       }
       // Remove existing width/height attributes
-      let cleaned = attrs.replace(/\s*(width|height)=["'][^"']*["']/gi, "");
+      const cleaned = attrs.replace(/\s*(width|height)=["'][^"']*["']/gi, "");
       return `<svg${cleaned} style="width:100%;height:auto;display:block;">`;
     });
     return sanitizeSvg(result);

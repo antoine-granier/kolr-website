@@ -24,6 +24,7 @@ import {
   MonitorCheck,
   Paintbrush,
   FileCode,
+  Square,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -204,6 +205,13 @@ export default function Navigation() {
       icon: <FileCode size={20} />,
       colorVar: "var(--kolr-orange)",
     },
+    {
+      name: t("toolShadow"),
+      description: t("toolShadowDesc"),
+      href: `/${locale}/tools/shadow-generator`,
+      icon: <Square size={20} />,
+      colorVar: "var(--kolr-purple)",
+    },
   ];
 
   const switchLocale = () => {
@@ -286,7 +294,7 @@ export default function Navigation() {
                   className="absolute top-[calc(100%+12px)] right-0
                   bg-[#111111]/95 backdrop-blur-2xl backdrop-saturate-180
                   border border-white/10
-                  rounded-3xl p-3 min-w-[560px] grid grid-cols-2 gap-2
+                  rounded-3xl p-3 min-w-[840px] grid grid-cols-3 gap-2
                   shadow-[0_20px_50px_rgba(0,0,0,0.6)]
                   z-2200
                   max-h-[calc(100vh-100px)] overflow-y-auto"
