@@ -30,6 +30,7 @@ export default function Footer() {
     { href: "/terms", key: "terms" },
     { href: "/about", key: "about" },
     { href: "/faq", label: "FAQ" },
+    { href: "/roadmap", label: "Roadmap" },
   ];
 
   return (
