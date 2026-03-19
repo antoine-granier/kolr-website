@@ -233,7 +233,7 @@ export default function Navigation() {
             href={`/${locale}`}
             className="flex items-center no-underline transition-transform duration-300 ease-out relative z-1001 hover:scale-[1.02]"
           >
-            <Image src="/logo-dark.png" alt="Kolr - Color palette toolkit" width={80} height={80} className="h-20 w-auto" />
+            <Image src="/logo-dark.png" alt="Kolr - Color palette toolkit" width={80} height={80} className="h-20 w-auto" priority fetchPriority="high" />
           </Link>
 
           {/* Desktop Navigation */}
