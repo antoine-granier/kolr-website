@@ -23,18 +23,14 @@ const DEFAULT_SETTINGS: A11ySettings = {
 
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
-  const [settings, setSettings] = useState<A11ySettings>(DEFAULT_SETTINGS);
-
-  // Load from localStorage
-  useEffect(() => {
+  const [settings, setSettings] = useState<A11ySettings>(() => {
+    if (typeof window === "undefined") return DEFAULT_SETTINGS;
     try {
       const saved = localStorage.getItem("kolr-a11y");
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        setSettings({ ...DEFAULT_SETTINGS, ...parsed });
-      }
+      if (saved) return { ...DEFAULT_SETTINGS, ...JSON.parse(saved) };
     } catch {}
-  }, []);
+    return DEFAULT_SETTINGS;
+  });
 
   function applyStyleTag(id: string, css: string) {
     let tag = document.getElementById(id) as HTMLStyleElement | null;
