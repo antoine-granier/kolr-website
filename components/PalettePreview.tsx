@@ -143,6 +143,7 @@ export default function PalettePreview({ }: { locale?: string }) {
                 e.stopPropagation();
                 copyToClipboard(color.hex, index);
               }}
+              aria-label={`Copy ${color.hex}`}
               style={{ color: "inherit" }}
               className={`
                 bg-black/10 border border-white/10 p-2.5 rounded-xl cursor-pointer
@@ -207,9 +208,15 @@ function hslToHex(h: number, s: number, l: number): string {
 
 function getContrastColor(hexcolor: string) {
   hexcolor = hexcolor.replace("#", "");
-  const r = parseInt(hexcolor.substr(0, 2), 16);
-  const g = parseInt(hexcolor.substr(2, 2), 16);
-  const b = parseInt(hexcolor.substr(4, 2), 16);
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-  return yiq >= 128 ? "black" : "white";
+  const r = parseInt(hexcolor.substr(0, 2), 16) / 255;
+  const g = parseInt(hexcolor.substr(2, 2), 16) / 255;
+  const b = parseInt(hexcolor.substr(4, 2), 16) / 255;
+  // WCAG relative luminance
+  const toLinear = (c: number) => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  const L = 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+  // Contrast with black: (L + 0.05) / 0.05, with white: 1.05 / (L + 0.05)
+  // Pick whichever gives higher contrast, but bias toward white for AAA
+  const contrastBlack = (L + 0.05) / 0.05;
+  const contrastWhite = 1.05 / (L + 0.05);
+  return contrastBlack > contrastWhite ? "#000000" : "#ffffff";
 }

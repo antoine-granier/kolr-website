@@ -174,7 +174,7 @@ export default function DownloadPage() {
                 <div className="flex justify-center items-center mb-10">
                   <Image
                     src="/logo-dark.png"
-                    alt="Kolr Logo"
+                    alt="Kolr - Color palette toolkit"
                     width={140}
                     height={140}
                     className="h-[140px] w-auto"

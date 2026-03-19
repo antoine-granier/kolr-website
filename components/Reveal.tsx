@@ -21,9 +21,14 @@ export default function Reveal({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Respect reduced motion preferences
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const timer = setTimeout(() => setIsVisible(true), 0);
+      return () => clearTimeout(timer);
+    }
+
     // Check if IntersectionObserver is available
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
-      // Use setTimeout to avoid synchronous setState
       const timer = setTimeout(() => setIsVisible(true), 0);
       return () => clearTimeout(timer);
     }

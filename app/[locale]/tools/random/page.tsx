@@ -287,6 +287,7 @@ export default function RandomToolPage() {
                   >
                     <button
                       onClick={() => toggleLock(index)}
+                      aria-label={color.locked ? "Unlock color" : "Lock color"}
                       className="bg-transparent border-0 cursor-pointer flex items-center justify-center transition-transform duration-200 self-start hover:scale-110"
                       style={{ color: "inherit" }}
                     >
@@ -305,6 +306,7 @@ export default function RandomToolPage() {
                       </span>
                       <button
                         onClick={() => copyToClipboard(color.hex, index)}
+                        aria-label={`Copy ${color.hex}`}
                         className={`
                           w-11 h-11 rounded-full cursor-pointer flex items-center justify-center
                           transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]

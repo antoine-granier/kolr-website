@@ -197,6 +197,7 @@ export default function ImageExtractPage() {
                         </span>
                         <button
                           onClick={() => copyToClipboard(color, index)}
+                          aria-label="Copy color"
                           className={`
                             w-9 h-9 rounded-xl flex items-center justify-center
                             transition-all duration-200

@@ -60,7 +60,7 @@ export default function HomePage() {
                   <Link href={`/${locale}/tools/random`} className="btn-primary">
                     {t("downloadNow")}
                   </Link>
-                  <Link href={`/${locale}/features`} className="btn-secondary">
+                  <Link href={`/${locale}/features`} className="btn-secondary" aria-label="Learn more about Kolr features">
                     {t("learnMore")}
                   </Link>
                 </div>

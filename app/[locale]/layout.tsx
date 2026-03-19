@@ -9,6 +9,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import BuyMeACoffee from "@/components/BuyMeACoffee";
+import SkipToContent from "@/components/SkipToContent";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -141,10 +143,13 @@ export default async function LocaleLayout({
       </head>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
+          <SkipToContent />
           <Navigation />
-          {children}
+          <main id="main-content">{children}</main>
           <ScrollToTop />
           <BuyMeACoffee />
+          <AccessibilityWidget />
+          <div id="aria-live-region" aria-live="polite" aria-atomic="true" className="sr-only" />
           <Footer />
         </NextIntlClientProvider>
       </body>

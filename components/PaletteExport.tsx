@@ -121,10 +121,12 @@ export default function PaletteExport({ colors }: PaletteExportProps) {
       </div>
 
       {/* Format Tabs */}
-      <div className="flex border-b border-white/[0.08] overflow-x-auto">
+      <div className="flex border-b border-white/[0.08] overflow-x-auto" role="tablist" aria-label="Export format">
         {codeFormats.map((fmt) => (
           <button
             key={fmt}
+            role="tab"
+            aria-selected={activeFormat === fmt}
             onClick={() => { setActiveFormat(fmt); setCopied(false); }}
             className={`flex-1 py-2.5 px-2 text-xs font-bold uppercase tracking-wider transition-all duration-300 whitespace-nowrap ${
               activeFormat === fmt
@@ -148,6 +150,7 @@ export default function PaletteExport({ colors }: PaletteExportProps) {
       <div className="flex gap-2 p-3 border-t border-white/[0.08]">
         <button
           onClick={copyCode}
+          aria-label="Copy code to clipboard"
           className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
             copied
               ? "bg-kolr-green text-black"
@@ -162,6 +165,8 @@ export default function PaletteExport({ colors }: PaletteExportProps) {
         <div className="relative">
           <button
             onClick={() => setDownloadOpen(!downloadOpen)}
+            aria-label="Download palette"
+            aria-expanded={downloadOpen}
             className="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-bold bg-white/5 border border-white/10 text-kolr-text-muted hover:text-white hover:border-kolr-purple transition-all duration-300"
           >
             <Download size={14} />

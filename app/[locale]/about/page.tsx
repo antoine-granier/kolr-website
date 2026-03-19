@@ -26,7 +26,7 @@ export default function AboutPage() {
               <div className="flex justify-center items-center gap-8 mb-8">
                 <Image
                   src="/logo-dark.png"
-                  alt="Kolr Logo"
+                  alt="Kolr - Color palette toolkit"
                   width={128}
                   height={128}
                   className="h-32 w-auto"

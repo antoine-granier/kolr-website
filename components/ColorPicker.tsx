@@ -249,6 +249,7 @@ export default function ColorPicker({ value, onChange, size = "md", children }: 
           <button
             type="button"
             onClick={openPicker}
+            aria-label={`Pick color, current: ${value}`}
             className={`${sizes[size]} relative cursor-pointer group border-2 border-white/15 transition-all duration-200 hover:border-white/40 hover:scale-105 shadow-[0_2px_10px_rgba(0,0,0,0.3)] overflow-hidden`}
             style={{ backgroundColor: value }}
           >

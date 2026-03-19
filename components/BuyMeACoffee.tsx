@@ -4,6 +4,7 @@ export default function BuyMeACoffee() {
       href="https://buymeacoffee.com/agranier"
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Buy me a coffee"
       className="fixed bottom-6 left-6 z-50 rounded-full bg-[#FFDD00] flex items-center justify-center shadow-[0_4px_20px_rgba(255,221,0,0.3)] hover:shadow-[0_4px_30px_rgba(255,221,0,0.5)] transition-all duration-300 no-underline w-12 h-12"
     >
       <svg

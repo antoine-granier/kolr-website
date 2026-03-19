@@ -113,6 +113,7 @@ export default function PaletteHistory({ onRestore }: PaletteHistoryProps) {
                   onClick={() => onRestore(item.colors)}
                   className="p-1.5 rounded-lg text-kolr-text-muted hover:text-kolr-cyan transition-colors"
                   title={t("restore")}
+                  aria-label={t("restore")}
                 >
                   <RotateCcw size={14} />
                 </button>
@@ -121,6 +122,7 @@ export default function PaletteHistory({ onRestore }: PaletteHistoryProps) {
                 onClick={() => deleteItem(item.id)}
                 className="p-1.5 rounded-lg text-kolr-text-muted hover:text-kolr-red transition-colors"
                 title={t("delete")}
+                aria-label={t("delete")}
               >
                 <Trash2 size={14} />
               </button>

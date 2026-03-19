@@ -10,7 +10,7 @@
   --color-kolr-surface: #111111;
   --color-kolr-border: #222222;
   --color-kolr-text: #ffffff;
-  --color-kolr-text-muted: #888888;
+  --color-kolr-text-muted: #aaaaaa;
 }
 
 :root {
@@ -359,4 +359,90 @@ html {
   color: #ffffff !important;
   font-style: italic !important;
   font-size: 1.15rem !important;
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+
+/* Focus visible — global */
+:focus-visible {
+  outline: 2px solid var(--kolr-cyan) !important;
+  outline-offset: 2px !important;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: var(--kolr-cyan);
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0 0 0.75rem 0.75rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Reduced motion — OS preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .reveal-up { transform: none !important; }
+  .reveal-scale { transform: none !important; }
+  .feature-card:hover { transform: none; }
+  .palette-preview:hover { transform: none; }
+  .btn-primary:hover { transform: none; }
+  .btn-secondary:hover { transform: none; }
+  .swatch-hover:hover { transform: none; }
+}
+
+/* ═══ ACCESSIBILITY WIDGET CLASSES ═══ */
+
+/* Text size */
+html.a11y-text-lg { font-size: 120%; }
+html.a11y-text-xl { font-size: 140%; }
+
+/* High contrast */
+html.a11y-high-contrast body { background: #000 !important; }
+html.a11y-high-contrast * { border-color: rgba(255,255,255,0.4) !important; }
+html.a11y-high-contrast .text-kolr-text-muted,
+html.a11y-high-contrast [class*="text-muted"],
+html.a11y-high-contrast [class*="opacity-"] { color: #dddddd !important; opacity: 1 !important; }
+
+/* Reduced animations (via widget) */
+html.a11y-no-motion *, html.a11y-no-motion *::before, html.a11y-no-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+html.a11y-no-motion .reveal { opacity: 1 !important; transform: none !important; }
+html.a11y-no-motion .reveal-up { transform: none !important; }
+html.a11y-no-motion .reveal-scale { transform: none !important; }
+
+/* Colorblind filters */
+html.a11y-protanopia { filter: url('#protanopia'); }
+html.a11y-deuteranopia { filter: url('#deuteranopia'); }
+html.a11y-tritanopia { filter: url('#tritanopia'); }
+
+/* Enhanced focus */
+html.a11y-focus-visible *:focus-visible {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px rgba(255,255,0,0.3) !important;
+}
+
+/* Large cursor */
+html.a11y-big-cursor, html.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M5 2l20 14-9 2 5 10-4 2-5-10-7 7z' fill='%23fff' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") 5 2, auto !important;
 }

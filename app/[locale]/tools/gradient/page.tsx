@@ -200,6 +200,7 @@ export default function GradientPage() {
                         {colors.length > 2 && (
                           <button
                             onClick={() => removeColor(index)}
+                            aria-label="Remove color stop"
                             className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center bg-white/10 text-white hover:bg-kolr-red/20 hover:text-kolr-red transition-all duration-200"
                           >
                             <Minus size={16} />
@@ -233,6 +234,7 @@ export default function GradientPage() {
                     </code>
                     <button
                       onClick={() => copyCode(cssCode, "css")}
+                      aria-label="Copy CSS code"
                       className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
                         copiedType === "css"
                           ? "bg-kolr-green text-black"
@@ -255,6 +257,7 @@ export default function GradientPage() {
                     </code>
                     <button
                       onClick={() => copyCode(tailwindCode, "tailwind")}
+                      aria-label="Copy Tailwind code"
                       className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
                         copiedType === "tailwind"
                           ? "bg-kolr-green text-black"

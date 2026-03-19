@@ -263,6 +263,7 @@ export default function TailwindColorsPage() {
                 </button>
                 <button
                   onClick={() => setIsDark(!isDark)}
+                  aria-label="Toggle dark mode"
                   className="relative w-12 h-6 rounded-full border border-white/20 transition-colors duration-300 bg-white/5"
                 >
                   <div
@@ -289,6 +290,7 @@ export default function TailwindColorsPage() {
                 <button
                   key={shade}
                   onClick={() => copyValue(scale[shade], String(shade))}
+                  aria-label={`Copy shade ${shade}`}
                   className="flex-1 flex flex-col items-center justify-between py-3 px-1 min-h-[100px] transition-all duration-200 hover:scale-y-110 hover:z-10 relative group cursor-pointer border-0"
                   style={{ backgroundColor: scale[shade] }}
                 >

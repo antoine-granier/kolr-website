@@ -237,6 +237,7 @@ export default function ColorConverterPage() {
                     />
                     <button
                       onClick={() => copy(value, key)}
+                      aria-label={`Copy ${label} value`}
                       className={`shrink-0 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 ${
                         copiedKey === key
                           ? "bg-kolr-green text-black"

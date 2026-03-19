@@ -34,7 +34,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="mt-20 bg-white/[0.02]">
+    <footer className="mt-20 bg-white/[0.02]" role="contentinfo" aria-label="Site footer">
       <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
       <div className="container px-6! py-12!">
@@ -44,7 +44,7 @@ export default function Footer() {
           <div className="shrink-0">
             <Image
               src="/logo-dark.png"
-              alt="Kolr Logo"
+              alt="Kolr - Color palette toolkit"
               width={50}
               height={50}
               className="h-[50px] w-auto mb-3"
@@ -64,7 +64,7 @@ export default function Footer() {
                 <Link
                   key={key}
                   href={`/${locale}${href}`}
-                  className="text-white/60 no-underline text-sm transition-colors duration-200 hover:text-white whitespace-nowrap"
+                  className="text-white/70 no-underline text-sm transition-colors duration-200 hover:text-white whitespace-nowrap"
                 >
                   {t(key)}
                 </Link>
@@ -82,14 +82,14 @@ export default function Footer() {
                 <Link
                   key={href}
                   href={`/${locale}${href}`}
-                  className="text-white/60 no-underline text-sm transition-colors duration-200 hover:text-white"
+                  className="text-white/70 no-underline text-sm transition-colors duration-200 hover:text-white"
                 >
                   {label || t(key!)}
                 </Link>
               ))}
               <a
                 href="mailto:antoine.granier@protonmail.com"
-                className="text-white/60 no-underline text-sm transition-colors duration-200 hover:text-white"
+                className="text-white/70 no-underline text-sm transition-colors duration-200 hover:text-white"
               >
                 {t("contact")}
               </a>

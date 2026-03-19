@@ -120,6 +120,7 @@ export default function ContrastCheckerPage() {
                     />
                     <button
                       onClick={() => copyToClipboard(foreground, 0)}
+                      aria-label="Copy foreground color"
                       className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
                         copiedIndex === 0
                           ? "bg-kolr-green text-black"
@@ -157,6 +158,7 @@ export default function ContrastCheckerPage() {
                     />
                     <button
                       onClick={() => copyToClipboard(background, 1)}
+                      aria-label="Copy background color"
                       className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
                         copiedIndex === 1
                           ? "bg-kolr-green text-black"

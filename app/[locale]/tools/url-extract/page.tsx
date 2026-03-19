@@ -332,6 +332,7 @@ export default function UrlExtractPage() {
                       <button
                         key={index}
                         onClick={() => copyColor(color, index)}
+                        aria-label={`Copy color ${color}`}
                         className="group flex flex-col rounded-xl overflow-hidden border border-white/[0.08] hover:border-white/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                       >
                         <div

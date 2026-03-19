@@ -129,12 +129,14 @@ export default function PaletteComparePage() {
                         </span>
                         <button
                           onClick={() => setPalette(generatePalette())}
+                          aria-label="Randomize palette"
                           className="p-2 rounded-lg bg-white/5 text-kolr-text-muted hover:text-white transition-colors group"
                         >
                           <RefreshCw size={14} className="group-hover:rotate-180 transition-transform duration-500" />
                         </button>
                         <button
                           onClick={() => copy(palette.join(", "), `copy-${side}`)}
+                          aria-label="Copy palette"
                           className={`p-2 rounded-lg transition-colors ${copiedKey === `copy-${side}` ? "bg-kolr-green/10 text-kolr-green" : "bg-white/5 text-kolr-text-muted hover:text-white"}`}
                         >
                           {copiedKey === `copy-${side}` ? <Check size={14} /> : <Copy size={14} />}

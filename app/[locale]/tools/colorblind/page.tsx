@@ -208,6 +208,7 @@ export default function ColorblindPage() {
                         <button
                           key={i}
                           onClick={() => copyHex(simulated)}
+                          aria-label={`Copy simulated color ${simulated}`}
                           className="flex-1 h-16 md:h-20 flex items-center justify-center group relative"
                           style={{ backgroundColor: simulated }}
                         >

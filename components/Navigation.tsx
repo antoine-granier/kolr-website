@@ -52,6 +52,18 @@ export default function Navigation() {
     }, 150);
   }, []);
 
+  // Close menus on Escape
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (toolsOpen) setToolsOpen(false);
+        if (mobileMenuOpen) setMobileMenuOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [toolsOpen, mobileMenuOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -63,12 +75,26 @@ export default function Navigation() {
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      // Focus trap: trap Tab inside mobile menu
+      const menu = document.getElementById("mobile-menu-overlay");
+      if (!menu) return;
+      const focusable = menu.querySelectorAll<HTMLElement>('a, button, input, [tabindex]:not([tabindex="-1"])');
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const trap = (e: KeyboardEvent) => {
+        if (e.key !== "Tab") return;
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last?.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first?.focus(); }
+        }
+      };
+      document.addEventListener("keydown", trap);
+      first?.focus();
+      return () => { document.removeEventListener("keydown", trap); document.body.style.overflow = ""; };
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
   }, [mobileMenuOpen]);
 
   const navigation = [
@@ -191,6 +217,7 @@ export default function Navigation() {
     <>
     <div className="h-[84px]" />
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         mobileMenuOpen
           ? "z-1100 bg-black"
@@ -206,7 +233,7 @@ export default function Navigation() {
             href={`/${locale}`}
             className="flex items-center no-underline transition-transform duration-300 ease-out relative z-1001 hover:scale-[1.02]"
           >
-            <Image src="/logo-dark.png" alt="Kolr Logo" width={80} height={80} className="h-20 w-auto" />
+            <Image src="/logo-dark.png" alt="Kolr - Color palette toolkit" width={80} height={80} className="h-20 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -232,6 +259,11 @@ export default function Navigation() {
               onMouseLeave={closeTools}
             >
               <button
+                onClick={() => setToolsOpen(!toolsOpen)}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setToolsOpen(!toolsOpen); } }}
+                aria-expanded={toolsOpen}
+                aria-haspopup="true"
+                aria-label="Tools menu"
                 className={`flex items-center gap-1.5 py-2 no-underline transition-colors duration-200 font-semibold text-[0.95rem] tracking-tight ${
                   toolsOpen || pathname.includes("/tools")
                     ? "text-kolr-cyan"
@@ -249,6 +281,8 @@ export default function Navigation() {
 
               {toolsOpen && (
                 <div
+                  role="menu"
+                  aria-label="Tools"
                   className="absolute top-[calc(100%+12px)] right-0
                   bg-[#111111]/95 backdrop-blur-2xl backdrop-saturate-180
                   border border-white/10
@@ -264,6 +298,7 @@ export default function Navigation() {
                     <Link
                       key={tool.name}
                       href={tool.href}
+                      role="menuitem"
                       className="flex items-center gap-4 p-[0.85rem_1rem] text-white no-underline rounded-[1.1rem] transition-all duration-300 ease-out hover:bg-white/6 hover:-translate-y-0.5 hover:shadow-lg"
                       onMouseEnter={() => setHoveredToolIndex(index)}
                       onMouseLeave={() => setHoveredToolIndex(null)}
@@ -323,6 +358,7 @@ export default function Navigation() {
             {/* Language Switcher */}
             <button
               onClick={switchLocale}
+              aria-label={locale === "en" ? "Switch to French" : "Passer en anglais"}
               className="ml-2 flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/3 text-white cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] text-[0.85rem] font-bold uppercase tracking-wider hover:border-kolr-cyan hover:bg-kolr-cyan/5 hover:shadow-[0_0_15px_rgba(0,242,255,0.15)] group"
             >
               <Languages
@@ -337,6 +373,8 @@ export default function Navigation() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 text-white border-0 bg-transparent cursor-pointer transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] relative z-1001"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -346,6 +384,10 @@ export default function Navigation() {
 
     {/* Mobile Menu Overlay - outside nav to avoid stacking issues */}
     <div
+      id="mobile-menu-overlay"
+      role="dialog"
+      aria-label="Mobile navigation"
+      aria-modal={mobileMenuOpen}
       className={`lg:hidden fixed inset-0 bg-black z-1050 overflow-y-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
       }`}
