@@ -2,6 +2,8 @@ import { getMessages } from "next-intl/server";
 import { generatePageMetadata } from "@/lib/metadata";
 import StructuredData from "@/components/StructuredData";
 
+export const revalidate = 3600;
+
 export async function generateMetadata({
   params,
 }: {

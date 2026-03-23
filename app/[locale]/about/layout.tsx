@@ -1,6 +1,8 @@
 import { getMessages } from "next-intl/server";
 import { generatePageMetadata } from "@/lib/metadata";
 
+export const revalidate = 3600;
+
 export async function generateMetadata({
   params,
 }: {
