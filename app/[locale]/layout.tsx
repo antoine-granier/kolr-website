@@ -14,6 +14,9 @@ import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Revalidate pages at most once per hour — avoids full SSR on every request
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }

@@ -1,5 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
 
+// Simple in-memory rate limiter (per serverless instance)
+const rateLimit = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW = 60_000; // 1 minute
+const RATE_LIMIT_MAX = 5; // 5 requests per minute per IP
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimit.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimit.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return false;
+  }
+  entry.count++;
+  return entry.count > RATE_LIMIT_MAX;
+}
+
+// Max response size from external sites (1 MB)
+const MAX_RESPONSE_SIZE = 1_000_000;
+
 function extractColorsFromText(text: string): string[] {
   const colorSet = new Set<string>();
 
@@ -163,6 +182,15 @@ function filterAndRankColors(colors: string[]): string[] {
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": "60" } }
+      );
+    }
+
     const { url } = await request.json();
 
     if (!url || typeof url !== "string") {
@@ -174,6 +202,20 @@ export async function POST(request: NextRequest) {
     try {
       parsedUrl = new URL(url.startsWith("http") ? url : `https://${url}`);
     } catch {
+      return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
+    }
+
+    // Block private/internal IPs
+    const hostname = parsedUrl.hostname;
+    if (
+      hostname === "localhost" ||
+      hostname.startsWith("127.") ||
+      hostname.startsWith("10.") ||
+      hostname.startsWith("192.168.") ||
+      hostname.startsWith("172.") ||
+      hostname === "0.0.0.0" ||
+      hostname.includes("internal")
+    ) {
       return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
     }
 
@@ -200,7 +242,19 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      // Check content length before downloading
+      const contentLength = response.headers.get("content-length");
+      if (contentLength && parseInt(contentLength) > MAX_RESPONSE_SIZE) {
+        return NextResponse.json(
+          { error: "Page too large to analyze" },
+          { status: 413 }
+        );
+      }
+
       html = await response.text();
+      if (html.length > MAX_RESPONSE_SIZE) {
+        html = html.substring(0, MAX_RESPONSE_SIZE);
+      }
     } catch (err: unknown) {
       clearTimeout(timeout);
       const message = err instanceof Error ? err.message : "Unknown error";
@@ -280,11 +334,18 @@ export async function POST(request: NextRequest) {
     const rawColors = extractColorsFromText(allText);
     const colors = filterAndRankColors(rawColors);
 
-    return NextResponse.json({
-      colors,
-      url: parsedUrl.toString(),
-      cssFilesAnalyzed: cssLinks.length,
-    });
+    return NextResponse.json(
+      {
+        colors,
+        url: parsedUrl.toString(),
+        cssFilesAnalyzed: cssLinks.length,
+      },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+        },
+      }
+    );
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json(

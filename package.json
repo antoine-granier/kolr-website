@@ -10,6 +10,7 @@
     "fix-lint": "tsc --noEmit && eslint --fix"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "lucide-react": "^0.562.0",
     "next": "16.1.1",
     "next-intl": "^4.7.0",

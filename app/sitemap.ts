@@ -64,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const page of staticPages) {
       entries.push({
         url: `${baseUrl}/${locale}${page.route}`,
-        lastModified: new Date(),
+        lastModified: new Date("2026-03-23"),
         changeFrequency: page.freq,
         priority: page.priority,
         alternates: {
@@ -77,7 +77,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const tool of toolPages) {
       entries.push({
         url: `${baseUrl}/${locale}${tool}`,
-        lastModified: new Date(),
+        lastModified: new Date("2026-03-23"),
         changeFrequency: "weekly",
         priority: 0.8,
         alternates: {
@@ -90,7 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const slug of blogSlugs) {
       entries.push({
         url: `${baseUrl}/${locale}/blog/${slug}`,
-        lastModified: new Date(),
+        lastModified: new Date("2026-03-23"),
         changeFrequency: "monthly",
         priority: 0.6,
         alternates: {
