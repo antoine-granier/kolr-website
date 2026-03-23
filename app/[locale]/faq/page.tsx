@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import Link from "next/link";
 import { ChevronDown, HelpCircle, Mail } from "lucide-react";
 
 const FAQ_IDS = [
@@ -22,6 +23,7 @@ const CATEGORY_ORDER = ["general", "tools", "technical", "app"];
 
 export default function FaqPage() {
   const t = useTranslations("faq");
+  const locale = useLocale();
 
   const [openItems, setOpenItems] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -134,13 +136,13 @@ export default function FaqPage() {
             <p className="text-kolr-text-muted text-sm mb-6">
               {t("contactDesc")}
             </p>
-            <a
-              href="mailto:antoine.granier@protonmail.com"
+            <Link
+              href={`/${locale}/contact`}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-kolr-cyan text-black font-bold text-sm hover:opacity-90 transition-opacity"
             >
               <Mail size={16} />
               {t("contactButton")}
-            </a>
+            </Link>
           </div>
         </div>
       </main>

@@ -1006,5 +1006,33 @@
     "standard7": "aria-live regions for dynamic content announcements",
     "standard8": "Multi-language support (English & French) including accessibility features",
     "contact": "Found an accessibility issue? Let us know at"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have a question, feedback, or just want to say hi? We'd love to hear from you.",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "John Doe",
+      "email": "Your Email",
+      "emailPlaceholder": "john@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What is this about?",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "send": "Send Email",
+      "sending": "Opening your email client..."
+    },
+    "info": {
+      "title": "Other Ways to Reach Us",
+      "email": "Email",
+      "response": "We typically respond within 24-48 hours."
+    },
+    "subjects": {
+      "general": "General Question",
+      "bug": "Bug Report",
+      "feature": "Feature Request",
+      "feedback": "Feedback",
+      "other": "Other"
+    }
   }
 }

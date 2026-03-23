@@ -1,0 +1,1 @@
+- [feedback_no_gradients.md](feedback_no_gradients.md) — User dislikes gradient styling, prefers solid colors

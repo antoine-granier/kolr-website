@@ -89,12 +89,12 @@ export default function Footer() {
                   {label || t(key!)}
                 </Link>
               ))}
-              <a
-                href="mailto:antoine.granier@protonmail.com"
+              <Link
+                href={`/${locale}/contact`}
                 className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white"
               >
                 {t("contact")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1006,5 +1006,33 @@
     "standard7": "Régions aria-live pour les annonces de contenu dynamique",
     "standard8": "Support multilingue (anglais et français) incluant les fonctionnalités d'accessibilité",
     "contact": "Vous avez trouvé un problème d'accessibilité ? Contactez-nous à"
+  },
+  "contact": {
+    "title": "Nous Contacter",
+    "subtitle": "Une question, un retour, ou juste envie de dire bonjour ? Nous serions ravis de vous entendre.",
+    "form": {
+      "name": "Votre Nom",
+      "namePlaceholder": "Jean Dupont",
+      "email": "Votre Email",
+      "emailPlaceholder": "jean@exemple.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "De quoi s'agit-il ?",
+      "message": "Message",
+      "messagePlaceholder": "Écrivez votre message ici...",
+      "send": "Envoyer l'Email",
+      "sending": "Ouverture de votre client email..."
+    },
+    "info": {
+      "title": "Autres Moyens de Nous Joindre",
+      "email": "Email",
+      "response": "Nous répondons généralement sous 24 à 48 heures."
+    },
+    "subjects": {
+      "general": "Question Générale",
+      "bug": "Signalement de Bug",
+      "feature": "Suggestion de Fonctionnalité",
+      "feedback": "Retour d'Expérience",
+      "other": "Autre"
+    }
   }
 }

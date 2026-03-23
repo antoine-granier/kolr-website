@@ -11,6 +11,7 @@ import StructuredData from "@/components/StructuredData";
 import BuyMeACoffee from "@/components/BuyMeACoffee";
 import SkipToContent from "@/components/SkipToContent";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import AdSenseScript from "@/components/AdSenseScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -148,6 +149,7 @@ export default async function LocaleLayout({
         <StructuredData locale={locale} />
       </head>
       <body className={inter.className}>
+        <AdSenseScript />
         <NextIntlClientProvider messages={messages}>
           <SkipToContent />
           <Navigation />

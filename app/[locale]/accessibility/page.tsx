@@ -1,6 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import {
   Accessibility,
@@ -16,6 +17,7 @@ import {
 } from "lucide-react";
 
 export default function AccessibilityPage() {
+  const locale = useLocale();
   const t = useTranslations("accessibility");
 
   const features = [
@@ -153,9 +155,9 @@ export default function AccessibilityPage() {
           <div className="text-center mt-12">
             <p className="text-kolr-text-muted">
               {t("contact")}{" "}
-              <a href="mailto:antoine.granier@protonmail.com" className="text-kolr-cyan no-underline hover:underline">
+              <Link href={`/${locale}/contact`} className="text-kolr-cyan no-underline hover:underline">
                 antoine.granier@protonmail.com
-              </a>
+              </Link>
             </p>
           </div>
         </Reveal>

@@ -1,11 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 export default function AboutPage() {
   const t = useTranslations("about");
+  const locale = useLocale();
 
   return (
     <>
@@ -209,21 +211,12 @@ export default function AboutPage() {
               <p className="text-lg text-kolr-text mb-6">
                 {t("contact.content")}
               </p>
-              <p className="text-kolr-text mb-6">
-                {t("contact.email")}{" "}
-                <a
-                  href="mailto:antoine.granier@protonmail.com"
-                  className="text-kolr-primary hover:underline font-semibold"
-                >
-                  antoine.granier@protonmail.com
-                </a>
-              </p>
-              <a
-                href="mailto:antoine.granier@protonmail.com"
+              <Link
+                href={`/${locale}/contact`}
                 className="btn-primary"
               >
                 {t("contact.button")}
-              </a>
+              </Link>
             </div>
           </Reveal>
         </div>
