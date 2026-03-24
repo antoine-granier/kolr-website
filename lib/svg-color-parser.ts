@@ -184,6 +184,18 @@ export function sanitizeSvg(svgString: string): string {
   return svgString
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<foreignObject[\s\S]*?<\/foreignObject>/gi, "")
+    .replace(/<embed[\s\S]*?(?:\/>|<\/embed>)/gi, "")
+    .replace(/<object[\s\S]*?(?:\/>|<\/object>)/gi, "")
+    .replace(/<iframe[\s\S]*?(?:\/>|<\/iframe>)/gi, "")
+    .replace(/<link[\s\S]*?(?:\/>|<\/link>)/gi, "")
+    .replace(/<meta[\s\S]*?(?:\/>|<\/meta>)/gi, "")
+    .replace(/<base[\s\S]*?(?:\/>|<\/base>)/gi, "")
+    .replace(/<form[\s\S]*?(?:\/>|<\/form>)/gi, "")
+    .replace(/<input[\s\S]*?(?:\/>|<\/input>)/gi, "")
     .replace(/\son\w+\s*=\s*"[^"]*"/gi, "")
-    .replace(/\son\w+\s*=\s*'[^']*'/gi, "");
+    .replace(/\son\w+\s*=\s*'[^']*'/gi, "")
+    .replace(/\s(?:href|xlink:href)\s*=\s*"\s*(?:javascript:|data:)[^"]*"/gi, "")
+    .replace(/\s(?:href|xlink:href)\s*=\s*'\s*(?:javascript:|data:)[^']*'/gi, "")
+    .replace(/\ssrc\s*=\s*"\s*(?:javascript:|data:)[^"]*"/gi, "")
+    .replace(/\ssrc\s*=\s*'\s*(?:javascript:|data:)[^']*'/gi, "");
 }

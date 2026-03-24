@@ -41,6 +41,8 @@
     "toolShadowDesc": "Créez des ombres CSS box & text",
     "toolGlass": "Glass / Neumorphism",
     "toolGlassDesc": "Générez du CSS glassmorphism & neumorphism",
+    "toolSoundPalette": "Son en Palette",
+    "toolSoundPaletteDesc": "Générez des couleurs depuis la musique",
     "languageFr": "Français",
     "languageEn": "English",
     "switchLanguage": "Switch",
@@ -1034,5 +1036,31 @@
       "feedback": "Retour d'Expérience",
       "other": "Autre"
     }
+  },
+  "toolSoundPalette": {
+    "title": "Son en Palette",
+    "description": "Uploadez de la musique ou utilisez votre micro pour générer des palettes uniques à partir des fréquences sonores",
+    "uploadAudio": "Importer un fichier audio",
+    "useMic": "Utiliser le Micro",
+    "stopRecording": "Arrêter",
+    "stop": "Stop",
+    "analyzing": "Analyse en cours...",
+    "generatedPalette": "Palette Générée",
+    "randomize": "Aléatoire",
+    "howTitle": "Comment les fréquences deviennent des couleurs",
+    "bandSubBass": "Sub-basses",
+    "bandBass": "Basses",
+    "bandMid": "Médiums",
+    "bandUpperMid": "Médiums hauts",
+    "bandTreble": "Aigus",
+    "colorDeepRed": "Rouges profonds",
+    "colorOrangeYellow": "Orange / Jaune",
+    "colorGreenTeal": "Vert / Turquoise",
+    "colorBlueCyan": "Bleu / Cyan",
+    "colorPurplePink": "Violet / Rose",
+    "youtubeTip": "Envie d'utiliser une vidéo YouTube ? Téléchargez l'audio depuis",
+    "aboutContent": "<h2>Qu'est-ce que Son en Palette ?</h2><p>Son en Palette est un outil gratuit en ligne qui transforme la musique et les sons en palettes de couleurs uniques. Il utilise l'API Web Audio pour analyser les fréquences audio en temps réel et associe chaque bande de fréquence à une gamme de couleurs spécifique, créant une représentation visuelle de votre audio.</p><p>Le concept s'inspire de la synesthésie — un phénomène neurologique où certaines personnes perçoivent naturellement les sons comme des couleurs. Cet outil apporte cette expérience à tout le monde : importez une chanson, chantonnez dans votre micro, ou jouez d'un instrument, et regardez l'audio se transformer en palette harmonieuse.</p><p>Chaque signal audio est divisé en cinq bandes de fréquences (sub-basses, basses, médiums, médiums hauts, aigus). L'énergie dans chaque bande détermine la teinte, la saturation et la luminosité de la couleur correspondante. Une musique riche en basses produit des palettes chaudes et profondes ; les morceaux riches en aigus donnent des schémas plus frais et vibrants.</p><ul><li>Compatible avec tous les fichiers audio (MP3, WAV, OGG, FLAC)</li><li>Visualisation en temps réel pendant la lecture</li><li>Mode microphone pour l'entrée en direct</li><li>Aucun envoi sur un serveur — tout le traitement se fait dans votre navigateur</li></ul>",
+    "howToContent": "<h2>Comment utiliser Son en Palette</h2><ol><li><strong>Choisissez votre source</strong> — Importez un fichier audio (MP3, WAV, OGG, FLAC) ou cliquez sur « Utiliser le Micro » pour capturer l'audio en direct.</li><li><strong>Écoutez et observez</strong> — Pendant la lecture, le visualiseur affiche l'énergie de chaque bande de fréquence. La palette se met à jour en temps réel, reflétant le moment actuel de la musique.</li><li><strong>Obtenez votre palette</strong> — Quand l'audio se termine (ou que vous arrêtez l'enregistrement), l'outil génère une palette finale basée sur la moyenne et les pics de fréquences entendus tout au long du morceau.</li><li><strong>Copiez les couleurs</strong> — Cliquez sur n'importe quelle pastille pour copier son code HEX. Utilisez la palette dans vos projets de design, CSS, ou tout travail créatif.</li><li><strong>Expérimentez</strong> — Essayez différents genres : la musique classique donne des palettes équilibrées et terreuses ; la musique électronique produit des schémas vibrants à fort contraste ; les morceaux acoustiques donnent des tons chauds et doux.</li></ol>",
+    "faq": "[{\"q\":\"Comment les sons sont-ils convertis en couleurs ?\",\"a\":\"L'outil utilise l'API Web Audio pour effectuer une transformée de Fourier rapide (FFT) sur le signal audio, le divisant en bandes de fréquences. Chaque bande est associée à une gamme de teintes : les basses fréquences correspondent aux couleurs chaudes (rouges/oranges), les médiums aux verts/turquoises, et les hautes fréquences aux couleurs froides (bleus/violets). Le niveau d'énergie dans chaque bande contrôle la saturation et la luminosité.\"},{\"q\":\"Mon audio est-il envoyé sur un serveur ?\",\"a\":\"Non. Tout le traitement audio se fait entièrement dans votre navigateur via l'API Web Audio. Vos fichiers et votre entrée microphone ne quittent jamais votre appareil.\"},{\"q\":\"Quels formats audio sont supportés ?\",\"a\":\"L'outil supporte tous les formats que votre navigateur peut lire : MP3, WAV, OGG, FLAC, AAC, et plus.\"},{\"q\":\"Puis-je utiliser mon microphone ?\",\"a\":\"Oui. Cliquez sur le bouton microphone pour capturer l'audio en direct. Vous pouvez chanter, jouer d'un instrument ou simplement capturer les sons ambiants. Cliquez sur arrêter quand vous avez terminé et la palette sera générée à partir de ce qui a été enregistré.\"},{\"q\":\"La même chanson produira-t-elle toujours la même palette ?\",\"a\":\"Oui, le même fichier audio analysé dans les mêmes conditions produira la même palette, car l'analyse fréquentielle est déterministe.\"}]"
   }
 }

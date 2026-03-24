@@ -41,6 +41,8 @@
     "toolShadowDesc": "Create CSS box & text shadows",
     "toolGlass": "Glass / Neumorphism",
     "toolGlassDesc": "Generate glassmorphism & neumorphism CSS",
+    "toolSoundPalette": "Sound to Palette",
+    "toolSoundPaletteDesc": "Generate colors from music",
     "languageFr": "Français",
     "languageEn": "English",
     "switchLanguage": "Switch",
@@ -1034,5 +1036,31 @@
       "feedback": "Feedback",
       "other": "Other"
     }
+  },
+  "toolSoundPalette": {
+    "title": "Sound to Palette",
+    "description": "Upload music or use your microphone to generate unique color palettes from sound frequencies",
+    "uploadAudio": "Upload an audio file",
+    "useMic": "Use Microphone",
+    "stopRecording": "Stop Recording",
+    "stop": "Stop",
+    "analyzing": "Analyzing audio...",
+    "generatedPalette": "Generated Palette",
+    "randomize": "Randomize",
+    "howTitle": "How frequencies map to colors",
+    "bandSubBass": "Sub-bass",
+    "bandBass": "Bass",
+    "bandMid": "Mid",
+    "bandUpperMid": "Upper Mid",
+    "bandTreble": "Treble",
+    "colorDeepRed": "Deep reds",
+    "colorOrangeYellow": "Orange / Yellow",
+    "colorGreenTeal": "Green / Teal",
+    "colorBlueCyan": "Blue / Cyan",
+    "colorPurplePink": "Purple / Pink",
+    "youtubeTip": "Want to use a YouTube video? Download the audio from",
+    "aboutContent": "<h2>What Is Sound to Palette?</h2><p>Sound to Palette is a free online tool that transforms music and sounds into unique color palettes. It uses the Web Audio API to analyze audio frequencies in real time and maps each frequency band to a specific color range, creating a visual representation of your audio.</p><p>The concept is inspired by synesthesia — a neurological phenomenon where some people naturally perceive sounds as colors. This tool brings that experience to everyone: upload a song, hum into your microphone, or play an instrument, and watch as the audio transforms into a harmonious palette.</p><p>Each audio signal is split into five frequency bands (sub-bass, bass, mid, upper mid, treble). The energy in each band determines the hue, saturation, and lightness of the corresponding color. Bass-heavy music produces warm, deep palettes; bright, treble-rich tracks yield cooler, more vibrant schemes.</p><ul><li>Works with any audio file (MP3, WAV, OGG, FLAC)</li><li>Real-time visualization while audio plays</li><li>Microphone mode for live input</li><li>No upload to servers — all processing happens in your browser</li></ul>",
+    "howToContent": "<h2>How to Use Sound to Palette</h2><ol><li><strong>Choose your source</strong> — Upload an audio file (MP3, WAV, OGG, FLAC) or click \"Use Microphone\" to capture live audio.</li><li><strong>Listen and watch</strong> — As the audio plays, the visualizer shows the energy in each frequency band. The palette updates in real time, reflecting the current moment in the music.</li><li><strong>Get your palette</strong> — When the audio ends (or you stop recording), the tool generates a final palette based on the average and peak frequencies heard throughout the track.</li><li><strong>Copy colors</strong> — Click any color swatch to copy its HEX code. Use the palette in your design projects, CSS, or any creative work.</li><li><strong>Experiment</strong> — Try different genres: classical music gives earthy, balanced palettes; electronic music produces vibrant, high-contrast schemes; acoustic tracks yield warm, soft tones.</li></ol>",
+    "faq": "[{\"q\":\"How are sounds converted to colors?\",\"a\":\"The tool uses the Web Audio API to perform a Fast Fourier Transform (FFT) on the audio signal, splitting it into frequency bands. Each band is mapped to a hue range: low frequencies (bass) map to warm colors (reds/oranges), mid frequencies to greens/teals, and high frequencies (treble) to cool colors (blues/purples). The energy level in each band controls the saturation and lightness.\"},{\"q\":\"Is my audio uploaded to a server?\",\"a\":\"No. All audio processing happens entirely in your browser using the Web Audio API. Your files and microphone input never leave your device.\"},{\"q\":\"What audio formats are supported?\",\"a\":\"The tool supports any format your browser can play: MP3, WAV, OGG, FLAC, AAC, and more.\"},{\"q\":\"Can I use my microphone?\",\"a\":\"Yes. Click the microphone button to start capturing live audio. You can hum, play an instrument, or just capture ambient sounds. Click stop when you are done and the palette will be generated from what was recorded.\"},{\"q\":\"Will the same song always produce the same palette?\",\"a\":\"Yes, the same audio file analyzed under the same conditions will produce the same palette, since the frequency analysis is deterministic.\"}]"
   }
 }

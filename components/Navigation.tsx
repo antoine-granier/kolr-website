@@ -26,6 +26,7 @@ import {
   FileCode,
   Square,
   Layers,
+  AudioLines,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -219,6 +220,13 @@ export default function Navigation() {
       href: `/${locale}/tools/glass-generator`,
       icon: <Layers size={20} />,
       colorVar: "var(--kolr-cyan)",
+    },
+    {
+      name: t("toolSoundPalette"),
+      description: t("toolSoundPaletteDesc"),
+      href: `/${locale}/tools/sound-palette`,
+      icon: <AudioLines size={20} />,
+      colorVar: "var(--kolr-purple)",
     },
   ];
 

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { checkCsrf } from "@/lib/csrf";
 
 // Simple in-memory rate limiter (per serverless instance)
 const rateLimit = new Map<string, { count: number; resetAt: number }>();
@@ -182,6 +183,10 @@ function filterAndRankColors(colors: string[]): string[] {
 
 export async function POST(request: NextRequest) {
   try {
+    // CSRF check
+    const csrfError = checkCsrf(request);
+    if (csrfError) return csrfError;
+
     // Rate limiting
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     if (isRateLimited(ip)) {
@@ -193,7 +198,7 @@ export async function POST(request: NextRequest) {
 
     const { url } = await request.json();
 
-    if (!url || typeof url !== "string") {
+    if (!url || typeof url !== "string" || url.length > 2048) {
       return NextResponse.json({ error: "URL is required" }, { status: 400 });
     }
 
@@ -206,14 +211,23 @@ export async function POST(request: NextRequest) {
     }
 
     // Block private/internal IPs
-    const hostname = parsedUrl.hostname;
+    const hostname = parsedUrl.hostname.toLowerCase();
     if (
       hostname === "localhost" ||
       hostname.startsWith("127.") ||
       hostname.startsWith("10.") ||
       hostname.startsWith("192.168.") ||
       hostname.startsWith("172.") ||
+      hostname.startsWith("169.254.") ||
       hostname === "0.0.0.0" ||
+      hostname === "::1" ||
+      hostname === "[::1]" ||
+      hostname.startsWith("fe80:") ||
+      hostname.startsWith("[fe80:") ||
+      hostname.startsWith("fc00:") ||
+      hostname.startsWith("[fc00:") ||
+      hostname.startsWith("fd") ||
+      hostname === "metadata.google.internal" ||
       hostname.includes("internal")
     ) {
       return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
