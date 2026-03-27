@@ -43,6 +43,8 @@
     "toolGlassDesc": "Générez du CSS glassmorphism & neumorphism",
     "toolSoundPalette": "Son en Palette",
     "toolSoundPaletteDesc": "Générez des couleurs depuis la musique",
+    "toolTextPalette": "Texte en Palette",
+    "toolTextPaletteDesc": "Des couleurs depuis une ambiance",
     "languageFr": "Français",
     "languageEn": "English",
     "switchLanguage": "Switch",
@@ -936,7 +938,8 @@
     "ctaTitle": "Commencez à Créer des Palettes",
     "ctaDesc": "Essayez nos outils gratuits et exportez vers votre logiciel de design préféré",
     "ctaButton": "Explorer les Outils",
-    "comingSoon": "Disponible"
+    "comingSoon": "Disponible",
+    "chromeInstall": "Installer l'Extension"
   },
   "roadmap": {
     "badge": "Q2 2026",
@@ -1036,6 +1039,22 @@
       "feedback": "Retour d'Expérience",
       "other": "Autre"
     }
+  },
+  "toolTextPalette": {
+    "title": "Texte en Palette",
+    "description": "Décrivez une ambiance, un lieu ou une émotion — obtenez une palette de couleurs unique",
+    "placeholder": "Décrivez une ambiance... (ex: coucher de soleil tropical, nuit d'hiver cozy)",
+    "generate": "Générer",
+    "result": "Votre Palette",
+    "regenerate": "Régénérer",
+    "detected": "Ambiances détectées",
+    "analogous": "Analogue",
+    "complementary": "Complémentaire",
+    "triadic": "Triadique",
+    "split": "Complémentaire divisé",
+    "aboutContent": "<h2>Qu'est-ce que Texte en Palette ?</h2><p>Texte en Palette transforme n'importe quel texte en une palette de couleurs unique. Décrivez une ambiance, une saison, un lieu ou une émotion, et l'outil génère des couleurs harmonieuses qui correspondent à votre description.</p><p>L'outil combine trois techniques : une base de données de 150+ mots-clés (en français et anglais) associés à des gammes de couleurs, une analyse phonétique des voyelles qui évoquent naturellement des tons chauds ou froids, et un hash déterministe garantissant que le même texte produit toujours la même palette.</p><p>Que vous tapiez un seul mot comme « océan » ou une phrase complète comme « soirée d'automne cozy au coin du feu », l'outil trouve les bonnes couleurs. Les mots inconnus produisent quand même des résultats cohérents grâce à l'analyse du texte.</p><ul><li>150+ mots-clés d'ambiance en français et anglais</li><li>Fonctionne avec n'importe quel texte — même les mots inconnus donnent des résultats</li><li>Le même texte génère toujours la même palette</li><li>Cliquez sur une suggestion pour une inspiration instantanée</li></ul>",
+    "howToContent": "<h2>Comment utiliser Texte en Palette</h2><ol><li><strong>Tapez une description</strong> — Entrez une ambiance, un lieu, une saison, une émotion ou n'importe quel texte décrivant les couleurs souhaitées. Fonctionne en français et en anglais.</li><li><strong>Générez</strong> — Appuyez sur Entrée ou cliquez sur Générer. L'outil analyse votre texte et crée une palette de 5 couleurs.</li><li><strong>Explorez les suggestions</strong> — Cliquez sur une phrase suggérée sous le champ de saisie pour une inspiration instantanée.</li><li><strong>Copiez les couleurs</strong> — Cliquez sur n'importe quelle pastille pour copier son code HEX.</li><li><strong>Régénérez</strong> — Pas satisfait ? Cliquez sur Régénérer pour une variation.</li></ol>",
+    "faq": "[{\"q\":\"Comment fonctionne la conversion texte-couleur ?\",\"a\":\"L'outil utilise trois techniques : la correspondance de mots-clés avec une base de 150+ mots d'ambiance associés à des gammes de couleurs HSL, l'analyse phonétique des voyelles (les voyelles sombres comme O et U suggèrent des tons chauds/sombres, les voyelles claires comme I et E des tons clairs/froids), et un hash déterministe du texte comme graine pour la génération.\"},{\"q\":\"Que se passe-t-il si je tape un mot absent de la base ?\",\"a\":\"L'outil génère quand même une palette. Il utilise l'analyse du hash et des voyelles, qui produisent des résultats cohérents pour n'importe quel texte, même des caractères aléatoires.\"},{\"q\":\"Le même texte donne-t-il toujours la même palette ?\",\"a\":\"Oui. L'algorithme est déterministe — la même entrée produit toujours exactement la même palette.\"},{\"q\":\"Quelles langues sont supportées ?\",\"a\":\"La base de mots-clés inclut le français et l'anglais. Toute autre langue fonctionnera via l'analyse du hash et des voyelles, sans correspondance de mots-clés.\"},{\"q\":\"Puis-je utiliser des phrases complètes ?\",\"a\":\"Absolument. L'outil extrait les mots-clés de votre phrase et mélange leurs associations de couleurs. Les phrases longues produisent des palettes plus nuancées et moins contrastées.\"}]"
   },
   "toolSoundPalette": {
     "title": "Son en Palette",

@@ -432,6 +432,133 @@ body {
   border-radius: 2px;
 }
 
+/* A11y Tab */
+.a11y-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.a11y-group {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.a11y-group-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.a11y-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  user-select: none;
+}
+
+.a11y-toggle + .a11y-toggle,
+.a11y-toggle + .a11y-row,
+.a11y-row + .a11y-toggle,
+.a11y-row + .a11y-row {
+  border-top: 1px solid var(--border);
+}
+
+.a11y-toggle input {
+  display: none;
+}
+
+.toggle-switch {
+  width: 36px;
+  height: 20px;
+  background: #333;
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.toggle-switch::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #888;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s;
+}
+
+.a11y-toggle input:checked + .toggle-switch {
+  background: var(--cyan);
+}
+
+.a11y-toggle input:checked + .toggle-switch::after {
+  background: #000;
+  left: 18px;
+}
+
+.a11y-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.a11y-range-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.a11y-range-group .btn-icon {
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.a11y-value {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: monospace;
+  min-width: 36px;
+  text-align: center;
+  color: var(--cyan);
+}
+
+.a11y-slider {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 4px;
+  background: #333;
+  border-radius: 2px;
+  outline: none;
+}
+
+.a11y-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cyan);
+  cursor: pointer;
+}
+
 /* Extract colors message */
 .extract-info {
   font-size: 11px;

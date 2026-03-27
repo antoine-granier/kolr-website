@@ -43,6 +43,8 @@
     "toolGlassDesc": "Generate glassmorphism & neumorphism CSS",
     "toolSoundPalette": "Sound to Palette",
     "toolSoundPaletteDesc": "Generate colors from music",
+    "toolTextPalette": "Text to Palette",
+    "toolTextPaletteDesc": "Colors from any mood or text",
     "languageFr": "Français",
     "languageEn": "English",
     "switchLanguage": "Switch",
@@ -936,7 +938,8 @@
     "ctaTitle": "Start Creating Palettes",
     "ctaDesc": "Try our free tools and export to your favorite design software",
     "ctaButton": "Explore Tools",
-    "comingSoon": "Available"
+    "comingSoon": "Available",
+    "chromeInstall": "Install Extension"
   },
   "roadmap": {
     "badge": "Q2 2026",
@@ -1036,6 +1039,22 @@
       "feedback": "Feedback",
       "other": "Other"
     }
+  },
+  "toolTextPalette": {
+    "title": "Text to Palette",
+    "description": "Describe a mood, a place, or a feeling — get a unique color palette",
+    "placeholder": "Describe a mood... (e.g. tropical sunset, cozy winter night)",
+    "generate": "Generate",
+    "result": "Your Palette",
+    "regenerate": "Regenerate",
+    "detected": "Detected moods",
+    "analogous": "Analogous",
+    "complementary": "Complementary",
+    "triadic": "Triadic",
+    "split": "Split Complementary",
+    "aboutContent": "<h2>What Is Text to Palette?</h2><p>Text to Palette transforms any text into a unique color palette. Describe a mood, a season, a place, or a feeling, and the tool generates harmonious colors that match your description.</p><p>The tool combines three techniques: a keyword database mapping 150+ words (in English and French) to color ranges, phonetic analysis of vowel sounds that naturally evoke warm or cool tones, and a deterministic hash ensuring the same text always produces the same palette.</p><p>Whether you type a single word like \"ocean\" or a full sentence like \"cozy autumn evening by the fireplace\", the tool finds the right colors. Unknown words still produce coherent results through text analysis.</p><ul><li>150+ mood keywords in English and French</li><li>Works with any text — even unknown words produce results</li><li>Same text always generates the same palette</li><li>Click any suggestion to get instant inspiration</li></ul>",
+    "howToContent": "<h2>How to Use Text to Palette</h2><ol><li><strong>Type a description</strong> — Enter a mood, place, season, emotion, or any text that describes the colors you want. Works in English and French.</li><li><strong>Generate</strong> — Press Enter or click Generate. The tool analyzes your text and creates a 5-color palette.</li><li><strong>Explore suggestions</strong> — Click any suggested phrase below the input for instant inspiration.</li><li><strong>Copy colors</strong> — Click any color swatch to copy its HEX code. Use it in your design projects.</li><li><strong>Regenerate</strong> — Not satisfied? Click Regenerate for a variation. The same text always gives the same base palette, but the regenerate button creates subtle variations.</li></ol>",
+    "faq": "[{\"q\":\"How does the text-to-color conversion work?\",\"a\":\"The tool uses three techniques: keyword matching against a database of 150+ mood words mapped to HSL color ranges, phonetic vowel analysis (dark vowels like O and U suggest warm/dark tones, bright vowels like I and E suggest light/cool tones), and a deterministic hash of the full text as a seed for color generation.\"},{\"q\":\"What happens if I type a word not in the database?\",\"a\":\"The tool still generates a palette. It falls back to text hash analysis and vowel tone analysis, which produce coherent results for any input text, even random characters.\"},{\"q\":\"Does the same text always give the same palette?\",\"a\":\"Yes. The algorithm is deterministic — the same text input always produces the exact same palette output.\"},{\"q\":\"What languages are supported?\",\"a\":\"The keyword database includes words in English and French. Any other language will still work through hash and phonetic analysis, though keyword matching won't apply.\"},{\"q\":\"Can I use full sentences?\",\"a\":\"Absolutely. The tool extracts keywords from your sentence and blends their color associations. Longer sentences tend to produce more nuanced, less contrasted palettes.\"}]"
   },
   "toolSoundPalette": {
     "title": "Sound to Palette",

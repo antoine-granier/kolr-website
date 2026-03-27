@@ -25,6 +25,8 @@ import {
   FileCode,
   Square,
   Layers,
+  AudioLines,
+  Type,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -478,6 +480,46 @@ export default function HomePage() {
                   {tNav("toolGlassDesc")}
                 </p>
                 <div className="flex items-center gap-2 text-kolr-cyan font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={2} className="h-full">
+              <Link
+                href={`/${locale}/tools/sound-palette`}
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-purple transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-purple/10 text-kolr-purple flex items-center justify-center mb-6 group-hover:bg-kolr-purple group-hover:text-black transition-all duration-300">
+                  <AudioLines size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolSoundPalette")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolSoundPaletteDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-purple font-bold mt-6 group-hover:gap-3 transition-all duration-200">
+                  <span>{tCommon("tryNow")}</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal animation="reveal-up" delay={3} className="h-full">
+              <Link
+                href={`/${locale}/tools/text-palette`}
+                className="group block h-full bg-kolr-surface border border-kolr-border rounded-3xl p-8 hover:-translate-y-2 hover:border-kolr-orange transition-all duration-300 no-underline"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-kolr-orange/10 text-kolr-orange flex items-center justify-center mb-6 group-hover:bg-kolr-orange group-hover:text-black transition-all duration-300">
+                  <Type size={32} />
+                </div>
+                <h3 className="text-2xl font-extrabold mb-3 text-white">
+                  {tNav("toolTextPalette")}
+                </h3>
+                <p className="text-kolr-text-muted text-base leading-relaxed">
+                  {tNav("toolTextPaletteDesc")}
+                </p>
+                <div className="flex items-center gap-2 text-kolr-orange font-bold mt-6 group-hover:gap-3 transition-all duration-200">
                   <span>{tCommon("tryNow")}</span>
                   <ArrowRight size={18} />
                 </div>

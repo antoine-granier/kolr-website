@@ -27,6 +27,7 @@ import {
   Square,
   Layers,
   AudioLines,
+  Type,
 } from "lucide-react";
 
 export default function Navigation() {
@@ -227,6 +228,13 @@ export default function Navigation() {
       href: `/${locale}/tools/sound-palette`,
       icon: <AudioLines size={20} />,
       colorVar: "var(--kolr-purple)",
+    },
+    {
+      name: t("toolTextPalette"),
+      description: t("toolTextPaletteDesc"),
+      href: `/${locale}/tools/text-palette`,
+      icon: <Type size={20} />,
+      colorVar: "var(--kolr-orange)",
     },
   ];
 

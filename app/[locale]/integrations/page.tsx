@@ -160,7 +160,7 @@ export default function IntegrationsPage() {
               <p className="text-sm text-kolr-text-muted leading-relaxed mb-5">
                 {t("chromeDesc")}
               </p>
-              <div className="flex flex-col gap-2.5">
+              <div className="flex flex-col gap-2.5 mb-5">
                 {chromeFeatures.map((feature, i) => (
                   <div key={i} className="flex items-center gap-2.5">
                     <CheckCircle2
@@ -173,6 +173,15 @@ export default function IntegrationsPage() {
                   </div>
                 ))}
               </div>
+              <a
+                href="https://chromewebstore.google.com/detail/clabkllobmgjaigcalbdmeahdkpdfpak?utm_source=item-share-cb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-kolr-cyan text-black px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity duration-200 no-underline"
+              >
+                {t("chromeInstall")}
+                <ArrowRight size={16} />
+              </a>
             </div>
           </Reveal>
         </div>

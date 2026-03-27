@@ -384,6 +384,130 @@
     toolsGrid.appendChild(a);
   });
 
+  // ── A11Y TAB ──
+  const defaultA11y = {
+    fontSize: 100,
+    highContrast: false,
+    invertColors: false,
+    saturation: 100,
+    dyslexiaFont: false,
+    letterSpacing: 0,
+    lineHeight: 0,
+    wordSpacing: 0,
+    readingGuide: false,
+    highlightLinks: false,
+    focusIndicators: false,
+    bigCursor: false,
+    hideImages: false,
+    stopAnimations: false,
+  };
+
+  let a11ySettings = { ...defaultA11y };
+
+  // Load saved settings
+  const a11yData = await chrome.storage.local.get("kolr_a11y");
+  if (a11yData.kolr_a11y) {
+    a11ySettings = { ...defaultA11y, ...a11yData.kolr_a11y };
+  }
+
+  function updateA11yUI() {
+    document.getElementById("a11y-font-value").textContent = a11ySettings.fontSize + "%";
+    document.getElementById("a11y-high-contrast").checked = a11ySettings.highContrast;
+    document.getElementById("a11y-invert").checked = a11ySettings.invertColors;
+    document.getElementById("a11y-saturation").value = a11ySettings.saturation;
+    document.getElementById("a11y-dyslexia").checked = a11ySettings.dyslexiaFont;
+    document.getElementById("a11y-letter-spacing").value = a11ySettings.letterSpacing;
+    document.getElementById("a11y-line-height").value = a11ySettings.lineHeight;
+    document.getElementById("a11y-word-spacing").value = a11ySettings.wordSpacing;
+    document.getElementById("a11y-reading-guide").checked = a11ySettings.readingGuide;
+    document.getElementById("a11y-highlight-links").checked = a11ySettings.highlightLinks;
+    document.getElementById("a11y-focus-indicators").checked = a11ySettings.focusIndicators;
+    document.getElementById("a11y-big-cursor").checked = a11ySettings.bigCursor;
+    document.getElementById("a11y-hide-images").checked = a11ySettings.hideImages;
+    document.getElementById("a11y-stop-animations").checked = a11ySettings.stopAnimations;
+  }
+
+  async function applyA11y() {
+    // Save settings
+    await chrome.storage.local.set({ kolr_a11y: a11ySettings });
+
+    // Inject content script and send settings to active tab
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tab?.id) return;
+    if (tab.url && (tab.url.startsWith("chrome") || tab.url.startsWith("edge") || tab.url.startsWith("about"))) return;
+
+    try {
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["content/accessibility.js"],
+      });
+      // Small delay to ensure script is ready
+      setTimeout(() => {
+        chrome.tabs.sendMessage(tab.id, { action: "a11y-update", settings: a11ySettings });
+      }, 100);
+    } catch (e) {
+      console.error("A11y inject error:", e);
+    }
+  }
+
+  // Font size controls
+  document.getElementById("a11y-font-down").addEventListener("click", () => {
+    a11ySettings.fontSize = Math.max(50, a11ySettings.fontSize - 10);
+    updateA11yUI();
+    applyA11y();
+  });
+
+  document.getElementById("a11y-font-up").addEventListener("click", () => {
+    a11ySettings.fontSize = Math.min(200, a11ySettings.fontSize + 10);
+    updateA11yUI();
+    applyA11y();
+  });
+
+  // Toggle checkboxes
+  const toggleMap = {
+    "a11y-high-contrast": "highContrast",
+    "a11y-invert": "invertColors",
+    "a11y-dyslexia": "dyslexiaFont",
+    "a11y-reading-guide": "readingGuide",
+    "a11y-highlight-links": "highlightLinks",
+    "a11y-focus-indicators": "focusIndicators",
+    "a11y-big-cursor": "bigCursor",
+    "a11y-hide-images": "hideImages",
+    "a11y-stop-animations": "stopAnimations",
+  };
+
+  Object.entries(toggleMap).forEach(([id, key]) => {
+    document.getElementById(id).addEventListener("change", (e) => {
+      a11ySettings[key] = e.target.checked;
+      applyA11y();
+    });
+  });
+
+  // Sliders
+  const sliderMap = {
+    "a11y-saturation": "saturation",
+    "a11y-letter-spacing": "letterSpacing",
+    "a11y-line-height": "lineHeight",
+    "a11y-word-spacing": "wordSpacing",
+  };
+
+  Object.entries(sliderMap).forEach(([id, key]) => {
+    document.getElementById(id).addEventListener("input", (e) => {
+      a11ySettings[key] = parseInt(e.target.value, 10);
+      applyA11y();
+    });
+  });
+
+  // Reset
+  document.getElementById("a11y-reset").addEventListener("click", () => {
+    a11ySettings = { ...defaultA11y };
+    updateA11yUI();
+    applyA11y();
+    showToast("Accessibility reset");
+  });
+
+  updateA11yUI();
+
   // ── Init ──
   loadRecentColors();
   loadPalettes();

@@ -303,18 +303,20 @@ export default function SoundPalettePage() {
         {/* Header */}
         <Reveal animation="reveal-up">
           <Link
-            href={`/${locale}/tools/random`}
-            className="inline-flex items-center gap-2 text-kolr-text-muted hover:text-kolr-cyan transition-colors mb-8 no-underline"
+            href={`/${locale}`}
+            className="flex items-center gap-2 text-kolr-text-muted no-underline font-semibold mb-8 transition-colors duration-200 hover:text-kolr-cyan w-fit"
           >
-            <ArrowLeft size={16} />
-            {t("tools")}
+            <ArrowLeft size={18} />
+            <span>{t("home")}</span>
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {tTool("title")}
-          </h1>
-          <p className="text-kolr-text-muted text-lg mb-12">
-            {tTool("description")}
-          </p>
+          <header className="mb-12 text-center">
+            <h1 className="[font-size:_clamp(2.5rem,5vw,3.5rem)] font-black mb-2 tracking-[-0.02em]">
+              {tTool("title")}
+            </h1>
+            <p className="text-kolr-text-muted text-lg">
+              {tTool("description")}
+            </p>
+          </header>
         </Reveal>
 
         {/* Controls */}

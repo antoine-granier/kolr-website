@@ -22,6 +22,7 @@
     <button class="tab-btn" data-tab="extract">Extract</button>
     <button class="tab-btn" data-tab="palettes">Palettes</button>
     <button class="tab-btn" data-tab="tools">Tools</button>
+    <button class="tab-btn" data-tab="a11y">A11y</button>
   </div>
 
   <!-- Pick Tab -->
@@ -95,6 +96,101 @@
   <!-- Tools Tab -->
   <div class="tab-content" id="tab-tools">
     <div class="tools-grid" id="tools-grid"></div>
+  </div>
+
+  <!-- A11y Tab -->
+  <div class="tab-content" id="tab-a11y">
+    <div class="a11y-controls">
+
+      <div class="a11y-group">
+        <div class="a11y-group-title">Vision</div>
+        <div class="a11y-row">
+          <span>Font Size</span>
+          <div class="a11y-range-group">
+            <button class="btn-icon btn-small" id="a11y-font-down" title="Decrease">-</button>
+            <span class="a11y-value" id="a11y-font-value">100%</span>
+            <button class="btn-icon btn-small" id="a11y-font-up" title="Increase">+</button>
+          </div>
+        </div>
+        <label class="a11y-toggle">
+          <span>High Contrast</span>
+          <input type="checkbox" id="a11y-high-contrast">
+          <div class="toggle-switch"></div>
+        </label>
+        <label class="a11y-toggle">
+          <span>Invert Colors</span>
+          <input type="checkbox" id="a11y-invert">
+          <div class="toggle-switch"></div>
+        </label>
+        <div class="a11y-row">
+          <span>Saturation</span>
+          <input type="range" id="a11y-saturation" min="0" max="200" value="100" class="a11y-slider">
+        </div>
+      </div>
+
+      <div class="a11y-group">
+        <div class="a11y-group-title">Reading</div>
+        <label class="a11y-toggle">
+          <span>Dyslexia Font</span>
+          <input type="checkbox" id="a11y-dyslexia">
+          <div class="toggle-switch"></div>
+        </label>
+        <div class="a11y-row">
+          <span>Letter Spacing</span>
+          <input type="range" id="a11y-letter-spacing" min="0" max="6" value="0" class="a11y-slider">
+        </div>
+        <div class="a11y-row">
+          <span>Line Height</span>
+          <input type="range" id="a11y-line-height" min="0" max="4" value="0" class="a11y-slider">
+        </div>
+        <div class="a11y-row">
+          <span>Word Spacing</span>
+          <input type="range" id="a11y-word-spacing" min="0" max="12" value="0" class="a11y-slider">
+        </div>
+        <label class="a11y-toggle">
+          <span>Reading Guide</span>
+          <input type="checkbox" id="a11y-reading-guide">
+          <div class="toggle-switch"></div>
+        </label>
+      </div>
+
+      <div class="a11y-group">
+        <div class="a11y-group-title">Navigation</div>
+        <label class="a11y-toggle">
+          <span>Highlight Links</span>
+          <input type="checkbox" id="a11y-highlight-links">
+          <div class="toggle-switch"></div>
+        </label>
+        <label class="a11y-toggle">
+          <span>Focus Indicators</span>
+          <input type="checkbox" id="a11y-focus-indicators">
+          <div class="toggle-switch"></div>
+        </label>
+        <label class="a11y-toggle">
+          <span>Big Cursor</span>
+          <input type="checkbox" id="a11y-big-cursor">
+          <div class="toggle-switch"></div>
+        </label>
+      </div>
+
+      <div class="a11y-group">
+        <div class="a11y-group-title">Content</div>
+        <label class="a11y-toggle">
+          <span>Hide Images</span>
+          <input type="checkbox" id="a11y-hide-images">
+          <div class="toggle-switch"></div>
+        </label>
+        <label class="a11y-toggle">
+          <span>Stop Animations</span>
+          <input type="checkbox" id="a11y-stop-animations">
+          <div class="toggle-switch"></div>
+        </label>
+      </div>
+
+      <button class="btn btn-secondary btn-small" id="a11y-reset" style="width:100%;margin-top:8px;">
+        Reset All
+      </button>
+    </div>
   </div>
 
   <!-- Toast -->
