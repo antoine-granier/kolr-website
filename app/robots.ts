@@ -9,6 +9,14 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/private/"],
       },
       {
+        userAgent: "Mediapartners-Google",
+        disallow: ["/en/color/", "/fr/color/"],
+      },
+      {
+        userAgent: "AdsBot-Google",
+        disallow: ["/en/color/", "/fr/color/"],
+      },
+      {
         userAgent: "GPTBot",
         disallow: "/",
       },
@@ -22,6 +30,14 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: "anthropic-ai",
+        disallow: "/",
+      },
+      {
+        userAgent: "ClaudeBot",
+        disallow: "/",
+      },
+      {
+        userAgent: "Bytespider",
         disallow: "/",
       },
     ],
