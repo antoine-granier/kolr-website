@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import {
@@ -16,9 +14,9 @@ import {
   FileCode,
 } from "lucide-react";
 
-export default function IntegrationsPage() {
-  const t = useTranslations("integrations");
-  const locale = useLocale();
+export default async function IntegrationsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "integrations" });
 
   const figmaFeatures = [
     t("figmaFeature1"),

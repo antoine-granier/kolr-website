@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import {
@@ -16,9 +14,9 @@ import {
   Focus,
 } from "lucide-react";
 
-export default function AccessibilityPage() {
-  const locale = useLocale();
-  const t = useTranslations("accessibility");
+export default async function AccessibilityPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "accessibility" });
 
   const features = [
     {

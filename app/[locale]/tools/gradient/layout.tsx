@@ -1,25 +1,7 @@
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
-  return generatePageMetadata({
-    title: "Gradient Generator",
-    description: "Create beautiful CSS gradients with multiple color stops. Preview in real-time and copy the CSS code.",
-    path: "/tools/gradient",
-    locale,
-    keywords: ["gradient generator", "CSS gradient", "linear gradient", "color gradient", "gradient maker"],
-  });
-}
-
-export default async function GradientToolLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -27,15 +9,21 @@ export default async function GradientToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolGradient" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="Gradient Generator"
-        description="Create beautiful CSS gradients with multiple color stops"
-        path="/tools/gradient"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

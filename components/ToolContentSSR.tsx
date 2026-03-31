@@ -1,17 +1,12 @@
 import Reveal from "@/components/Reveal";
 
-interface ToolContentProps {
+interface ToolContentSSRProps {
   aboutContent: string;
   howToContent: string;
-  faqJson: string;
+  faq: { q: string; a: string }[];
 }
 
-export default function ToolContent({ aboutContent, howToContent, faqJson }: ToolContentProps) {
-  let faq: { q: string; a: string }[] = [];
-  try {
-    faq = JSON.parse(faqJson);
-  } catch {}
-
+export default function ToolContentSSR({ aboutContent, howToContent, faq }: ToolContentSSRProps) {
   return (
     <div className="mt-16 max-w-[800px] mx-auto px-6 space-y-12 pb-8">
       {/* About */}

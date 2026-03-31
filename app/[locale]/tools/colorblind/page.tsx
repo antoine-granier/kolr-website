@@ -6,7 +6,6 @@ import { Eye, RotateCcw, Check, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
-import ToolContent from "@/components/ToolContent";
 
 // Color blindness simulation matrices
 function hexToRgb(hex: string): [number, number, number] {
@@ -232,13 +231,6 @@ export default function ColorblindPage() {
             </div>
           </Reveal>
         </div>
-      </main>
-
-      <ToolContent
-        aboutContent={t.raw("aboutContent")}
-        howToContent={t.raw("howToContent")}
-        faqJson={t.raw("faq")}
-      />
-    </div>
+      </main></div>
   );
 }

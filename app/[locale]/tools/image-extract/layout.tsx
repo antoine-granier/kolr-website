@@ -1,39 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = messages.toolImage || {};
-
-  const title = t.title || "Image Color Extractor";
-  const description =
-    t.description || "Upload a photo to extract its unique color story";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/image-extract",
-    locale,
-    keywords: [
-      "image color extraction",
-      "photo to palette",
-      "extract colors from image",
-      "image color picker",
-      "photo color analyzer",
-      "dominant colors",
-    ],
-  });
-}
-
-export default async function ImageExtractToolLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -41,5 +9,21 @@ export default async function ImageExtractToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return (<><ToolJsonLd name="Image Color Extractor" description="Extract color palettes from any image" path="/tools/image-extract" locale={locale} />{children}</>);
+  const t = await getTranslations({ locale, namespace: "toolImage" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
+  return (
+    <>
+      {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
+    </>
+  );
 }

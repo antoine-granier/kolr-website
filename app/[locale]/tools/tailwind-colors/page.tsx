@@ -21,7 +21,6 @@ import {
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
-import ToolContent from "@/components/ToolContent";
 
 // ── Color utilities ──
 
@@ -928,14 +927,7 @@ export default function TailwindColorsPage() {
             </div>
           </Reveal>
         </div>
-      </main>
-
-      <ToolContent
-        aboutContent={t.raw("aboutContent")}
-        howToContent={t.raw("howToContent")}
-        faqJson={t.raw("faq")}
-      />
-    </div>
+      </main></div>
   );
 }
 

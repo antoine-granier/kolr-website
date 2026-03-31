@@ -1,40 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = (messages.toolTextPalette as Record<string, string>) || {};
-
-  const title = t.title || "Text to Palette";
-  const description =
-    t.description || "Generate color palettes from any text or mood description";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/text-palette",
-    locale,
-    keywords: [
-      "text to palette",
-      "mood color palette",
-      "color from text",
-      "mood colors",
-      "text color generator",
-      "palette from description",
-      "color mood board",
-    ],
-  });
-}
-
-export default async function TextPaletteLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -42,15 +9,21 @@ export default async function TextPaletteLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolTextPalette" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="Text to Palette"
-        description="Generate color palettes from any text or mood description"
-        path="/tools/text-palette"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

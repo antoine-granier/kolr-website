@@ -1,13 +1,12 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { Smartphone, Zap, Shield, Globe } from "lucide-react";
 
-export default function DownloadPage() {
-  const t = useTranslations("download");
-  const tPage = useTranslations("downloadPage");
+export default async function DownloadPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "download" });
+  const tPage = await getTranslations({ locale, namespace: "downloadPage" });
 
   return (
     <>
@@ -78,7 +77,6 @@ export default function DownloadPage() {
               <Reveal animation="reveal-scale" delay={4} width="fit-content">
                 <a
                   href="#"
-                  onClick={(e) => e.preventDefault()}
                   className="btn-primary flex items-center justify-center gap-4 text-xl px-12 py-6"
                 >
                   <svg

@@ -1,41 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = (messages.toolSoundPalette as Record<string, string>) || {};
-
-  const title = t.title || "Sound to Palette";
-  const description =
-    t.description || "Generate color palettes from music and sounds";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/sound-palette",
-    locale,
-    keywords: [
-      "sound to color",
-      "music palette generator",
-      "audio color palette",
-      "synesthesia tool",
-      "music to colors",
-      "sound visualization",
-      "audio palette",
-      "color from music",
-    ],
-  });
-}
-
-export default async function SoundPaletteLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -43,15 +9,21 @@ export default async function SoundPaletteLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolSoundPalette" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="Sound to Palette"
-        description="Generate color palettes from music and sounds"
-        path="/tools/sound-palette"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

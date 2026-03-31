@@ -1,41 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = messages.toolContrast || {};
-
-  const title = t.title || "Contrast Checker";
-  const description =
-    t.description || "Check color contrast ratios for accessibility (WCAG)";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/contrast-checker",
-    locale,
-    keywords: [
-      "contrast checker",
-      "WCAG compliance",
-      "accessibility",
-      "color contrast",
-      "contrast ratio",
-      "AA compliance",
-      "AAA compliance",
-      "web accessibility",
-    ],
-  });
-}
-
-export default async function ContrastCheckerToolLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -43,5 +9,21 @@ export default async function ContrastCheckerToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return (<><ToolJsonLd name="Contrast Checker" description="Check color contrast ratios for WCAG accessibility" path="/tools/contrast-checker" locale={locale} />{children}</>);
+  const t = await getTranslations({ locale, namespace: "toolContrast" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
+  return (
+    <>
+      {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
+    </>
+  );
 }

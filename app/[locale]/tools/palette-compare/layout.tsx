@@ -1,37 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = messages.toolCompare || {};
-
-  const title = t.title || "Compare Palettes";
-  const description =
-    t.description || "Compare two color palettes side by side";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/palette-compare",
-    locale,
-    keywords: [
-      "compare palettes",
-      "color comparison",
-      "palette diff",
-      "side by side colors",
-    ],
-  });
-}
-
-export default async function PaletteCompareLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -39,5 +9,21 @@ export default async function PaletteCompareLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return (<><ToolJsonLd name="Compare Palettes" description="Compare two color palettes side by side" path="/tools/palette-compare" locale={locale} />{children}</>);
+  const t = await getTranslations({ locale, namespace: "toolCompare" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
+  return (
+    <>
+      {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
+    </>
+  );
 }

@@ -1,10 +1,9 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Reveal from "@/components/Reveal";
 
-export default function FeaturesPage() {
-  const t = useTranslations("features");
+export default async function FeaturesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "features" });
 
   return (
     <>

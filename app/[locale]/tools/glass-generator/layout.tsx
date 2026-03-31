@@ -1,25 +1,7 @@
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
-  return generatePageMetadata({
-    title: "Glassmorphism / Neumorphism Generator",
-    description: "Create stunning glassmorphism and neumorphism effects with live CSS preview. Copy CSS or Tailwind code instantly.",
-    path: "/tools/glass-generator",
-    locale,
-    keywords: ["glassmorphism generator", "neumorphism generator", "glass css", "soft ui", "frosted glass css", "css glass effect", "neumorphic design"],
-  });
-}
-
-export default async function GlassGeneratorLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -27,15 +9,21 @@ export default async function GlassGeneratorLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolGlass" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="Glassmorphism / Neumorphism Generator"
-        description="Create stunning glassmorphism and neumorphism effects with live CSS preview"
-        path="/tools/glass-generator"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

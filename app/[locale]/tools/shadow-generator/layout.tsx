@@ -1,25 +1,7 @@
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
-  return generatePageMetadata({
-    title: "CSS Shadow Generator",
-    description: "Create beautiful box-shadow and text-shadow effects with live preview. Copy CSS or Tailwind code instantly.",
-    path: "/tools/shadow-generator",
-    locale,
-    keywords: ["css shadow generator", "box-shadow", "text-shadow", "shadow maker", "css shadow tool", "tailwind shadow"],
-  });
-}
-
-export default async function ShadowGeneratorLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -27,15 +9,21 @@ export default async function ShadowGeneratorLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolShadow" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="CSS Shadow Generator"
-        description="Create beautiful box-shadow and text-shadow effects with live preview"
-        path="/tools/shadow-generator"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

@@ -39,6 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: "/integrations", freq: "monthly" as const, priority: 0.6 },
     { route: "/faq", freq: "monthly" as const, priority: 0.5 },
     { route: "/share", freq: "weekly" as const, priority: 0.6 },
+    { route: "/contact", freq: "monthly" as const, priority: 0.4 },
+    { route: "/accessibility", freq: "monthly" as const, priority: 0.5 },
+    { route: "/roadmap", freq: "monthly" as const, priority: 0.5 },
   ];
 
   const toolPages = [
@@ -55,6 +58,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/colorblind-url",
     "/tools/tailwind-colors",
     "/tools/svg-color-editor",
+    "/tools/glass-generator",
+    "/tools/shadow-generator",
+    "/tools/sound-palette",
+    "/tools/text-palette",
   ];
 
   const entries: MetadataRoute.Sitemap = [];
@@ -64,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const page of staticPages) {
       entries.push({
         url: `${baseUrl}/${locale}${page.route}`,
-        lastModified: new Date("2026-03-23"),
+        lastModified: new Date("2026-03-31"),
         changeFrequency: page.freq,
         priority: page.priority,
         alternates: {
@@ -77,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const tool of toolPages) {
       entries.push({
         url: `${baseUrl}/${locale}${tool}`,
-        lastModified: new Date("2026-03-23"),
+        lastModified: new Date("2026-03-31"),
         changeFrequency: "weekly",
         priority: 0.8,
         alternates: {
@@ -90,7 +97,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const slug of blogSlugs) {
       entries.push({
         url: `${baseUrl}/${locale}/blog/${slug}`,
-        lastModified: new Date("2026-03-23"),
+        lastModified: new Date("2026-03-31"),
         changeFrequency: "monthly",
         priority: 0.6,
         alternates: {

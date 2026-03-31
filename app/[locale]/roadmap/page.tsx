@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Reveal from "@/components/Reveal";
 import { CheckCircle2, Circle, Hourglass, Globe } from "lucide-react";
 
@@ -19,8 +17,9 @@ interface RoadmapMonth {
   items: RoadmapItem[];
 }
 
-export default function RoadmapPage() {
-  const t = useTranslations("roadmap");
+export default async function RoadmapPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "roadmap" });
 
   const months: RoadmapMonth[] = [
     {

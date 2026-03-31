@@ -1,13 +1,11 @@
-"use client";
-
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
-export default function AboutPage() {
-  const t = useTranslations("about");
-  const locale = useLocale();
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "about" });
 
   return (
     <>

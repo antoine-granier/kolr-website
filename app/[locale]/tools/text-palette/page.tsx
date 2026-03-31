@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import ToolContent from "@/components/ToolContent";
 
 // --- Curated palette database ---
 type Palette = [string, string, string, string, string];
@@ -872,13 +871,7 @@ export default function TextPalettePage() {
           </Reveal>
         )}
 
-        {/* SEO content */}
-        <ToolContent
-          aboutContent={tTool.raw("aboutContent")}
-          howToContent={tTool.raw("howToContent")}
-          faqJson={tTool.raw("faq")}
-        />
-      </div>
+        {/* SEO content */}</div>
     </section>
   );
 }

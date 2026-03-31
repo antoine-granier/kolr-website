@@ -1,6 +1,4 @@
-"use client";
-
-import { useTranslations, useLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import GoogleAdSense from "@/components/GoogleAdSense";
@@ -150,9 +148,9 @@ export const blogArticles = [
   },
 ];
 
-export default function BlogPage() {
-  const t = useTranslations("blog");
-  const locale = useLocale();
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "blog" });
 
   return (
     <section className="section">

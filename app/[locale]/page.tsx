@@ -1,8 +1,5 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import Reveal from "@/components/Reveal";
 import PalettePreview from "@/components/PalettePreview";
 import GoogleAdSense from "@/components/GoogleAdSense";
@@ -29,13 +26,13 @@ import {
   Type,
 } from "lucide-react";
 
-export default function HomePage() {
-  const t = useTranslations("hero");
-  const tFeatures = useTranslations("features");
-  const tNav = useTranslations("nav");
-  const tCommon = useTranslations("common");
-  const tHomepage = useTranslations("homepage");
-  const locale = useLocale();
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "hero" });
+  const tFeatures = await getTranslations({ locale, namespace: "features" });
+  const tNav = await getTranslations({ locale, namespace: "nav" });
+  const tCommon = await getTranslations({ locale, namespace: "common" });
+  const tHomepage = await getTranslations({ locale, namespace: "homepage" });
 
   return (
     <>

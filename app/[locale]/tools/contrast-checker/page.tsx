@@ -13,7 +13,6 @@ import {
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
-import ToolContent from "@/components/ToolContent";
 
 export default function ContrastCheckerPage() {
   const t = useTranslations("nav");
@@ -349,13 +348,6 @@ export default function ContrastCheckerPage() {
             </Reveal>
           </div>
         </div>
-      </main>
-
-      <ToolContent
-        aboutContent={tContrast.raw("aboutContent")}
-        howToContent={tContrast.raw("howToContent")}
-        faqJson={tContrast.raw("faq")}
-      />
-    </div>
+      </main></div>
   );
 }

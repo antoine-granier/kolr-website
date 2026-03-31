@@ -6,7 +6,6 @@ import { ArrowLeft, RefreshCw, Copy, Check } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
-import ToolContent from "@/components/ToolContent";
 
 function randomHex(): string {
   return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`.toUpperCase();
@@ -243,13 +242,6 @@ export default function PaletteComparePage() {
             </div>
           </Reveal>
         </div>
-      </main>
-
-      <ToolContent
-        aboutContent={t.raw("aboutContent")}
-        howToContent={t.raw("howToContent")}
-        faqJson={t.raw("faq")}
-      />
-    </div>
+      </main></div>
   );
 }

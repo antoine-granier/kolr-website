@@ -1,39 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = messages.toolColorConverter || {};
-
-  const title = t.title || "Color Converter";
-  const description =
-    t.description || "Convert colors between HEX, RGB, HSL, OKLCH, CMYK";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/color-converter",
-    locale,
-    keywords: [
-      "color converter",
-      "hex to rgb",
-      "rgb to hsl",
-      "oklch converter",
-      "cmyk converter",
-      "color format",
-    ],
-  });
-}
-
-export default async function ColorConverterLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -41,5 +9,21 @@ export default async function ColorConverterLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return (<><ToolJsonLd name="Color Converter" description="Convert colors between HEX, RGB, HSL, OKLCH, CMYK" path="/tools/color-converter" locale={locale} />{children}</>);
+  const t = await getTranslations({ locale, namespace: "toolColorConverter" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
+  return (
+    <>
+      {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
+    </>
+  );
 }

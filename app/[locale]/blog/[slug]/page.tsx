@@ -1,7 +1,4 @@
-"use client";
-
-import { useTranslations, useLocale } from "next-intl";
-import { useParams } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import Reveal from "@/components/Reveal";
@@ -9,11 +6,9 @@ import GoogleAdSense from "@/components/GoogleAdSense";
 import { isAdEnabled, getAdSlot } from "@/config/adsense";
 import { blogArticles } from "../page";
 
-export default function BlogArticlePage() {
-  const params = useParams();
-  const slug = params.slug as string;
-  const locale = useLocale();
-  const t = useTranslations("blog");
+export default async function BlogArticlePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: "blog" });
 
   const meta = blogArticles.find((a) => a.slug === slug) || {
     slug,

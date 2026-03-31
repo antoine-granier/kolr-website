@@ -1,39 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = messages.toolRandom || {};
-
-  const title = t.title || "Random Palette Generator";
-  const description =
-    t.description || "Generate fresh color palettes for instant inspiration";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/random",
-    locale,
-    keywords: [
-      "random palette generator",
-      "random colors",
-      "color inspiration",
-      "palette ideas",
-      "random color scheme",
-      "color generator",
-    ],
-  });
-}
-
-export default async function RandomToolLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -41,15 +9,21 @@ export default async function RandomToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolRandom" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="Random Palette Generator"
-        description="Generate fresh color palettes for instant inspiration"
-        path="/tools/random"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

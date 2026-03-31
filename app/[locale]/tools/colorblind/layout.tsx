@@ -1,25 +1,7 @@
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
-  return generatePageMetadata({
-    title: "Colorblind Simulator",
-    description: "Simulate how your colors appear to people with color vision deficiencies. Test for protanopia, deuteranopia, tritanopia and more.",
-    path: "/tools/colorblind",
-    locale,
-    keywords: ["colorblind simulator", "color blindness test", "protanopia", "deuteranopia", "accessibility"],
-  });
-}
-
-export default async function ColorblindToolLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -27,15 +9,21 @@ export default async function ColorblindToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolColorblind" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="Colorblind Simulator"
-        description="Simulate how your colors appear to people with color vision deficiencies"
-        path="/tools/colorblind"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

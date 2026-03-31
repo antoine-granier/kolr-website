@@ -12,7 +12,6 @@ import {
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
-import ToolContent from "@/components/ToolContent";
 
 function hexToHsl(hex: string): { h: number; s: number; l: number } {
   hex = hex.replace("#", "");
@@ -437,13 +436,6 @@ export default function DarkThemePage() {
             </Reveal>
           </div>
         </div>
-      </main>
-
-      <ToolContent
-        aboutContent={t.raw("aboutContent")}
-        howToContent={t.raw("howToContent")}
-        faqJson={t.raw("faq")}
-      />
-    </div>
+      </main></div>
   );
 }

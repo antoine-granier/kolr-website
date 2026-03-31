@@ -1,40 +1,7 @@
-import { getMessages } from "next-intl/server";
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  const messages = await getMessages();
-  const t = messages.toolColorblindUrl || {};
-
-  const title = t.title || "Colorblind Website Checker";
-  const description =
-    t.description || "See how your website looks for colorblind users";
-
-  return generatePageMetadata({
-    title,
-    description,
-    path: "/tools/colorblind-url",
-    locale,
-    keywords: [
-      "colorblind checker",
-      "website accessibility",
-      "color blindness simulator",
-      "protanopia",
-      "deuteranopia",
-      "tritanopia",
-      "web accessibility",
-    ],
-  });
-}
-
-export default async function ColorblindUrlLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -42,15 +9,21 @@ export default async function ColorblindUrlLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolColorblindUrl" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="Colorblind Website Checker"
-        description="See how your website looks for colorblind users"
-        path="/tools/colorblind-url"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

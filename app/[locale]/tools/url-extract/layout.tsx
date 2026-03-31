@@ -1,25 +1,7 @@
-import { generatePageMetadata } from "@/lib/metadata";
-import ToolJsonLd from "@/components/ToolJsonLd";
+import { getTranslations } from "next-intl/server";
+import ToolContentSSR from "@/components/ToolContentSSR";
 
-export const revalidate = 3600;
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-
-  return generatePageMetadata({
-    title: "URL Color Extractor",
-    description: "Extract all colors from any website URL. Analyze CSS styles and discover the complete color palette of any site.",
-    path: "/tools/url-extract",
-    locale,
-    keywords: ["url color extractor", "website colors", "extract colors from url", "site palette", "CSS color finder"],
-  });
-}
-
-export default async function UrlExtractToolLayout({
+export default async function Layout({
   children,
   params,
 }: {
@@ -27,15 +9,21 @@ export default async function UrlExtractToolLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "toolUrl" });
+
+  let faq: { q: string; a: string }[] = [];
+  try {
+    faq = JSON.parse(t.raw("faq"));
+  } catch {}
+
   return (
     <>
-      <ToolJsonLd
-        name="URL Color Extractor"
-        description="Extract all colors from any website URL"
-        path="/tools/url-extract"
-        locale={locale}
-      />
       {children}
+      <ToolContentSSR
+        aboutContent={t.raw("aboutContent")}
+        howToContent={t.raw("howToContent")}
+        faq={faq}
+      />
     </>
   );
 }

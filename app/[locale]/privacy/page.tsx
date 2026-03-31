@@ -1,10 +1,9 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Reveal from "@/components/Reveal";
 
-export default function PrivacyPage() {
-  const t = useTranslations("privacy");
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "privacy" });
 
   return (
     <>

@@ -14,7 +14,6 @@ import {
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ColorPicker from "@/components/ColorPicker";
-import ToolContent from "@/components/ToolContent";
 
 type HarmonyMode = "monochromatic" | "analogous" | "complementary" | "triadic";
 
@@ -232,14 +231,7 @@ export default function ColorExtractPage() {
             </Reveal>
           </div>
         </div>
-      </main>
-
-      <ToolContent
-        aboutContent={tColor.raw("aboutContent")}
-        howToContent={tColor.raw("howToContent")}
-        faqJson={tColor.raw("faq")}
-      />
-    </div>
+      </main></div>
   );
 }
 
