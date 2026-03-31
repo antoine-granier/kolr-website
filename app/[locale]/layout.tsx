@@ -67,6 +67,7 @@ export async function generateMetadata({
       "Tailwind colors",
       "Figma color palette",
     ],
+    applicationName: "Kolr",
     authors: [{ name: "Kolr" }],
     creator: "Kolr",
     publisher: "Kolr",
