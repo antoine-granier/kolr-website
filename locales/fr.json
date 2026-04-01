@@ -267,7 +267,7 @@
     "downloadAndroid": "Télécharger pour Android",
     "viewAllDownloads": "Voir toutes les options de téléchargement",
     "integrationsTitle": "Compatible avec vos outils",
-    "integrationsDesc": "Utilisez Kolr directement dans Figma ou Chrome — sélectionnez des couleurs, créez des palettes et exportez dans tous les formats.",
+    "integrationsDesc": "Utilisez Kolr directement dans Figma, Chrome ou Firefox — sélectionnez des couleurs, créez des palettes et exportez dans tous les formats.",
     "integrationsButton": "Voir les intégrations"
   },
   "downloadPage": {
@@ -954,6 +954,12 @@
     "chromeFeature2": "Extraction de toutes les couleurs d'une page",
     "chromeFeature3": "Créer et sauvegarder des palettes",
     "chromeFeature4": "Export CSS, Tailwind, SCSS, JSON",
+    "firefoxTitle": "Extension Firefox",
+    "firefoxDesc": "Les mêmes fonctionnalités que sur Chrome — sélectionnez des couleurs avec une loupe de précision, extrayez les palettes d'une page, sauvegardez vos collections, et exportez dans tous les formats — maintenant disponible sur Firefox.",
+    "firefoxFeature1": "Pipette couleur avec loupe zoom",
+    "firefoxFeature2": "Extraction de toutes les couleurs d'une page",
+    "firefoxFeature3": "Export CSS, Tailwind, SCSS, JSON",
+    "firefoxInstall": "Installer l'Extension",
     "howTitle": "Comment ça marche",
     "howSubtitle": "Trois étapes simples pour connecter vos couleurs",
     "step1Title": "Créez Votre Palette",

@@ -31,6 +31,12 @@ export default async function IntegrationsPage({ params }: { params: Promise<{ l
     t("chromeFeature4"),
   ];
 
+  const firefoxFeatures = [
+    t("firefoxFeature1"),
+    t("firefoxFeature2"),
+    t("firefoxFeature3"),
+  ];
+
   const steps = [
     {
       icon: <Palette size={24} />,
@@ -73,7 +79,7 @@ export default async function IntegrationsPage({ params }: { params: Promise<{ l
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-kolr-surface border border-kolr-border rounded-full mb-6">
               <Layers size={16} className="text-kolr-purple" />
               <span className="text-sm font-bold text-kolr-text-muted">
-                Figma · Chrome
+                Figma · Chrome · Firefox
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -86,7 +92,7 @@ export default async function IntegrationsPage({ params }: { params: Promise<{ l
         </Reveal>
 
         {/* Integration Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
           <Reveal animation="reveal-up" delay={1}>
             <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-6 h-full hover:border-kolr-purple/50 transition-all duration-300">
               {/* Figma Logo */}
@@ -142,7 +148,7 @@ export default async function IntegrationsPage({ params }: { params: Promise<{ l
           </Reveal>
 
           <Reveal animation="reveal-up" delay={2}>
-            <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-6 h-full hover:border-kolr-cyan/50 transition-all duration-300">
+            <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-6 h-full hover:border-kolr-cyan/50 transition-all duration-300 flex flex-col">
               {/* Chrome Logo */}
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-kolr-cyan/10 flex items-center justify-center">
@@ -175,9 +181,51 @@ export default async function IntegrationsPage({ params }: { params: Promise<{ l
                 href="https://chromewebstore.google.com/detail/clabkllobmgjaigcalbdmeahdkpdfpak?utm_source=item-share-cb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-kolr-cyan text-black px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity duration-200 no-underline"
+                className="mt-auto inline-flex items-center gap-2 bg-kolr-cyan text-black px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity duration-200 no-underline"
               >
                 {t("chromeInstall")}
+                <ArrowRight size={16} />
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal animation="reveal-up" delay={3}>
+            <div className="bg-kolr-surface border border-kolr-border rounded-2xl p-6 h-full hover:border-kolr-orange/50 transition-all duration-300 flex flex-col">
+              {/* Firefox Logo */}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-kolr-orange/10 flex items-center justify-center">
+                  <img src="/firefox-logo.svg" alt="Firefox logo" width={24} height={24} />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold">{t("firefoxTitle")}</h2>
+                  <span className="text-xs font-bold text-kolr-orange bg-kolr-orange/10 px-2 py-0.5 rounded-full">
+                    {t("comingSoon")}
+                  </span>
+                </div>
+              </div>
+              <p className="text-sm text-kolr-text-muted leading-relaxed mb-5">
+                {t("firefoxDesc")}
+              </p>
+              <div className="flex flex-col gap-2.5 mb-5">
+                {firefoxFeatures.map((feature, i) => (
+                  <div key={i} className="flex items-center gap-2.5">
+                    <CheckCircle2
+                      size={14}
+                      className="text-kolr-orange shrink-0"
+                    />
+                    <span className="text-sm text-kolr-text-muted">
+                      {feature}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-2 bg-kolr-orange text-black px-5 py-2.5 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity duration-200 no-underline"
+              >
+                {t("firefoxInstall")}
                 <ArrowRight size={16} />
               </a>
             </div>

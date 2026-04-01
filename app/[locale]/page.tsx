@@ -540,7 +540,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid md:grid-cols-3 gap-5">
                 <div className="flex items-center gap-4 bg-black/30 backdrop-blur-sm border border-white/[0.06] rounded-xl p-5">
                   <div className="w-11 h-11 rounded-xl bg-kolr-purple/10 flex items-center justify-center shrink-0">
                     <svg
@@ -593,6 +593,25 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                   <div>
                     <h3 className="text-sm font-bold mb-0.5">
                       Chrome Extension
+                    </h3>
+                    <p className="text-xs text-kolr-text-muted">
+                      Color picker, extraction & palettes
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 bg-black/30 backdrop-blur-sm border border-white/[0.06] rounded-xl p-5">
+                  <div className="w-11 h-11 rounded-xl bg-kolr-orange/10 flex items-center justify-center shrink-0">
+                    <img
+                      src="/firefox-logo.svg"
+                      alt="Firefox logo"
+                      width={22}
+                      height={22}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold mb-0.5">
+                      Firefox Extension
                     </h3>
                     <p className="text-xs text-kolr-text-muted">
                       Color picker, extraction & palettes
