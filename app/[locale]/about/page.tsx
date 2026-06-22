@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import { Github, Linkedin, Coffee } from "lucide-react";
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -198,6 +199,45 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               <div className="text-lg leading-8 text-kolr-text space-y-6">
                 <p>{t("commitment.content")}</p>
                 <p>{t("commitment.content2")}</p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Who builds Kolr — solo maker */}
+          <Reveal animation="reveal-up" delay={5}>
+            <div className="mb-16 bg-gradient-to-br from-kolr-cyan/10 via-kolr-surface to-kolr-purple/10 border border-white/10 rounded-3xl p-8 md:p-10">
+              <h2 className="text-3xl font-bold mb-4">{t("maker.title")}</h2>
+              <p className="text-lg leading-8 text-kolr-text mb-6">
+                {t("maker.content")}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href={`/${locale}/contact`} className="btn-secondary">
+                  {t("maker.cta")}
+                </Link>
+                <a
+                  href="https://github.com/antoine-granier"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.03] text-white font-semibold no-underline hover:border-white/25 transition-colors"
+                >
+                  <Github size={18} /> GitHub
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/antoine-granier-473147204/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.03] text-white font-semibold no-underline hover:border-white/25 transition-colors"
+                >
+                  <Linkedin size={18} /> LinkedIn
+                </a>
+                <a
+                  href="https://buymeacoffee.com/agranier"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#FFDD00] text-black font-bold no-underline hover:opacity-90 transition-opacity"
+                >
+                  <Coffee size={18} /> Buy me a coffee
+                </a>
               </div>
             </div>
           </Reveal>

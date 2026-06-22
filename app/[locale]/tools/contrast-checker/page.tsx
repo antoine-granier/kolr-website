@@ -232,6 +232,18 @@ export default function ContrastCheckerPage() {
                       ? tContrast("fair")
                       : tContrast("poor")}
                   </p>
+                  <button
+                    onClick={() => copyToClipboard(`${ratioFormatted}:1`, 2)}
+                    aria-label="Copy contrast ratio"
+                    className={`mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
+                      copiedIndex === 2
+                        ? "bg-kolr-green text-black"
+                        : "bg-white/10 text-white hover:bg-white/20"
+                    }`}
+                  >
+                    {copiedIndex === 2 ? <Check size={16} /> : <Copy size={16} />}
+                    {copiedIndex === 2 ? tContrast("copied") : tContrast("copyRatio")}
+                  </button>
                 </div>
 
                 {/* WCAG Standards */}

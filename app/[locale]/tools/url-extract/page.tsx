@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ToolPrivacyNote from "@/components/ToolPrivacyNote";
 import PaletteExport from "@/components/PaletteExport";
 import { addToHistory } from "@/components/PaletteHistory";
 
@@ -143,6 +144,7 @@ export default function UrlExtractPage() {
               <p className="text-kolr-text-muted text-lg mt-2">
                 {t("description")}
               </p>
+              <ToolPrivacyNote variant="server" />
             </header>
           </Reveal>
 

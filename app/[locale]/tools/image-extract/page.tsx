@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ToolPrivacyNote from "@/components/ToolPrivacyNote";
 
 export default function ImageExtractPage() {
   const t = useTranslations("nav");
@@ -117,6 +118,7 @@ export default function ImageExtractPage() {
               <p className="text-kolr-text-muted text-lg mt-2">
                 {tImage("description")}
               </p>
+              <ToolPrivacyNote variant="local" />
             </header>
           </Reveal>
 

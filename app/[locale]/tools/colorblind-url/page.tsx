@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { ArrowLeft, Globe, Search, Loader2, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import ToolPrivacyNote from "@/components/ToolPrivacyNote";
 
 type SimType = "normal" | "protanopia" | "deuteranopia" | "tritanopia" | "achromatopsia";
 
@@ -75,6 +76,7 @@ export default function ColorblindUrlPage() {
               <p className="text-kolr-text-muted text-lg mt-2">
                 {t("description")}
               </p>
+              <ToolPrivacyNote variant="local" />
             </header>
           </Reveal>
 

@@ -3,6 +3,16 @@
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
+import { Github, Linkedin, Coffee } from "lucide-react";
+
+const socials = [
+  { label: "GitHub", href: "https://github.com/antoine-granier", icon: Github },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/antoine-granier-473147204/",
+    icon: Linkedin,
+  },
+];
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -33,6 +43,7 @@ export default function Footer() {
     { href: "/about", key: "about" },
     { href: "/faq", label: "FAQ" },
     { href: "/roadmap", label: "Roadmap" },
+    { href: "/roadmap", key: "apiSoon" },
   ];
 
   return (
@@ -54,6 +65,36 @@ export default function Footer() {
             <p className="text-kolr-text-muted text-sm leading-relaxed max-w-[260px]">
               {t("tagline")}
             </p>
+
+            {/* Socials + support */}
+            <div className="mt-6">
+              <h4 className="mb-3 text-xs font-extrabold uppercase tracking-widest text-white">
+                {t("followUs")}
+              </h4>
+              <div className="flex flex-wrap items-center gap-2.5">
+                {socials.map(({ label, href, icon: Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-9 h-9 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white/80 no-underline hover:text-white hover:border-white/25 transition-colors"
+                  >
+                    <Icon size={17} />
+                  </a>
+                ))}
+                <a
+                  href="https://buymeacoffee.com/agranier"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 h-9 px-3.5 rounded-full bg-[#FFDD00] text-black text-xs font-bold no-underline hover:opacity-90 transition-opacity"
+                >
+                  <Coffee size={15} />
+                  {t("support")}
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Tools grid */}
@@ -82,7 +123,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               {legal.map(({ href, key, label }) => (
                 <Link
-                  key={href}
+                  key={label || key}
                   href={`/${locale}${href}`}
                   className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white"
                 >
@@ -103,7 +144,7 @@ export default function Footer() {
         <div className="h-px bg-white/[0.06] mb-5" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-kolr-text-muted text-xs">
-            {t("rights")}
+            {t("rights")} · {t("madeBy")}
           </p>
           <Link
             href={`/${locale}/accessibility`}

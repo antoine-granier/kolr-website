@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import PalettePreview from "@/components/PalettePreview";
@@ -24,12 +25,14 @@ import {
   Layers,
   AudioLines,
   Type,
+  Check,
+  ShieldCheck,
+  Search,
 } from "lucide-react";
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "hero" });
-  const tFeatures = await getTranslations({ locale, namespace: "features" });
   const tNav = await getTranslations({ locale, namespace: "nav" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
   const tHomepage = await getTranslations({ locale, namespace: "homepage" });
@@ -53,12 +56,17 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                   </span>
                 </h1>
 
-                <p className="text-lg text-kolr-text-muted mb-10 leading-relaxed max-w-[540px]">
+                <p className="text-lg text-kolr-text-muted mb-6 leading-relaxed max-w-[540px]">
                   {t("description")}
                 </p>
 
+                <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border border-kolr-green/30 bg-kolr-green/10 text-kolr-green text-sm font-bold">
+                  <Check size={16} className="shrink-0" />
+                  {t("freeBadge")}
+                </div>
+
                 <div className="flex gap-5 flex-wrap">
-                  <Link href={`/${locale}#tools`} className="btn-primary">
+                  <Link href={`/${locale}/tools`} className="btn-primary">
                     {t("downloadNow")}
                   </Link>
                   <Link
@@ -81,49 +89,57 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* Quick Features Preview */}
+      {/* What makes Kolr different */}
       <section className="section bg-kolr-surface">
         <div className="container">
           <Reveal animation="reveal-up">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-black mb-4">{tFeatures("title")}</h2>
+              <h2 className="text-4xl font-black mb-4">{tHomepage("diffTitle")}</h2>
               <p className="text-xl text-kolr-text-muted max-w-[700px] mx-auto">
-                {tFeatures("subtitle")}
+                {tHomepage("diffSubtitle")}
               </p>
             </div>
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <Reveal animation="reveal-up" delay={1}>
-              <FeatureCard
-                icon="📸"
+            <Reveal animation="reveal-up" delay={1} className="h-full">
+              <DiffCard
+                href={`/${locale}/tools/colorblind-url`}
+                icon={<MonitorCheck size={30} />}
                 color="var(--kolr-cyan)"
-                title={tFeatures("photoExtraction.title")}
-                description={tFeatures("photoExtraction.description")}
+                title={tHomepage("diffColorblindTitle")}
+                description={tHomepage("diffColorblindDesc")}
+                cta={tCommon("tryNow")}
               />
             </Reveal>
-            <Reveal animation="reveal-up" delay={2}>
-              <FeatureCard
-                icon="📷"
-                color="var(--kolr-green)"
-                title={tFeatures("cameraIntegration.title")}
-                description={tFeatures("cameraIntegration.description")}
-              />
-            </Reveal>
-            <Reveal animation="reveal-up" delay={3}>
-              <FeatureCard
-                icon="🎲"
-                color="var(--kolr-orange)"
-                title={tFeatures("randomGenerator.title")}
-                description={tFeatures("randomGenerator.description")}
-              />
-            </Reveal>
-            <Reveal animation="reveal-up" delay={4}>
-              <FeatureCard
-                icon="🎨"
+            <Reveal animation="reveal-up" delay={2} className="h-full">
+              <DiffCard
+                href={`/${locale}/tools/sound-palette`}
+                icon={<AudioLines size={30} />}
                 color="var(--kolr-purple)"
-                title={tFeatures("colorPicker.title")}
-                description={tFeatures("colorPicker.description")}
+                title={tHomepage("diffSoundTitle")}
+                description={tHomepage("diffSoundDesc")}
+                cta={tCommon("tryNow")}
+              />
+            </Reveal>
+            <Reveal animation="reveal-up" delay={3} className="h-full">
+              <DiffCard
+                href={`/${locale}/tools/text-palette`}
+                icon={<Type size={30} />}
+                color="var(--kolr-orange)"
+                title={tHomepage("diffTextTitle")}
+                description={tHomepage("diffTextDesc")}
+                cta={tCommon("tryNow")}
+              />
+            </Reveal>
+            <Reveal animation="reveal-up" delay={4} className="h-full">
+              <DiffCard
+                href={`/${locale}/tools`}
+                icon={<ShieldCheck size={30} />}
+                color="var(--kolr-green)"
+                title={tHomepage("diffLocalTitle")}
+                description={tHomepage("diffLocalDesc")}
+                cta={tCommon("tryNow")}
               />
             </Reveal>
           </div>
@@ -153,9 +169,20 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               <h2 className="text-4xl font-black mb-4">
                 {tHomepage("toolsTitle")}
               </h2>
-              <p className="text-xl text-kolr-text-muted max-w-[700px] mx-auto">
+              <p className="text-xl text-kolr-text-muted max-w-[700px] mx-auto mb-6">
                 {tHomepage("toolsDescription")}
               </p>
+              <Link
+                href={`/${locale}/tools`}
+                className="inline-flex items-center gap-2 text-kolr-cyan font-bold no-underline hover:text-white transition-colors duration-200 group"
+              >
+                <Search size={18} />
+                <span>{tHomepage("browseAllTools")}</span>
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform duration-200"
+                />
+              </Link>
             </div>
           </Reveal>
 
@@ -656,19 +683,39 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               <h2 className="text-5xl font-black mb-6 tracking-tight">
                 {tHomepage("ctaTitle")}
               </h2>
-              <p className="text-xl text-kolr-text-muted mb-12 max-w-[600px] mx-auto">
+              <p className="text-xl text-kolr-text-muted mb-10 max-w-[600px] mx-auto">
                 {tHomepage("ctaDescription")}
               </p>
 
-              <div className="flex flex-wrap gap-6 justify-center mb-8">
+              <div className="flex flex-wrap gap-5 justify-center mb-12">
+                <Link
+                  href={`/${locale}/tools`}
+                  className="btn-primary flex items-center justify-center gap-3 text-xl px-12 py-6"
+                >
+                  <span>{tHomepage("ctaOpenTools")}</span>
+                  <ArrowRight size={22} />
+                </Link>
+                <Link
+                  href={`/${locale}/integrations`}
+                  className="btn-secondary flex items-center justify-center gap-3 text-xl px-10 py-6"
+                >
+                  <span>{tHomepage("ctaExtensions")}</span>
+                </Link>
+              </div>
+
+              <p className="text-sm font-bold uppercase tracking-widest text-kolr-text-muted mb-5">
+                {tHomepage("ctaAlsoOn")}
+              </p>
+
+              <div className="flex flex-wrap gap-4 justify-center mb-2">
                 <Link
                   href={`/${locale}/download`}
-                  className="btn-primary flex items-center gap-3 text-xl px-12 py-6"
+                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.03] text-white font-semibold no-underline hover:border-white/25 transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 256 256"
-                    className="w-10 h-10"
+                    className="w-6 h-6"
                   >
                     <defs>
                       <linearGradient
@@ -695,12 +742,12 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 </Link>
                 <Link
                   href={`/${locale}/download`}
-                  className="btn-primary flex items-center gap-3 text-xl px-12 py-6"
+                  className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl border border-white/10 bg-white/[0.03] text-white font-semibold no-underline hover:border-white/25 transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 256 283"
-                    className="w-10 h-10"
+                    className="w-6 h-6"
                   >
                     <path
                       fill="#EA4335"
@@ -738,54 +785,46 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   );
 }
 
-function FeatureCard({
+function DiffCard({
+  href,
   icon,
   color,
   title,
   description,
+  cta,
 }: {
-  icon: string;
+  href: string;
+  icon: ReactNode;
   color: string;
   title: string;
   description: string;
+  cta: string;
 }) {
   return (
-    <div className="feature-card">
+    <Link
+      href={href}
+      className="group flex flex-col h-full bg-white/[0.03] border border-white/[0.08] rounded-3xl p-8 hover:-translate-y-2 hover:border-white/25 transition-all duration-300 no-underline"
+    >
       <div
+        className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
         style={{
-          width: "70px",
-          height: "70px",
-          borderRadius: "1.25rem",
-          backgroundColor: color,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "2.5rem",
-          marginBottom: "2rem",
-          boxShadow: `0 10px 30px ${color}44`,
+          backgroundColor: `color-mix(in srgb, ${color} 14%, transparent)`,
+          color,
         }}
       >
         {icon}
       </div>
-      <h3
-        style={{
-          fontSize: "1.75rem",
-          fontWeight: 800,
-          marginBottom: "1rem",
-          letterSpacing: "-0.01em",
-        }}
-      >
-        {title}
-      </h3>
-      <p
-        style={{
-          color: "var(--kolr-text-muted)",
-          lineHeight: "1.7",
-          fontSize: "1.1rem",
-        }}
-      >
+      <h3 className="text-2xl font-extrabold mb-3 text-white">{title}</h3>
+      <p className="text-kolr-text-muted text-base leading-relaxed">
         {description}
       </p>
-    </div>
+      <div
+        className="flex items-center gap-2 font-bold mt-6 group-hover:gap-3 transition-all duration-200"
+        style={{ color }}
+      >
+        <span>{cta}</span>
+        <ArrowRight size={18} />
+      </div>
+    </Link>
   );
 }

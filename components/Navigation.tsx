@@ -10,6 +10,7 @@ import {
   Menu,
   X,
   ChevronDown,
+  ArrowRight,
   Palette,
   Pipette,
   Image as ImageIcon,
@@ -372,6 +373,14 @@ export default function Navigation() {
                       </div>
                     </Link>
                   ))}
+                  <Link
+                    href={`/${locale}/tools`}
+                    role="menuitem"
+                    className="col-span-3 flex items-center justify-center gap-2 mt-1 p-3 text-kolr-cyan font-bold no-underline rounded-[1.1rem] border border-white/10 hover:bg-white/5 transition-all duration-200"
+                  >
+                    <span>{t("viewAllTools")}</span>
+                    <ArrowRight size={16} />
+                  </Link>
                 </div>
               )}
             </div>
@@ -502,6 +511,14 @@ export default function Navigation() {
                       </div>
                     </Link>
                   ))}
+                  <Link
+                    href={`/${locale}/tools`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 p-3 text-kolr-cyan font-bold no-underline rounded-xl hover:bg-white/6 transition-all duration-300"
+                  >
+                    <span>{t("viewAllTools")}</span>
+                    <ArrowRight size={16} />
+                  </Link>
                 </div>
               </div>
 
