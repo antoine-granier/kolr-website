@@ -6,7 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/private/"],
+        // /color/ is an effectively-infinite dynamic space (one page per hex).
+        // Keep compliant crawlers out of it so they don't burn function renders
+        // scanning millions of URLs; the middleware blocks non-browser hits too.
+        disallow: ["/api/", "/private/", "/en/color/", "/fr/color/"],
       },
       {
         userAgent: "Mediapartners-Google",

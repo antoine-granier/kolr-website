@@ -27,7 +27,9 @@ import { NextRequest, NextResponse } from "next/server";
 // site (tools, blog, static pages) is untouched and fully crawlable.
 // ---------------------------------------------------------------------------
 
-const COLOR_PAGE_RE = /^\/(fr|en)\/color\/[0-9a-fA-F]{3,8}$/;
+// Guard the whole /color/ subtree — hex codes (/color/[hex]) AND named colors
+// (/color/name/[name]) are both dynamic and heavy to render.
+const COLOR_PAGE_RE = /^\/(fr|en)\/color\//;
 
 // Extra hard block: obviously non-browser / bot user agents.
 const BOT_UA_RE =
@@ -68,10 +70,23 @@ export default function middleware(request: NextRequest) {
     const secFetchMode = request.headers.get("sec-fetch-mode");
     const secFetchDest = request.headers.get("sec-fetch-dest");
 
-    // Require real browser-navigation signals. A programmatic fetch (missing
-    // these headers, or an API-style fetch/xhr) never renders these pages.
+    // Speculative prefetch / prerender (browser Speculation Rules,
+    // <link rel="prefetch">) sends `Sec-Purpose: prefetch` — sometimes with
+    // `Sec-Fetch-Dest: document`, which would otherwise look like a real page
+    // load. Don't render a color page the user may never actually open.
+    const isPrefetch =
+      (request.headers.get("sec-purpose") || "").includes("prefetch") ||
+      request.headers.get("purpose") === "prefetch";
+
+    // Allow only genuine top-level navigations. In-app <Link> clicks first fire
+    // an RSC fetch (Sec-Fetch-Mode: cors) that is 403'd here; Next then falls
+    // back to a full navigation, which passes. Scanners using plain HTTP clients
+    // send no sec-fetch headers at all, so they never get through.
+    // (Next strips incoming `RSC` / `Next-Router-Prefetch` headers before
+    // middleware, so we key off the standard sec-fetch/sec-purpose signals.)
     const isBrowserNavigation =
-      secFetchMode === "navigate" || secFetchDest === "document";
+      !isPrefetch &&
+      (secFetchMode === "navigate" || secFetchDest === "document");
 
     if (!isBrowserNavigation || !ua || BOT_UA_RE.test(ua)) {
       return blocked(403, "Forbidden");

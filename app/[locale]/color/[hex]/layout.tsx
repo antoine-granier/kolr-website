@@ -1,6 +1,9 @@
 import { generatePageMetadata } from "@/lib/metadata";
 
-export const revalidate = 3600;
+// A color's info is pure math and never changes, so cache each rendered page
+// for a year: repeat visits are served from the CDN with zero function
+// invocations. A redeploy purges the cache if the template ever changes.
+export const revalidate = 31536000; // 1 year
 
 export async function generateMetadata({
   params,
